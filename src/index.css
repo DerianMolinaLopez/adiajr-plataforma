@@ -1,6 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Fuente*/
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.color-fondo-login-select {
+    background-color: #cccccc;
+}
+
+.letra-color-login-select {
+    color: #929292
+}
+
+
+
 .imagen-fondo {
     position: relative;
     background-image: url("../src/assets/img/robotsFondo.png");
@@ -17,14 +37,37 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, .6); /* Ajusta la opacidad según sea necesario */
+    background: rgba(0, 0, 0, .6);
+    /* Ajusta la opacidad según sea necesario */
     z-index: 1;
 }
 
-.imagen-fondo > * {
+.imagen-fondo>* {
     position: relative;
     z-index: 2;
 }
-.size-h{
+
+.size-h {
     height: 30rem;
+}
+
+
+/* Animación para la selección del botón izquierdo */
+.scale-up-horizontal-right:hover {
+    animation: scale-up-horizontal-right 0.4s forwards;
+}
+
+@keyframes scale-up-horizontal-right {
+    0% {
+        transform: scaleX(.4);
+        transform-origin: right center;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: right center;
+    }
+}
+.anchura-formulario{
+    width: 30rem;
 }

@@ -1,3 +1,4 @@
+import z from 'zod';
 /*Tipos para las landing */
 export enum TipoCard{
     PAGOS = "PAGOS",
@@ -23,3 +24,16 @@ export type CardsInvertidas = {
 1024
 1280
 */
+export const UserRegisterSchemaForm = z.object({
+    email: z.string().email(),
+    name: z.string(),
+    password: z.string().min(8),
+    password_confirmation: z.string().min(8),
+})
+
+export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
+    email: true,
+    password: true
+})
+export type UserRegisterForm = z.infer<typeof UserRegisterSchemaForm>
+export type UserLoginForm = z.infer<typeof UserLoginSchemaForm>

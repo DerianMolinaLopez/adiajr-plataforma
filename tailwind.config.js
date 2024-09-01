@@ -7,6 +7,17 @@ export default {
         ...theme('colors'),
         'azul-fondo':'#00244A',
         'azul-oscuro':'#1F2937',
+        'azul-rebajado-fondo':"#4B61A6",
+        "blanco-rebajado":"#E8E8E8",
+        "azul-rebajado-hover":"#415287",
+        'gris-oscurecido':"#CDCDCD"
+      }),
+      textColor: theme => ({
+        ...theme('colors'),
+        'azul-oscuro':'#1F2937',
+        'azul-claro':'#4B61A6',
+        'azul-rebajado':'#E8E8E8',
+        'gris-oscurecido':"#CDCDCD"
       }),
     },
   },
@@ -14,3 +25,4 @@ export default {
 }
 
 //#1F2937
+//#CDCDCD -> agregar el gris oscuro

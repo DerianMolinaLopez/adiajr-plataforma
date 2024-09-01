@@ -36,7 +36,7 @@ const planesPago:CardsInvertidas[]= [
 const SeccionPlanesPago = () => {
   return (
     <div>
-      <h3 className="text-slate-600 font-bold text-center text-3xl sm:text-4xl lg:text-6xl my-28">Planes de pago</h3>
+      <h3 className="text-slate-600 font-bold text-center text-3xl sm:text-4xl lg:text-6xl my-32">Planes de pago</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-10">
           {/*title,description,img,invertido */}
           {planesPago.map((card,index)=><CardSeccionInvertida
