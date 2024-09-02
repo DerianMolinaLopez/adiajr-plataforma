@@ -9,7 +9,7 @@ const Nav = () => {
       <p>Sobre nosotros</p>
       <p>Planes de pago</p>
       <p>AidaJR para escuelas</p>
-      <Link to={""}className={`flex flex-col text-white ` }>
+      <Link to={"/auth/login"}className={`flex flex-col text-white ` }>
           <UserCircleIcon className="w-10"/>
           
         </Link>

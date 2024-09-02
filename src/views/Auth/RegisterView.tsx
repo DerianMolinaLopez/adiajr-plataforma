@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify'
 import { UserRegisterForm } from '../../types'
+import { useMutation } from 'react-query'
+import {registerUser} from '../../api/athApi'
 import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterView = () => {
@@ -14,15 +16,25 @@ const RegisterView = () => {
         email: "",
         name: "",
         password: "",
-        password_confirmation: ""
+        repeat_password: ""
     }
 
     const { register, handleSubmit, 
         formState: { errors } } = useForm<UserRegisterForm>({ defaultValues: initialValues })
+       const {mutate} = useMutation({
+        mutationFn:registerUser,
+        onError:(e:Error)=>{
+            toast.error(e.message)
+        },
+        onSuccess:(data)=>{
+            toast.success(data)
+        }
+    })
 
-    const submit = (data: any) => {
+    const submit = (data: UserRegisterForm) => {
         // Aquí puedes manejar el envío del formulario
         console.log(data)
+        mutate(data)
     }
 
     const onError = (errors: any) => {
@@ -82,7 +94,7 @@ const RegisterView = () => {
                         </div>
                         <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
                             <LockClosedIcon className='w-8 text-slate-500' />
-                            <input  {...register("password_confirmation", {
+                            <input  {...register("repeat_password", {
                                 required: "La confirmación de contraseña es requerida",
                             })}
                                 type="password" placeholder='Confirmar contraseña'

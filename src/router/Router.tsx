@@ -4,6 +4,7 @@ import LandingPageView from "../views/LandingPageView";
 import InstructorLayout from "../Layouts/InstructorLayout";
 import LoginView from "../views/Auth/LoginView";
 import RegisterView from "../views/Auth/RegisterView";
+import InicioView from "../views/Alumnos/InicioView";
 const Router = () =>{
     return(
         <BrowserRouter>
@@ -22,6 +23,10 @@ const Router = () =>{
                 <Route  element={<InstructorLayout/>}>
                     <Route index path={`/instructor/:id/inicio`} element={<InicioInstructorView/>}/>
                 </Route>
+            </Routes>
+            {/*Rutas del alumno */}
+            <Routes>
+                <Route path="/alumno/inicio" element ={<InicioView></InicioView>} />
             </Routes>
         </BrowserRouter>
     )

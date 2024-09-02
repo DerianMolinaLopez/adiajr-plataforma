@@ -5,20 +5,32 @@ import enter from "@/assets/enter.svg"
 import { UserPlusIcon, UserIcon, LockClosedIcon } from "@heroicons/react/20/solid"
 import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
-import { UserLoginForm } from '../../types'
-import 'react-toastify/dist/ReactToastify.css';
+import { UserLoginForm,UserLoginSchemaForm } from '../../types'
 
+import 'react-toastify/dist/ReactToastify.css';
+import { useMutation } from 'react-query'
+import { loginUser, registerUser } from '../../api/athApi'
 const LoginView = () => {
     const navigate = useNavigate()
     const initialValues: UserLoginForm = {
         email: "",
-        password: ""
+        password: "",
+        
     }
     const { register, handleSubmit, formState: { errors } } = useForm<UserLoginForm>({ defaultValues: initialValues })
+    
 
+       const {mutate} = useMutation({
+        mutationFn:loginUser,
+        onError:(e:Error)=>{
+            toast.error(e.message)
+        },
+        onSuccess:()=>{
+            navigate("/alumno/inicio")
+        }
+    })
     const submit = (data: UserLoginForm) => {
-        // Aquí puedes manejar el envío del formulario
-        console.log(data)
+        mutate(data)
     }
 
     const onError = (errors: any) => {
