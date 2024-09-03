@@ -10,7 +10,9 @@ export default {
         'azul-rebajado-fondo':"#4B61A6",
         "blanco-rebajado":"#E8E8E8",
         "azul-rebajado-hover":"#415287",
-        'gris-oscurecido':"#CDCDCD"
+        'gris-oscurecido':"#CDCDCD",
+        'azul-claro':'#4B61A6',
+        "gris-rebajado-variante":"#F7F1F1"
       }),
       textColor: theme => ({
         ...theme('colors'),

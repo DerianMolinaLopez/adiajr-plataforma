@@ -35,5 +35,25 @@ export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
     email: true,
     password: true,
 })
+/*
+ "_id": "66d66e1ca9b7c69fc89522ee",
+        "name": "derianML",
+        "email": "derian@gmail.com",
+        "password": "$2b$10$OUtF.dL1zXHftaKKrhQ0w.kjlBKiNwHZv8lEL7igmwdtVbGiz1syS",
+        "type_user": "alumno",
+        "studentId": "66d66e1ca9b7c69fc89522ef",
+*/
+export const UserSchema = UserRegisterSchemaForm.pick({
+    name:true,
+    email:true,
+}).extend({
+    _id: z.string(),
+    type_user: z.string(),
+    studentId: z.string(),
+})
+
+
+
 export type UserRegisterForm = z.infer<typeof UserRegisterSchemaForm>
 export type UserLoginForm = z.infer<typeof UserLoginSchemaForm>
+export type User = z.infer<typeof UserSchema>
