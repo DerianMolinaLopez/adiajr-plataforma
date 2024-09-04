@@ -20,7 +20,7 @@ export  async function loginUser (data: UserLoginForm) {
         const res = await axiosCli.post("/auth/login",data)
         console.log(res.data.token)
         localStorage.setItem("token",res.data.token)
-        return ""
+        return res.data.tipoUsuario
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){

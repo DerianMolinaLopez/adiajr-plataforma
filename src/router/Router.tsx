@@ -6,6 +6,9 @@ import LoginView from "../views/Auth/LoginView";
 import RegisterView from "../views/Auth/RegisterView";
 import InicioView from "../views/Alumnos/InicioView";
 import AlumnoLayout from "../Layouts/AlumnoLayout";
+import PagoInstructor from "@/components/Landing/PagoInstructor";
+import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
+import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
 
 const Router = () => {
     return (
@@ -17,10 +20,12 @@ const Router = () => {
 
                 {/* Presentación */}
                 <Route path="/" element={<LandingPageView />} />
+                <Route path="/pago/escolares" element={<PlanesPagoEscolares/>} />
 
                 {/* Rutas de instructor */}
                 <Route element={<InstructorLayout />}>
-                    <Route path="/instructor/:id/inicio" element={<InicioInstructorView />} />
+                    <Route path="/instructor/inicio" element={<InicioInstructorView />} />
+                    <Route path="/instructor/planes-pago" element={<PagosEstructoresView/>} />
                 </Route>
 
                 {/* Rutas del alumno */}

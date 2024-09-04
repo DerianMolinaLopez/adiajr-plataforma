@@ -4,7 +4,7 @@ const InstructorLayout = () => {
   return (
     <div className="flex flex-row mx-auto">
       <InstructorNav/>
-      <main className="w-full bg-gray-200">
+      <main className="w-full bg-gray-300">
         <Outlet />
       </main>
       

@@ -12,7 +12,8 @@ export default {
         "azul-rebajado-hover":"#415287",
         'gris-oscurecido':"#CDCDCD",
         'azul-claro':'#4B61A6',
-        "gris-rebajado-variante":"#F7F1F1"
+        "gris-rebajado-variante":"##D9D9D9",
+        'gris-claro-variante':"#D9D9D9"
       }),
       textColor: theme => ({
         ...theme('colors'),

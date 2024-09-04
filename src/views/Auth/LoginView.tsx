@@ -10,6 +10,7 @@ import { UserLoginForm,UserLoginSchemaForm } from '../../types'
 import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query'
 import { loginUser, registerUser } from '../../api/athApi'
+import useStoreCompras from '@/contexts/PlanesPagoStore'
 const LoginView = () => {
     const navigate = useNavigate()
     const initialValues: UserLoginForm = {
@@ -17,16 +18,26 @@ const LoginView = () => {
         password: "",
         
     }
+    const {getPlanPago} = useStoreCompras()
     const { register, handleSubmit, formState: { errors } } = useForm<UserLoginForm>({ defaultValues: initialValues })
     
-
+     
        const {mutate} = useMutation({
         mutationFn:loginUser,
         onError:(e:Error)=>{
             toast.error(e.message)
         },
-        onSuccess:()=>{
-            navigate("/alumno/inicio")
+        onSuccess:(data)=>{
+            const pago=getPlanPago()
+           // console.log(pago)
+            if(data === "alumno"){
+               return navigate("/alumno/inicio")
+            } 
+            if(pago && data==='instructor'){
+                return navigate("/instructor/planes-pago")
+            }
+            navigate("/instructor/inicio")
+           
         }
     })
     const submit = (data: UserLoginForm) => {

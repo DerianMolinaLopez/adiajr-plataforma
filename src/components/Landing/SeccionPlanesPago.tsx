@@ -1,6 +1,5 @@
 
 import pagos  from "../../assets/pagos.svg"
-import maestro from "../../assets/maestros.svg"
 import CardSeccionInvertida from "./CardSeccionInvertida"
 import { CardsInvertidas } from "../../types"
 import childs from "../../assets/childs.svg"
@@ -8,30 +7,19 @@ import childs from "../../assets/childs.svg"
 const planesPago:CardsInvertidas[]= [
     {
       title: "Gestiona tu grupo escolar, y ahorrate el esfuezo",
-      description: "Aprende con nosotros y se parte de la comunidad de AIDAjr",
+      description: "Escuelas y maestros, Este plan es una alternativa comoda, segura y precisa, acceso mensual, bimestral, trimestral, semestral y nuestro plan anual",
       img: childs,
-      color: "bg-emerald-600"
+      color: "bg-emerald-600", url: "/pago/escolares"
     },
     {
-      title: "¿Eres un maestro free lancer? crea tus propiso grupos virtuales",
-      description: "",
+      title: "Plan personalizado",
+      description: "Paga por el numero de meses o semanas en las que va a trabajar y el numero de alumnos que quieres tener",
       img: pagos,
       color: "bg-slate-600",
+      url: "/pago/personalizado",
       invertido:true
     },
-    {
-      title: "¿Eres una escuela? te ayudamos a asignar maestros a tus grupos",
-      description: "",
-      img: maestro,
-      color: "bg-slate-600"
-    }
-    ,
-    {
-      title: "¿Eres una escuela? te ayudamos a asignar maestros a tus grupos",
-      description: "",
-      img: maestro,
-      color: "bg-slate-600"
-    }
+    
   ]
 const SeccionPlanesPago = () => {
   return (

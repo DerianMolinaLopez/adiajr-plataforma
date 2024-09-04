@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify'
 import { UserRegisterForm } from '../../types'
 import { useMutation } from 'react-query'
-import {registerUser} from '../../api/athApi'
+import { registerUser } from '../../api/athApi'
 import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterView = () => {
@@ -16,33 +16,32 @@ const RegisterView = () => {
         email: "",
         name: "",
         password: "",
-        repeat_password: ""
+        repeat_password: "",
+        role: "student" // Valor por defecto
     }
 
     const { register, handleSubmit, 
         formState: { errors } } = useForm<UserRegisterForm>({ defaultValues: initialValues })
-       const {mutate} = useMutation({
-        mutationFn:registerUser,
-        onError:(e:Error)=>{
+    const { mutate } = useMutation({
+        mutationFn: registerUser,
+        onError: (e: Error) => {
             toast.error(e.message)
         },
-        onSuccess:(data)=>{
+        onSuccess: (data) => {
             toast.success(data)
         }
     })
 
     const submit = (data: UserRegisterForm) => {
-        // Aquí puedes manejar el envío del formulario
         console.log(data)
         mutate(data)
     }
 
     const onError = (errors: any) => {
-       console.log(errors)
-       Object.keys(errors).forEach((key) => {
-           toast.error(errors[key].message)
-       }
-    )
+        console.log(errors)
+        Object.keys(errors).forEach((key) => {
+            toast.error(errors[key].message)
+        })
     }
 
     return (
@@ -100,6 +99,24 @@ const RegisterView = () => {
                                 type="password" placeholder='Confirmar contraseña'
                                 className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
                         </div>
+
+                        {/* Aquí se añaden los radio buttons */}
+                        <div className='flex justify-between mx-10 text-black'>
+    <div className="flex items-center mb-4">
+        <input id="instructor" type="radio" value="instructor" {...register("role", {
+            required: "Selecciona un rol",
+        })} name="role" className="w-4 text-black h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+        <label htmlFor="instructor" className="ms-2 text-sm font-semibold">Instructor</label>
+    </div>
+    <div className="flex items-center">
+        <input id="estudiante" type="radio" value="estudiante" {...register("role", {
+            required: "Selecciona un rol",
+        })} name="role" defaultChecked className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+        <label htmlFor="estudiante" className="ms-2 text-sm font-semibold">Estudiante</label>
+    </div>
+</div>
+
+                        
                     </div>
                     <div className='flex justify-center'>
                         <input type="submit" value={"Crear cuenta"}

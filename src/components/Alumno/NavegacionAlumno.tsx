@@ -44,7 +44,7 @@ const NavegacionAlumno = () => {
           {url.map((item,index)=><Link 
                                  key={index} to={item.url}
                                  className={`hover:bg-azul-claro rounded-lg px-2 py-1
-                                             transition-colors duration-100 ease-in-out
+                                             transition-colors duration-100 ease-in-out w-32 text-centeru
                                              ${item.url === window.location.pathname ? "bg-azul-claro" : "bg-azul-oscuro"}
                                              `}
                                  >{item.label}</Link>)}

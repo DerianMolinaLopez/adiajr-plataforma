@@ -16,6 +16,7 @@ export type CardsInvertidas = {
     description: string;
     img: string;
     invertido?: boolean;
+    url: string;
     color:string;
 }
 /*Tamañso estandar
@@ -29,6 +30,7 @@ export const UserRegisterSchemaForm = z.object({
     name: z.string(),
     password: z.string().min(8),
     repeat_password: z.string().min(8),
+    role: z.string()
 })
 
 export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
