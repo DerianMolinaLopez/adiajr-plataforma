@@ -10,13 +10,27 @@
     font-weight: 600;
     font-style: normal;
 }
+.jos-font-900 {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+.jos-font-600 {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
 
 .color-fondo-login-select {
-    background-color: #cccccc;
+    background-color: #eae9e9;
 }
 
 .letra-color-login-select {
-    color: #929292
+    color: #3f3f3f
 }
 
 

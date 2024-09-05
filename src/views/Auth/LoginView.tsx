@@ -9,6 +9,8 @@ import { UserLoginForm,UserLoginSchemaForm } from '../../types'
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query'
+import roborRojo from "@/assets/robotRojoCompleto.svg"
+import roboramarillo from "@/assets/robotAmarilloCompleto.svg"
 import { loginUser, registerUser } from '../../api/athApi'
 import useStoreCompras from '@/contexts/PlanesPagoStore'
 const LoginView = () => {
@@ -53,9 +55,22 @@ const LoginView = () => {
      }
 
     return (
-        <>
-            <div className="h-screen w-screen bg-azul-rebajado-fondo flex justify-center items-center">
-                <form onSubmit={handleSubmit(submit, onError)} className="bg-blanco-rebajado anchura-formulario">
+        <div className='flex w-screen '>
+            <div className='w-1/2 bg-azul-rebajado-fondo '>
+            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+            Transforma tu productividad: Cursos interactivos en las herramientas de oficina más populares.
+            </h3>
+            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+            Aprende y mejora tus habilidades en Word, Excel, PowerPoint, y más.
+            </h3>
+            <picture className='flex justify-center items-center gap-20 mt-32 '>
+                <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
+                <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
+            </picture>
+            </div>
+            <div className="h-screen bg-negro-variante  flex  items-center flex-col space-y-10 w-1/2">
+                <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'> Veo que estas interesado en nosotros, adelantem aprende, crea y mejora</h3>
+                <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
                     <div className='flex justify-center'>
                         <button onClick={() => navigate('/auth/login')}
                             className='w-1/2 text-center py-5 flex justify-center '>
@@ -75,22 +90,22 @@ const LoginView = () => {
                         <img className="block mx-auto w-40" src={robotAzul} alt="logo robot azul" />
                     </picture>
                     <div className='mx-10 flex flex-col space-y-5 my-10'>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex shadow-md items-center justify-center h-full'>
                             <UserIcon className='w-8 text-slate-500' />
                             <input  {...register("email", {
                                 required: "El email es requerido",
                             })}
                                 type="email" placeholder='Email del usuario'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gray-100" />
                         </div>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex shadow-md items-center justify-center h-full'>
                             <LockClosedIcon className='w-8 text-slate-500' />
                             <input
                                 {...register("password", {
                                     required: "El password es requerido",
                                 })}
                                 type="password" placeholder='Contraseña del usuario'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gray-100" />
                         </div>
                     </div>
                     <div className='flex justify-center'>
@@ -100,8 +115,8 @@ const LoginView = () => {
                                  cursor-pointer transition-colors' />
                     </div>
                     <div className='flex justify-center my-5'>
-                        <Link to="#" className='text-center w-full '>¿Aun no tienes una cuenta? </Link>
-                        <Link to="#" className='text-center w-full'>Reestablecer contraseña</Link>
+                        <Link to="#" className='text-center w-full jos-font-600'>¿Aun no tienes una cuenta? </Link>
+                        <Link to="#" className='text-center w-full jos-font-600'>Reestablecer contraseña</Link>
                     </div>
                 </form>
             </div>
@@ -117,7 +132,7 @@ const LoginView = () => {
                 pauseOnHover
                 theme="light"
             />
-        </>
+        </div>
     )
 }
 

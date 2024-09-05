@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify'
 import { UserRegisterForm } from '../../types'
+
+import roborRojo from "@/assets/robotRojoCompleto.svg"
+import roboramarillo from "@/assets/robotAmarilloCompleto.svg"
 import { useMutation } from 'react-query'
 import { registerUser } from '../../api/athApi'
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,9 +48,22 @@ const RegisterView = () => {
     }
 
     return (
-        <>
-            <div className="h-screen w-screen bg-azul-rebajado-fondo flex justify-center items-center">
-                <form onSubmit={handleSubmit(submit, onError)} className="bg-blanco-rebajado anchura-formulario">
+        <div className='flex w-screen '>
+            <div className='w-1/2 bg-azul-rebajado-fondo '>
+            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+            Transforma tu conocimiento en Office con nuestros cursos interactivos.
+            </h3>
+            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+            Explora nuevas habilidades y herramientas de Office para el éxito profesional.
+            </h3>
+            <picture className='flex justify-center items-center gap-20 mt-32 '>
+                <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
+                <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
+            </picture>
+            </div>
+            <div className="h-screen bg-negro-variante  flex  items-center flex-col space-y-10 w-1/2">
+            <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'>Empieza hoy a mejorar tu manejo de Word, Excel, PowerPoint y más.</h3>
+                <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
                     <div className='flex justify-center'>
                         <button onClick={() => navigate('/auth/login')}
                             className='w-1/2 text-center py-5 flex justify-center color-fondo-login-select '>
@@ -67,37 +83,37 @@ const RegisterView = () => {
                         <img className="block mx-auto w-40" src={robotAzul} alt="logo robot azul" />
                     </picture>
                     <div className='mx-10 flex flex-col space-y-5 my-10'>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex items-center shadow-md justify-center h-full'>
                             <UserIcon className='w-8 text-slate-500' />
                             <input  {...register("email", {
                                 required: "El email es requerido",
                             })}
                                 type="email" placeholder='Email del usuario'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border bg-gray-100 rounded placeholder:font-semibold " />
                         </div>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex items-center shadow-md justify-center h-full'>
                             <UserIcon className='w-8 text-slate-500' />
                             <input  {...register("name", {
                                 required: "El nombre es requerido",
                             })}
                                 type="text" placeholder='Nombre del usuario'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border bg-gray-100 rounded placeholder:font-semibold " />
                         </div>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex items-center justify-center shadow-md h-full'>
                             <LockClosedIcon className='w-8 text-slate-500' />
                             <input  {...register("password", {
                                 required: "El password es requerido",
                             })}
                                 type="password" placeholder='Contraseña del usuario'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border bg-gray-100 rounded placeholder:font-semibold " />
                         </div>
-                        <div className='bg-gris-oscurecido rounded-xl p-2 flex items-center justify-center h-full'>
+                        <div className='bg-gray-100 rounded-xl p-2 flex items-center justify-center h-full shadow-md'>
                             <LockClosedIcon className='w-8 text-slate-500' />
                             <input  {...register("repeat_password", {
                                 required: "La confirmación de contraseña es requerida",
                             })}
                                 type="password" placeholder='Confirmar contraseña'
-                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gris-oscurecido" />
+                                className="block w-full border-none p-2 border border-gray-300 rounded placeholder:font-semibold bg-gray-100 " />
                         </div>
 
                         {/* Aquí se añaden los radio buttons */}
@@ -142,7 +158,7 @@ const RegisterView = () => {
                 pauseOnHover
                 theme="light"
             />
-        </>
+        </div>
     )
 }
 

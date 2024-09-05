@@ -7,6 +7,7 @@ import RegisterView from "../views/Auth/RegisterView";
 import InicioView from "../views/Alumnos/InicioView";
 import AlumnoLayout from "../Layouts/AlumnoLayout";
 import PagoInstructor from "@/components/Landing/PagoInstructor";
+
 import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
 import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
 

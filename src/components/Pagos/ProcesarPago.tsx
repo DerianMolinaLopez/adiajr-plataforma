@@ -7,11 +7,11 @@ const ProcesarPago = () => {
 
     const pago = getPlanPago()
   return (
-    <main className='flex flex-row h-screen'>
-      <picture className='w-3/4 mt-32 ml-32'>
-        <img src={bannerPago} className='w-3/4 shadow-lg' alt="banner del procedo de pago" />
+    <main className='flex flex-row h-screen gap-6'>
+      <picture className='w-3/4  mt-32 ml-32'>
+        <img src={bannerPago} className=' w-full shadow-lg' alt="banner del procedo de pago" />
       </picture>
-      <article className='mt-32 max-h-96 h-auto  w-1/4 mr-40 '>
+      <article className='mt-32 max-h-96 h-auto   w-1/2 mr-40 '>
         {pago&&<CardProcesarPago pago={pago}></CardProcesarPago>}
         
       </article>

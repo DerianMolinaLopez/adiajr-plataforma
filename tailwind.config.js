@@ -13,7 +13,8 @@ export default {
         'gris-oscurecido':"#CDCDCD",
         'azul-claro':'#4B61A6',
         "gris-rebajado-variante":"##D9D9D9",
-        'gris-claro-variante':"#D9D9D9"
+        'gris-claro-variante':"#D9D9D9",
+        'negro-variante':"#1E1E1E"
       }),
       textColor: theme => ({
         ...theme('colors'),

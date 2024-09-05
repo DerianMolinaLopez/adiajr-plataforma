@@ -6,7 +6,7 @@ const InstructorNav = () => {
     ///instructor/:id/inicio
   return (
     <nav className=" w-16 bg-azul-oscuro h-screen py-4 flex items-center space-y-4 flex-col">
-        <Link to="" className={` text-white ` }>
+        <Link to="/instructor/inicio" className={` text-white ` }>
           <HomeIcon className="w-10"/>
           
         </Link>
