@@ -6,6 +6,10 @@ const UltimosCursos = () => {
         queryFn: getUser
       })
       if(isSuccess) console.log(data)
+/*
+ * 1-obtener los datos del usuario
+ * 2-obtener los cursos del usuario 
+  */ 
  if(data) return (
     <section>
         <div className=' text-4xl mx-20 mt-10 space-y-10'>

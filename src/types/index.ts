@@ -53,7 +53,18 @@ export const UserSchema = UserRegisterSchemaForm.pick({
     type_user: z.string(),
     studentId: z.string(),
 })
-
+/*
+ "_id": "66e79fcd80d611a4b3a119e3",
+        "name": "Curso de PowerPoint Básico",
+        "description": "Crea presentaciones visuales y aprende a utilizar las plantillas predeterminadas en PowerPoint.",
+        "instructor_Id": null
+*/
+export const CourseViewSchema = z.object({
+  _id:z.string(),
+    name:z.string(),
+    description:z.string(),
+    instructor_Id:z.string().nullable(),
+})
 
 
 export type UserRegisterForm = z.infer<typeof UserRegisterSchemaForm>

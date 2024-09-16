@@ -32,6 +32,8 @@ const RegisterView = () => {
         },
         onSuccess: (data) => {
             toast.success(data)
+            setTimeout(() => navigate('/auth/login'),1500)
+            
         }
     })
 
@@ -48,8 +50,8 @@ const RegisterView = () => {
     }
 
     return (
-        <div className='flex w-screen '>
-            <div className='w-1/2 bg-azul-rebajado-fondo '>
+        <div className='contenedor-login'>
+            <div className='contenedor-aidas'>
             <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
             Transforma tu conocimiento en Office con nuestros cursos interactivos.
             </h3>
@@ -61,7 +63,7 @@ const RegisterView = () => {
                 <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
             </picture>
             </div>
-            <div className="h-screen bg-negro-variante  flex  items-center flex-col space-y-10 w-1/2">
+            <div className="contenedor-login-aida">
             <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'>Empieza hoy a mejorar tu manejo de Word, Excel, PowerPoint y más.</h3>
                 <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
                     <div className='flex justify-center'>
@@ -141,8 +143,7 @@ const RegisterView = () => {
                                  cursor-pointer transition-colors' />
                     </div>
                     <div className='flex justify-center my-5'>
-                        <Link to="#" className='text-center w-full '>¿Ya tienes una cuenta? </Link>
-                        <Link to="#" className='text-center w-full'>¿No recuerdas tu contraseña?</Link>
+                           <Link to="#" className='text-center w-full text-blue-700'>¿No recuerdas tu contraseña?</Link>
                     </div>
                 </form>
             </div>

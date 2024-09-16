@@ -37,8 +37,6 @@ const pagos: CardPagos[] = [
     }
 ];
 
-
-console.log(pagos)
 const PlanesPagoEscolares = () => {
   return (
     <>

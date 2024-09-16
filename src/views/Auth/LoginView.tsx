@@ -32,7 +32,7 @@ const LoginView = () => {
         onSuccess:(data)=>{
             const pago=getPlanPago()
            // console.log(pago)
-            if(data === "alumno"){
+            if(data === "estudiante"){
                return navigate("/alumno/inicio")
             } 
             if(pago && data==='instructor'){
@@ -55,23 +55,24 @@ const LoginView = () => {
      }
 
     return (
-        <div className='flex w-screen '>
-            <div className='w-1/2 bg-azul-rebajado-fondo '>
-            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-            Transforma tu productividad: Cursos interactivos en las herramientas de oficina más populares.
-            </h3>
-            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-            Aprende y mejora tus habilidades en Word, Excel, PowerPoint, y más.
-            </h3>
-            <picture className='flex justify-center items-center gap-20 mt-32 '>
-                <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
-                <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
-            </picture>
+        <div className='contenedor-login '>
+            {/*contenedor de los aidas */}
+            <div className='contenedor-aidas '>
+                <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+                Transforma tu productividad: Cursos interactivos en las herramientas de oficina más populares.
+                </h3>
+                <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
+                Aprende y mejora tus habilidades en Word, Excel, PowerPoint, y más.
+                </h3>
+                <picture className='flex justify-center items-center gap-20 mt-32 '>
+                    <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
+                    <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
+                </picture>
             </div>
-            <div className="h-screen bg-negro-variante  flex  items-center flex-col space-y-10 w-1/2">
+            <div className=" contenedor-login-aida">
                 <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'> Veo que estas interesado en nosotros, adelantem aprende, crea y mejora</h3>
                 <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center contenedor-botones'>
                         <button onClick={() => navigate('/auth/login')}
                             className='w-1/2 text-center py-5 flex justify-center '>
                             <span className='text-semibold text-xl text-slate-400 font-inter'>
@@ -115,7 +116,7 @@ const LoginView = () => {
                                  cursor-pointer transition-colors' />
                     </div>
                     <div className='flex justify-center my-5'>
-                        <Link to="#" className='text-center w-full jos-font-600'>¿Aun no tienes una cuenta? </Link>
+                        <Link to="/auth/register" className='text-center w-full jos-font-600'>¿Aun no tienes una cuenta? </Link>
                         <Link to="#" className='text-center w-full jos-font-600'>Reestablecer contraseña</Link>
                     </div>
                 </form>

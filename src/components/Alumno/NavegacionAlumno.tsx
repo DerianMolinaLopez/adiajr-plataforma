@@ -36,14 +36,15 @@ const url:urlTI[] = [
 
 const NavegacionAlumno = () => {
   return (
-    <div className=" flex justify-between">
+    <div className="header-banner">
         <picture className="flex justify-between items-center">
         <img className="w-16" src={logo} alt="Logo de la organizacion" />
       </picture>
-        <nav className="flex flex-row text-white gap-10 items-center">
+        <nav className="flex flex-row flex-wrap text-white items-center mt-10">
           {url.map((item,index)=><Link 
                                  key={index} to={item.url}
-                                 className={`hover:bg-azul-claro rounded-lg px-2 py-1
+                                 className={`hover:bg-azul-claro rounded-lg px-2 py-1 text-center
+                                    flex justify-center items-center mt-1
                                              transition-colors duration-100 ease-in-out w-32 text-centeru
                                              ${item.url === window.location.pathname ? "bg-azul-claro" : "bg-azul-oscuro"}
                                              `}

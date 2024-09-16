@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root{
+    --fondo-azul-rebajado:#4B61A6;
+    --fondo-login-oscuro:black;
+}
 /*Fuente*/
 
 .font-inter {
@@ -84,4 +87,107 @@
 }
 .anchura-formulario{
     width: 30rem;
+}
+/*
+
+Breakpoint prefix	Minimum width	CSS
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+*/
+
+.contenedor-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contenedor-aidas{
+    width: 50%;
+    background-color: var(--fondo-azul-rebajado);
+
+}
+.contenedor-login-aida{
+    background-color:var(--fondo-login-oscuro) ;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedor-login-aida form{
+    margin-top: 2rem;
+}
+@media(width<=768px){
+    .contenedor-login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media(width<=768px){
+    .contenedor-aidas{
+        width: 100%;
+    }
+    .contenedor-aidas h3{
+        font-size: 1.5rem;
+    }
+    .contenedor-login-aida h3{
+        margin-bottom: 3rem;
+    }
+
+}
+@media(width<=390px){
+    .contenedor-aidas{
+        width: 100%;
+    }
+    .contenedor-aidas h3{
+        font-size: 1rem;
+        text-align: center;
+    }
+    .contenedor-login-aida h3{
+        font-size: .6rem;
+      
+        text-align: center;
+    }
+    .anchura-formulario{
+        width: 20rem;
+    }
+    .contenedor-borones{
+        width: 3rem;
+    }
+
+}
+
+@media(width<=768px){
+    .contenedor-login-aida{
+        width: 100%;
+
+    }
+    
+
+}
+/*mediaqueries para el banner principal del alumno*/
+/*ajuste de la barra de navegacion*/
+
+.header-banner{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+@media(width<=768px){
+   .header-banner{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+    }
+
+}
+@media(width<=390px){
+  .header-banner{
+   flex: wrap; 
+  }
 }
