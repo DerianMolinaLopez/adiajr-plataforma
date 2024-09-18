@@ -6,9 +6,6 @@ const Nav = () => {
   */
   return (
     <div className="flex lg:flex-row   justify-around gap-10 items-center">
-      <p>Sobre nosotros</p>
-      <p>Planes de pago</p>
-      <p>AidaJR para escuelas</p>
       <Link to={"/auth/login"}className={`flex flex-col text-white ` }>
           <UserCircleIcon className="w-10"/>
           

@@ -10,6 +10,7 @@ import PagoInstructor from "@/components/Landing/PagoInstructor";
 
 import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
 import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
+import Header from "@/components/Landing/Header";
 
 const Router = () => {
     return (
@@ -20,9 +21,11 @@ const Router = () => {
                 <Route path="/auth/register" element={<RegisterView />} />
 
                 {/* Presentación */}
-                <Route path="/" element={<LandingPageView />} />
+            
+                <Route index element={<LandingPageView />} />
                 <Route path="/pago/escolares" element={<PlanesPagoEscolares/>} />
 
+                
                 {/* Rutas de instructor */}
                 <Route element={<InstructorLayout />}>
                     <Route path="/instructor/inicio" element={<InicioInstructorView />} />

@@ -40,10 +40,11 @@ const pagos: CardPagos[] = [
 const PlanesPagoEscolares = () => {
   return (
     <>
+    <Header/>
     <div className="bg-gris-claro-variante h-screen">
         
-    <main className=" pt-44">
-        <h2 className="text-center text-3xl font-semibold mb-32">Convietrete en instuctor con nuestras opciones</h2>
+    <main className="pt-28">
+        <h2 className="text-center text-3xl font-semibold mb-32 bg-azul-claro p-3 text-yellow-400">Se un instuctor con nuestras opciones</h2>
         <div className="flex justify-around gap-24 mx-20">
                 {pagos.map((pagos,index)=><CardPlanes key={index} pagos={pagos}/>)}
         </div>

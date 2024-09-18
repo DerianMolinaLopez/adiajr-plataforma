@@ -1,22 +1,23 @@
 
-import pagos  from "../../assets/pagos.svg"
+
 import CardSeccionInvertida from "./CardSeccionInvertida"
 import { CardsInvertidas } from "../../types"
 import childs from "../../assets/childs.svg"
-
+import billetera from '@/assets/billetera.svg'
 const planesPago:CardsInvertidas[]= [
     {
-      title: "Gestiona tu grupo escolar, y ahorrate el esfuezo",
-      description: "Escuelas y maestros, Este plan es una alternativa comoda, segura y precisa, acceso mensual, bimestral, trimestral, semestral y nuestro plan anual",
+      title: "Ahorra el esfuerzo de gestionar grupos, nosotros te ayudamos",
+      description: "Escuelas y maestros, Este plan es una alternativa comoda, segura y precisa, acceso mensual, bimestral, trimestral, semestral y nuestro plan anual.",
       img: childs,
       color: "bg-emerald-600", url: "/pago/escolares"
     },
     {
       title: "Plan personalizado",
       description: "Paga por el numero de meses o semanas en las que va a trabajar y el numero de alumnos que quieres tener",
-      img: pagos,
-      color: "bg-slate-600",
+      img: billetera,
+      color: "bg-rosa-rojiso",
       url: "/pago/personalizado",
+      
       invertido:true
     },
     

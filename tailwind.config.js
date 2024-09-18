@@ -14,7 +14,10 @@ export default {
         'azul-claro':'#4B61A6',
         "gris-rebajado-variante":"##D9D9D9",
         'gris-claro-variante':"#D9D9D9",
-        'negro-variante':"#1E1E1E"
+        'negro-variante':"#1E1E1E",
+        'rojo-brilloso':'#F71F3A',
+        'rojo-brilloso-hover':'#C9192F',
+        'rosa-rojiso':"#E1396C"
       }),
       textColor: theme => ({
         ...theme('colors'),
