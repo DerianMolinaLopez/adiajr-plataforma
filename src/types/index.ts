@@ -32,7 +32,28 @@ export const UserRegisterSchemaForm = z.object({
     repeat_password: z.string().min(8),
     role: z.string()
 })
+/*
 
+    "cursos": [
+        {
+            "valoration": 0,
+            "_id": "66f079cc58bf3753e9b84128",
+            "name": "Curso de Word Básico",
+            "description": "Aprende a usar las herramientas básicas de Microsoft Word, como formateo de texto y diseño de documentos.",
+            "tipoCurso": "word"
+        }
+    ]
+*/
+export const cursosShortSchema = z.object({
+    valoration: z.number(),
+    _id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    tipoCurso: z.string(),
+})
+export const cursoShortArraySchema = z.array(cursosShortSchema)
+
+export type CursoShort = z.infer<typeof cursosShortSchema>
 export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
     email: true,
     password: true,
