@@ -91,3 +91,42 @@ export const CourseViewSchema = z.object({
 export type UserRegisterForm = z.infer<typeof UserRegisterSchemaForm>
 export type UserLoginForm = z.infer<typeof UserLoginSchemaForm>
 export type User = z.infer<typeof UserSchema>
+/*
+ {
+            "_id": "66f079cc58bf3753e9b8412a",
+            "name": "Curso de Word Avanzado",
+            "description": "Domina el uso de referencias, macros y herramientas de automatización en Word.",
+            "instructor_Id": {
+                "_id": "66f1a292b2025e53bc810e99",
+                "user_Id": {
+                    "_id": "66f1a292b2025e53bc810e98",
+                    "name": "BorbonMartin"
+                }
+            },
+            "tipoCurso": "word",
+            "start_date": "2024-09-22T20:10:52.489Z",
+            "end_date": "2024-09-22T20:10:52.489Z",
+            "__v": 0,
+            "valoration": 0
+        }
+*/
+
+const cursoDetailSchema = z.object({
+    _id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    instructor_Id: z.object({
+        _id: z.string(),
+        user_Id: z.object({
+            _id: z.string(),
+            name: z.string(),
+        })
+    }),
+    tipoCurso: z.string(),
+    start_date: z.string(),
+    end_date: z.string(),
+    __v: z.number(),
+    valoration: z.number(),
+})
+export const cursoDetailSchemaArray = z.array(cursoDetailSchema)
+export type CursoDetail = z.infer<typeof cursoDetailSchema>

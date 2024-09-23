@@ -1,24 +1,18 @@
 import { CursoShort } from '@/types/index'
-import imagenExcel from "@/assets/img/imagenExcel.png"
-import imagenWord from "@/assets/img/imagenWord.png"
-import { any } from 'zod'
+import { cursosTipos } from '@/helpers/diferenciacionTipos'
 
 type CursosRecientesProps = {
   curso: CursoShort
 }
 
-const cursosTipos = {
-  word: imagenWord,
-  excel: imagenExcel,
-}
-
 const CursosRecientes = ({ curso }: CursosRecientesProps) => {
+  //@ts-ignore
   const cursoTipoImagen = cursosTipos[curso.tipoCurso] || null ;
 
   return (
-    <article className='w-80 space-y-2 hover:scale-110 bg-white transition-all cursor-pointer'>
-      <picture>
-        {cursoTipoImagen && <img src={cursoTipoImagen} className='w-full' alt={`Imagen del curso ${curso.name}`} />}
+    <article className='w-80 space-y-2 hover:scale-110 p-2 border border-slate-400 bg-white shadow-xl rounded-xl transition-all cursor-pointer'>
+      <picture className=''>
+        {cursoTipoImagen && <img src={cursoTipoImagen} className='w-full rounded-sm' alt={`Imagen del curso ${curso.name}`} />}
       </picture>
       <div className='text-xl space'>
         <h2 className='font-bold'>{curso.name}</h2>

@@ -17,7 +17,8 @@ export default {
         'negro-variante':"#1E1E1E",
         'rojo-brilloso':'#F71F3A',
         'rojo-brilloso-hover':'#C9192F',
-        'rosa-rojiso':"#E1396C"
+        'rosa-rojiso':"#E1396C",
+        'rosa-rojiso-hover':"#A1294D"
       }),
       textColor: theme => ({
         ...theme('colors'),
