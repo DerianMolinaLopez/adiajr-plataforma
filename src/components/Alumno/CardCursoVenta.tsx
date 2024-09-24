@@ -27,10 +27,10 @@ const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
          <p className="text-xl text-slate-500 font-bold">
                 {curso.instructor_Id.user_Id.name}
          </p>
-         <div className="flex justify-around">
+         <div className="flex justify-between items-center ">
          <p className="font-bold text-lg">{formatearPrecios(120)}MXN</p>
          {/* agregar evento de onclick */}
-        <button className="bg-rosa-rojiso hover:bg-rosa-rojiso-hover
+        <button className="bg-rosa-rojiso mb-2 hover:bg-rosa-rojiso-hover
                          text-white rounded-md p-2 font-bold transition-colors duration-150">
             Comprar curso
         </button>

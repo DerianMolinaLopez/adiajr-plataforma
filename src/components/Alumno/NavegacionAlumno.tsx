@@ -40,7 +40,7 @@ const NavegacionAlumno = () => {
         <picture className="flex justify-between items-center">
         <img className="w-16" src={logo} alt="Logo de la organizacion" />
       </picture>
-        <nav className="flex flex-row flex-wrap text-white items-center mt-10">
+        <nav className="flex flex-row flex-wrap gap-5 text-white items-center mt-10">
           {url.map((item,index)=><Link 
                                  key={index} to={item.url}
                                  className={`hover:bg-azul-claro rounded-lg px-2 py-1 text-center

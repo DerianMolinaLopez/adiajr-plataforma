@@ -191,3 +191,11 @@ xl	1280px	@media (min-width: 1280px) { ... }
    flex: wrap; 
   }
 }
+.input-codigo{
+    width: 20rem;
+    height: 4rem;
+}
+.caja-vacia{
+    width: 30rem;
+    height: 30rem;
+}

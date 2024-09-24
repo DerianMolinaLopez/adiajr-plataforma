@@ -27,6 +27,10 @@ export default {
         'azul-rebajado':'#E8E8E8',
         'gris-oscurecido':"#CDCDCD"
       }),
+      borderColor:theme=>({
+        ...theme('borders'),
+        "verde-oscurecido":"#58A700"
+      })
     },
   },
   plugins: [],
