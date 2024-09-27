@@ -64,8 +64,8 @@
     z-index: 2;
 }
 
-.size-h {
-    height: 30rem;
+.size-w {
+    width:  40rem;
 }
 
 
@@ -198,4 +198,7 @@ xl	1280px	@media (min-width: 1280px) { ... }
 .caja-vacia{
     width: 30rem;
     height: 30rem;
+}
+.size-w{
+    width:  40rem;
 }

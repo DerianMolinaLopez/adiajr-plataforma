@@ -4,8 +4,8 @@ import NavegacionAlumno from "../components/Alumno/NavegacionAlumno"
 const AlumnoLayout = () => {
   return (
     <>
-     <header className="bg-azul-oscuro px-32">
-       
+     <header className="bg-azul-oscuro px-32 fixed w-full z-50 shadow-lg">
+        
             <NavegacionAlumno></NavegacionAlumno>
         
         

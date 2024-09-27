@@ -1,6 +1,10 @@
 import axiosCli from "../config/axiosCli";
-import { UserSchema,CourseViewSchema,cursoShortArraySchema,cursoDetailSchemaArray,CursoDetail  } from "../types";
+import { UserSchema,CourseViewSchema,cursoShortArraySchema,
+         cursoDetailSchemaArray,CursoDetail,
+         cursoDetailSchema,courseShortSchema,SectionCursoSchema
+        } from "../types";
 import { isAxiosError } from "axios";
+
 export  async function getUser () {
     try{
         const res = await axiosCli("/user/student")
@@ -65,6 +69,7 @@ export  async function getTypeCourses (tipo:string) {
     try{
        // console.log("desde el endpoint"+tipo)
        const res = await axiosCli(`/user/student/courses/type/${tipo}`)
+  
       const rest = cursoDetailSchemaArray.safeParse(res.data.cursos)
        //  console.log(res.data)
        if(rest.error?.issues!=undefined){
@@ -80,16 +85,25 @@ export  async function getTypeCourses (tipo:string) {
     }
    
 }
-/*
-export  async function getTypeCourses (tipo:string) {
+export  async function getCourseById(id:CursoDetail["_id"]) {
     try{
-       const res = await axiosCli(`/user/student/courses/type/${tipo}`)
-       const rest = cursoDetailSchemaArray .safeParse(res.data.cursos)
-       
-      
-       console.log(rest.data)
 
+       const res = await axiosCli(`/courses/course/${id}`)
+
+         const instructorName:string = res.data.instructor_Id.user_Id.name
+         //console.log(res.data)
+       //  console.log(instructorName)
+         const dataCourse={
+            _id:res.data._id,
+            name:res.data.name,
+            description:res.data.description,
+            instructorName,
+            tipoCurso:res.data.tipoCurso,
+          
+         }
+         const rest = courseShortSchema.safeParse(dataCourse)
         return rest.data
+         
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
@@ -99,4 +113,20 @@ export  async function getTypeCourses (tipo:string) {
     }
    
 }
-*/
+///sections/sections/course/66f079cc58bf3753e9b84128
+export  async function getSectionsByCourse(id:CursoDetail["_id"]) {
+    try{
+
+       const res = await axiosCli(`/sections/sections/course/${id}`)
+       const rest = SectionCursoSchema.safeParse(res.data)
+       return rest.data
+
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+   
+}

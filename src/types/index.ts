@@ -25,6 +25,7 @@ export type CardsInvertidas = {
 1024
 1280
 */
+
 export const UserRegisterSchemaForm = z.object({
     email: z.string().email(),
     name: z.string(),
@@ -110,8 +111,14 @@ export type User = z.infer<typeof UserSchema>
             "valoration": 0
         }
 */
-
-const cursoDetailSchema = z.object({
+export const courseShortSchema = z.object({
+    _id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    instructorName: z.string(),
+    tipoCurso: z.string(),
+})
+export const cursoDetailSchema = z.object({
     _id: z.string(),
     name: z.string(),
     description: z.string(),
@@ -128,5 +135,57 @@ const cursoDetailSchema = z.object({
     __v: z.number(),
     valoration: z.number(),
 })
+export type CursoShortPay ={
+    _id: string;
+    name: string;
+    description: string;
+    tipoCurso: string;
+    instructorName: string;
+}
+export const SectionSchema = z.object({
+    _id:z.string(),
+    name:z.string(),
+    description:z.string()
+})
+export const SectionCursoSchema = z.object({
+    _id:z.string(),
+    sections:z.array(SectionSchema)
+})
+export type Section = z.infer<typeof SectionSchema>
+/*
+{
+    "_id": "66f079cc58bf3753e9b84128",
+    "sections": [
+        {
+            "_id": "66f5e6f4e03faaa12502e0f4",
+            "name": "Unidad 1",
+            "description": "Primeras impresiones word"
+        },
+        {
+            "_id": "66f5ed8170cb67a7feb53a26",
+            "name": "Unidad 1",
+            "description": "Primeras impresiones word"
+        },
+        {
+            "_id": "66f5f0376ba731a429027d8c",
+            "name": "Unidad 1",
+            "description": "Primeras impresiones word"
+        },
+        {
+            "_id": "66f5f04ca8b28cad5d9442c6",
+            "name": "Unidad 1",
+            "description": "Primeras impresiones word"
+        },
+        {
+            "_id": "66f5f04da8b28cad5d9442ca",
+            "name": "Unidad 1",
+            "description": "Primeras impresiones word"
+        }
+    ]
+}
+*/
 export const cursoDetailSchemaArray = z.array(cursoDetailSchema)
 export type CursoDetail = z.infer<typeof cursoDetailSchema>
+
+
+export type CourseShort = z.infer<typeof courseShortSchema>

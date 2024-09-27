@@ -1,15 +1,17 @@
 import { formatearPrecios } from "@/helpers/formatearPrecios"
 import { CursoDetail } from "@/types/index"
-
+import { useNavigate } from "react-router-dom"
 type CardCursoVentaProps = {
     curso: CursoDetail
     imagen:string
     tipoAidaImagen:string
 }
 
-const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
-    //@ts-ignore
 
+const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
+  const navigate = useNavigate()  
+  //@ts-ignore
+  const redireccionarPagosCuros =()=> navigate('/alumno/curso?idcurso='+curso._id)
   return (
     <article className="bg-white border border-slate-400 shadow-xl
                           flex flex-col rounded-md">
@@ -30,7 +32,9 @@ const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
          <div className="flex justify-between items-center ">
          <p className="font-bold text-lg">{formatearPrecios(120)}MXN</p>
          {/* agregar evento de onclick */}
-        <button className="bg-rosa-rojiso mb-2 hover:bg-rosa-rojiso-hover
+        <button 
+        onClick={redireccionarPagosCuros}
+        className="bg-rosa-rojiso mb-2 hover:bg-rosa-rojiso-hover
                          text-white rounded-md p-2 font-bold transition-colors duration-150">
             Comprar curso
         </button>
