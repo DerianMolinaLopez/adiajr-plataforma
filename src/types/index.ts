@@ -52,9 +52,15 @@ export const cursosShortSchema = z.object({
     description: z.string(),
     tipoCurso: z.string(),
 })
+export const cursosShortValorationSchema = cursosShortSchema.extend({
+    valoration:z.number(),
+    estado:z.string().optional(),
+    progreso:z.number().optional()
+})
 export const cursoShortArraySchema = z.array(cursosShortSchema)
-
+export type CursoShortValoration = z.infer<typeof cursosShortValorationSchema>
 export type CursoShort = z.infer<typeof cursosShortSchema>
+export type CursoShortArray = z.infer<typeof cursoShortArraySchema>
 export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
     email: true,
     password: true,
@@ -186,6 +192,16 @@ export type Section = z.infer<typeof SectionSchema>
 */
 export const cursoDetailSchemaArray = z.array(cursoDetailSchema)
 export type CursoDetail = z.infer<typeof cursoDetailSchema>
-
-
 export type CourseShort = z.infer<typeof courseShortSchema>
+
+export const cursoSchema =z.object({
+    _id:z.string(),
+    valoration:z.number(),
+    tipoCurso:z.string(),
+    name:z.string(),
+    process:z.number(),
+    instructor:z.string(),
+    description:z.string(),
+})
+export type Curso = z.infer<typeof cursoSchema>
+export const cursoSchemaArray = z.array(cursoSchema)

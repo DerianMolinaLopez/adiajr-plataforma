@@ -18,7 +18,8 @@ export default {
         'rojo-brilloso':'#F71F3A',
         'rojo-brilloso-hover':'#C9192F',
         'rosa-rojiso':"#E1396C",
-        'rosa-rojiso-hover':"#A1294D"
+        'rosa-rojiso-hover':"#A1294D",
+        'azul-verde-bajo':'#D6E0FE'
       }),
       textColor: theme => ({
         ...theme('colors'),
@@ -29,7 +30,8 @@ export default {
       }),
       borderColor:theme=>({
         ...theme('borders'),
-        "verde-oscurecido":"#58A700"
+        "verde-oscurecido":"#58A700",
+        'azul-verde-bajo':'#B4BDD6'
       })
     },
   },

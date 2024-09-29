@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { getCourseById ,getSectionsByCourse} from "@/api/userApi";
 import { useLocation } from "react-router-dom";
 import DetalleCursoPagos from "@/components/Alumno/pagos/DetalleCursoPagos";
+import RecomendacionCurso from "@/components/Alumno/pagos/RecomendacionCurso";
 import SeccionesCurso from "@/components/Alumno/pagos/SeccionesCurso";
 const PagosCursosView = () => {
   const location = useLocation();
@@ -29,7 +30,11 @@ const PagosCursosView = () => {
     <div className="pt-20">
       <DetalleCursoPagos curso={cursosDatos } />
       <h3 className="my-5 text-3xl font-semibold px-20">Secciones que incluye el curso</h3>
-      <SeccionesCurso secciones={seccionesCurso.sections} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 ">
+          <SeccionesCurso secciones={seccionesCurso.sections} />
+          <RecomendacionCurso excepcion={cursosDatos._id} tipoCurso={cursosDatos.tipoCurso}/>
+      </div>
+      
       
     </div>
   );

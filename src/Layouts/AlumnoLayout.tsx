@@ -1,6 +1,7 @@
 
 import { Outlet } from "react-router-dom"
 import NavegacionAlumno from "../components/Alumno/NavegacionAlumno"
+import Footer from "@/components/Landing/Footer"
 const AlumnoLayout = () => {
   return (
     <>
@@ -12,7 +13,8 @@ const AlumnoLayout = () => {
     </header>
     <main className="bg-gris-rebajado-variante max-w-screen-2xl mx-auto">
             <Outlet></Outlet>
-        </main>
+    </main>
+     
     </>
    
   )

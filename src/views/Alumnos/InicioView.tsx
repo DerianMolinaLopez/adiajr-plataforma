@@ -17,7 +17,7 @@ const InicioView = () => {
     <CursosNuevos />
     <TiposCursosSeccion tipo='word' titulo='Aprende la herramienta mas comun para oficinas Word'/>
     <TiposCursosSeccion tipo='excel' titulo='Aprende la herramienta mas comun para oficinas Word'/>
-    <Footer />
+  
     </>
   )
 }

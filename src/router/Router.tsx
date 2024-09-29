@@ -7,10 +7,9 @@ import RegisterView from "../views/Auth/RegisterView";
 import InicioView from "../views/Alumnos/InicioView";
 import AlumnoLayout from "../Layouts/AlumnoLayout";
 import PagosCursosView from "@/views/Alumnos/PagosCursosView";
-
 import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
 import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
-
+import CursosView from "@/views/Alumnos/CursosView";
 
 const Router = () => {
     return (
@@ -21,25 +20,24 @@ const Router = () => {
                 <Route path="/auth/register" element={<RegisterView />} />
 
                 {/* Presentación */}
-            
                 <Route index element={<LandingPageView />} />
-                <Route path="/pago/escolares" element={<PlanesPagoEscolares/>} />
+                <Route path="/pago/escolares" element={<PlanesPagoEscolares />} />
 
-                
                 {/* Rutas de instructor */}
                 <Route element={<InstructorLayout />}>
                     <Route path="/instructor/inicio" element={<InicioInstructorView />} />
-                    <Route path="/instructor/planes-pago" element={<PagosEstructoresView/>} />
+                    <Route path="/instructor/planes-pago" element={<PagosEstructoresView />} />
                 </Route>
 
                 {/* Rutas del alumno */}
                 <Route element={<AlumnoLayout />}>
                     <Route path="/alumno/inicio" element={<InicioView />} />
                     <Route path="/alumno/curso" element={<PagosCursosView />} />
+                    <Route path="/alumno/cursos" element={<CursosView />} />
                 </Route>
             </Routes>
         </BrowserRouter>
     );
-};
+};  
 
 export default Router;

@@ -1,6 +1,7 @@
 import { formatearPrecios } from "@/helpers/formatearPrecios"
 import { CursoDetail } from "@/types/index"
 import { useNavigate } from "react-router-dom"
+
 type CardCursoVentaProps = {
     curso: CursoDetail
     imagen:string

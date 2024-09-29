@@ -1,7 +1,10 @@
 import axiosCli from "../config/axiosCli";
 import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
-         cursoDetailSchema,courseShortSchema,SectionCursoSchema
+         cursoDetailSchema,courseShortSchema,SectionCursoSchema,
+         User,
+         cursosShortValorationSchema,
+         cursoSchemaArray
         } from "../types";
 import { isAxiosError } from "axios";
 
@@ -114,11 +117,12 @@ export  async function getCourseById(id:CursoDetail["_id"]) {
    
 }
 ///sections/sections/course/66f079cc58bf3753e9b84128
-export  async function getSectionsByCourse(id:CursoDetail["_id"]) {
+export  async function getSectionsByCourse(id:CursoDetail["_id"]) {//!error
     try{
 
        const res = await axiosCli(`/sections/sections/course/${id}`)
        const rest = SectionCursoSchema.safeParse(res.data)
+       console.log(rest)
        return rest.data
 
     }catch(e){
@@ -130,3 +134,22 @@ export  async function getSectionsByCourse(id:CursoDetail["_id"]) {
     }
    
 }
+
+export  async function getCourseByStudent() {
+    try{
+      //http://localhost:3000/api/user/student/courses
+       const res = await axiosCli(`/user/student/courses/detail`)
+       const rest = cursoSchemaArray.safeParse(res.data.cursos)
+       console.log(rest.data)
+       return rest.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+   
+}
+
+
