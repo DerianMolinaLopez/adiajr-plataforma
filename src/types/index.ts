@@ -19,12 +19,7 @@ export type CardsInvertidas = {
     url: string;
     color:string;
 }
-/*Tamañso estandar
-640
-768
-1024
-1280
-*/
+
 
 export const UserRegisterSchemaForm = z.object({
     email: z.string().email(),
@@ -33,18 +28,8 @@ export const UserRegisterSchemaForm = z.object({
     repeat_password: z.string().min(8),
     role: z.string()
 })
-/*
 
-    "cursos": [
-        {
-            "valoration": 0,
-            "_id": "66f079cc58bf3753e9b84128",
-            "name": "Curso de Word Básico",
-            "description": "Aprende a usar las herramientas básicas de Microsoft Word, como formateo de texto y diseño de documentos.",
-            "tipoCurso": "word"
-        }
-    ]
-*/
+
 export const cursosShortSchema = z.object({
     valoration: z.number(),
     _id: z.string(),
@@ -65,14 +50,7 @@ export const UserLoginSchemaForm = UserRegisterSchemaForm.pick({
     email: true,
     password: true,
 })
-/*
- "_id": "66d66e1ca9b7c69fc89522ee",
-        "name": "derianML",
-        "email": "derian@gmail.com",
-        "password": "$2b$10$OUtF.dL1zXHftaKKrhQ0w.kjlBKiNwHZv8lEL7igmwdtVbGiz1syS",
-        "type_user": "alumno",
-        "studentId": "66d66e1ca9b7c69fc89522ef",
-*/
+
 export const UserSchema = UserRegisterSchemaForm.pick({
     name:true,
     email:true,
@@ -81,12 +59,7 @@ export const UserSchema = UserRegisterSchemaForm.pick({
     type_user: z.string(),
     studentId: z.string(),
 })
-/*
- "_id": "66e79fcd80d611a4b3a119e3",
-        "name": "Curso de PowerPoint Básico",
-        "description": "Crea presentaciones visuales y aprende a utilizar las plantillas predeterminadas en PowerPoint.",
-        "instructor_Id": null
-*/
+
 export const CourseViewSchema = z.object({
   _id:z.string(),
     name:z.string(),
@@ -98,25 +71,7 @@ export const CourseViewSchema = z.object({
 export type UserRegisterForm = z.infer<typeof UserRegisterSchemaForm>
 export type UserLoginForm = z.infer<typeof UserLoginSchemaForm>
 export type User = z.infer<typeof UserSchema>
-/*
- {
-            "_id": "66f079cc58bf3753e9b8412a",
-            "name": "Curso de Word Avanzado",
-            "description": "Domina el uso de referencias, macros y herramientas de automatización en Word.",
-            "instructor_Id": {
-                "_id": "66f1a292b2025e53bc810e99",
-                "user_Id": {
-                    "_id": "66f1a292b2025e53bc810e98",
-                    "name": "BorbonMartin"
-                }
-            },
-            "tipoCurso": "word",
-            "start_date": "2024-09-22T20:10:52.489Z",
-            "end_date": "2024-09-22T20:10:52.489Z",
-            "__v": 0,
-            "valoration": 0
-        }
-*/
+
 export const courseShortSchema = z.object({
     _id: z.string(),
     name: z.string(),
@@ -158,38 +113,7 @@ export const SectionCursoSchema = z.object({
     sections:z.array(SectionSchema)
 })
 export type Section = z.infer<typeof SectionSchema>
-/*
-{
-    "_id": "66f079cc58bf3753e9b84128",
-    "sections": [
-        {
-            "_id": "66f5e6f4e03faaa12502e0f4",
-            "name": "Unidad 1",
-            "description": "Primeras impresiones word"
-        },
-        {
-            "_id": "66f5ed8170cb67a7feb53a26",
-            "name": "Unidad 1",
-            "description": "Primeras impresiones word"
-        },
-        {
-            "_id": "66f5f0376ba731a429027d8c",
-            "name": "Unidad 1",
-            "description": "Primeras impresiones word"
-        },
-        {
-            "_id": "66f5f04ca8b28cad5d9442c6",
-            "name": "Unidad 1",
-            "description": "Primeras impresiones word"
-        },
-        {
-            "_id": "66f5f04da8b28cad5d9442ca",
-            "name": "Unidad 1",
-            "description": "Primeras impresiones word"
-        }
-    ]
-}
-*/
+
 export const cursoDetailSchemaArray = z.array(cursoDetailSchema)
 export type CursoDetail = z.infer<typeof cursoDetailSchema>
 export type CourseShort = z.infer<typeof courseShortSchema>
@@ -205,3 +129,15 @@ export const cursoSchema =z.object({
 })
 export type Curso = z.infer<typeof cursoSchema>
 export const cursoSchemaArray = z.array(cursoSchema)
+export type formInputConfirmPayment = {
+    password:string,
+    securityNumbers:string,
+    //!como es simulacion nomas, ignoraremos lo de security numbers  
+}
+export type EnvioConfirmarCurso ={
+    id_course:string,
+    curso:"",
+    costo:"",
+    intructor:"",
+}
+export type EnvioConfirmarCursoPassword = formInputConfirmPayment & EnvioConfirmarCurso

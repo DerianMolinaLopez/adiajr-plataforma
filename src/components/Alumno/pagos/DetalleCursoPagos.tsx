@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { CursoShortPay } from "@/types/index";
-import { cursosTipos, tipoAida } from "@/helpers/diferenciacionTipos";
+import { cursosTipos } from "@/helpers/diferenciacionTipos";
 import { formatearPrecios } from "@/helpers/formatearPrecios";
+import ConfirmarCompraCurso from "./ConfirmarCompraCurso";
+import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
+import useStateUser from "@/contexts/usuarioStore";
 type DetalleCursoPagoProps = {
   curso: CursoShortPay;
 };
@@ -11,10 +14,17 @@ const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
   const [cursoImagen, setCursoImagen] = useState<string | null>(null);
   const [cursoAida, setCursoAida] = useState<string | null>(null);
 
+  const {setCurso,setInstructor,setCosto} = useStateUser ()
+  const navigate = useNavigate(); 
   useEffect(() => {
     if (curso) {
       //@ts-ignore
       setCursoImagen(cursosTipos[curso.tipoCurso] || null);
+      if(curso){
+        setCurso(curso.name)
+        setInstructor(curso.instructorName)
+        setCosto("120")
+      }
     }
   }, [curso]);
 
@@ -64,10 +74,11 @@ const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
             <p>{formatearPrecios(22)}MXN</p>
           </div>
           <div className="flex justify-center flex-col mt-5">
-             <button className="bg-blue-800 mt-10 hover:bg-blue-600 font-semibold text-white text-xl p-2 rounded-lg">
-            Confirmar compra
-          </button>
-          <button className="bg-red-600 mt-5 hover:bg-blue-600 font-semibold text-white text-xl p-2 rounded-lg">
+            <ConfirmarCompraCurso />
+          
+          <button 
+          onClick={()=>navigate(-1) /*regresamos a la url anterior */}
+          className="bg-red-600 mt-5 hover:bg-red-700 font-semibold text-white text-xl p-2 rounded-lg">
             Cancelar compra
           </button>
           </div>
