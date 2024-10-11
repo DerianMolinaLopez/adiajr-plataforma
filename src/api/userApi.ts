@@ -1,15 +1,9 @@
 import axiosCli from "../config/axiosCli";
 import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
-         cursoDetailSchema,courseShortSchema,SectionCursoSchema,
-         User,
-         cursosShortValorationSchema,
-         cursoSchemaArray,
-         formInputConfirmPayment,
-         EnvioConfirmarCurso,
+         courseShortSchema,SectionCursoSchema,cursoSchemaArray,
          EnvioConfirmarCursoPassword
         } from "../types";
-import useStateUser from "@/contexts/usuarioStore";
 import { isAxiosError } from "axios";
 
 export  async function getUser () {
@@ -75,11 +69,13 @@ export  async function getTopCourses () {
 export  async function getTypeCourses (tipo:string) {
     try{
        // console.log("desde el endpoint"+tipo)
+       console.log(tipo)
        const res = await axiosCli(`/user/student/courses/type/${tipo}`)
-  
+        console.log(res)
       const rest = cursoDetailSchemaArray.safeParse(res.data.cursos)
-       //  console.log(res.data)
+      console.log(rest)
        if(rest.error?.issues!=undefined){
+        console.log(rest.error?.issues)
         return []
        }
         return rest.data
