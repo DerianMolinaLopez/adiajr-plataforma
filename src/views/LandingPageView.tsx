@@ -4,7 +4,7 @@ import SobreNosotros from "../components/Landing/SobreNosotros"
 import SeccionPlanesPago from "../components/Landing/SeccionPlanesPago"
 import Footer from "../components/Landing/Footer"
 import BannerRojo from "@/components/Landing/BannerRojo"
-
+import { Noticias } from "@/components/Landing/Noticias"
 
 const LandingPageView = () => {
   return (
@@ -20,6 +20,8 @@ const LandingPageView = () => {
     <SobreNosotros/>
 
     <SeccionPlanesPago/>
+   
+    <Noticias/>
     <Footer/>
     </div>
     

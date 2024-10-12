@@ -37,3 +37,14 @@ const SeccionPlanesPago = () => {
 }
 
 export default SeccionPlanesPago
+/*
+
+ <h3 className="text-slate-600 font-bold text-center text-3xl sm:text-4xl lg:text-6xl my-32">Planes de pago</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-10">
+          
+          {planesPago.map((card,index)=><CardSeccionInvertida
+            key={index}
+                                                               card={card}  />)}
+          </div>
+
+*/
