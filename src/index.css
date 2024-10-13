@@ -86,7 +86,9 @@
     }
 }
 .anchura-formulario{
+    max-width: 30rem;
     width: 30rem;
+    
 }
 /*
 
@@ -109,11 +111,9 @@ xl	1280px	@media (min-width: 1280px) { ... }
 
 }
 .contenedor-login-aida{
-    background-color:var(--fondo-login-oscuro) ;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #001C34;
+    
+
 }
 .contenedor-login-aida form{
     margin-top: 2rem;
@@ -206,5 +206,5 @@ xl	1280px	@media (min-width: 1280px) { ... }
 
 .gradiente-precio{
 
-    background: linear-gradient(45deg, #4B61A6 0%,#515252 50%, #30aebe 100%);
+    background: linear-gradient(45deg, #4B61A6 0%,#1c8181 50%, #30aebe 100%);
 }

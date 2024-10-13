@@ -50,22 +50,11 @@ const RegisterView = () => {
     }
 
     return (
-        <div className='contenedor-login'>
-            <div className='contenedor-aidas'>
-            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-            Transforma tu conocimiento en Office con nuestros cursos interactivos.
-            </h3>
-            <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-            Explora nuevas habilidades y herramientas de Office para el éxito profesional.
-            </h3>
-            <picture className='flex justify-center items-center gap-20 mt-32 '>
-                <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
-                <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
-            </picture>
-            </div>
-            <div className="contenedor-login-aida">
-            <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'>Empieza hoy a mejorar tu manejo de Word, Excel, PowerPoint y más.</h3>
-                <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
+      
+           
+            <div className="contenedor-login-aida h-screen flex justify-center flex-col">
+            <h3 className='text-white text-3xl px-36 text-center   font-bold  jos-font-900'>Empieza hoy a mejorar tu manejo de <br /> herramientas de oficina.</h3>
+                <form onSubmit={handleSubmit(submit, onError)} className="bg-white mx-auto anchura-formulario">
                     <div className='flex justify-center'>
                         <button onClick={() => navigate('/auth/login')}
                             className='w-1/2 text-center py-5 flex justify-center color-fondo-login-select '>
@@ -146,8 +135,7 @@ const RegisterView = () => {
                            <Link to="#" className='text-center w-full text-blue-700'>¿No recuerdas tu contraseña?</Link>
                     </div>
                 </form>
-            </div>
-            <ToastContainer
+                <ToastContainer
                 position="top-right"
                 autoClose={2000}
                 hideProgressBar={false}
@@ -159,7 +147,9 @@ const RegisterView = () => {
                 pauseOnHover
                 theme="light"
             />
-        </div>
+            </div>
+           
+    
     )
 }
 

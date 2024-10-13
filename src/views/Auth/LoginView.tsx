@@ -1,17 +1,17 @@
 import robotAzul from '@/assets/img/robotAzul.png'
-import { Link, useLocation } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import enter from "@/assets/enter.svg"
 import { UserPlusIcon, UserIcon, LockClosedIcon } from "@heroicons/react/20/solid"
 import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
-import { UserLoginForm,UserLoginSchemaForm } from '../../types'
+import { UserLoginForm} from '../../types'
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useMutation } from 'react-query'
 import roborRojo from "@/assets/robotRojoCompleto.svg"
 import roboramarillo from "@/assets/robotAmarilloCompleto.svg"
-import { loginUser, registerUser } from '../../api/athApi'
+import { loginUser} from '../../api/athApi'
 import useStoreCompras from '@/contexts/PlanesPagoStore'
 const LoginView = () => {
     const navigate = useNavigate()
@@ -55,23 +55,11 @@ const LoginView = () => {
      }
 
     return (
-        <div className='contenedor-login '>
-            {/*contenedor de los aidas */}
-            <div className='contenedor-aidas '>
-                <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-                Transforma tu productividad: Cursos interactivos en las herramientas de oficina más populares.
-                </h3>
-                <h3 className='text-white text-3xl mx-20 font-bold mt-32 jos-font-900'>
-                Aprende y mejora tus habilidades en Word, Excel, PowerPoint, y más.
-                </h3>
-                <picture className='flex justify-center items-center gap-20 mt-32 '>
-                    <img className='w-56' src={roborRojo} alt="Imagen de robot rojo" />
-                    <img className='w-56' src={roboramarillo} alt="Imagen de robot amarillo" />
-                </picture>
-            </div>
-            <div className=" contenedor-login-aida">
-                <h3 className='text-white text-3xl px-36 text-center mb-  font-bold mt-32 jos-font-900'> Veo que estas interesado en nosotros, adelantem aprende, crea y mejora</h3>
-                <form onSubmit={handleSubmit(submit, onError)} className="bg-white anchura-formulario">
+      
+          <>
+          <div className=" flex contenedor-login-aida h-screen justify-center flex-col w-full">
+                <h3 className=' text-white text-3xl px-36 text-center   font-bold '> Veo que estas interesado en nosotros, <br /> adelante aprende, crea y mejora</h3>
+                <form onSubmit={handleSubmit(submit, onError)} className="bg-white mx-auto anchura-formulario">
                     <div className='flex justify-center contenedor-botones'>
                         <button onClick={() => navigate('/auth/login')}
                             className='w-1/2 text-center py-5 flex justify-center '>
@@ -133,7 +121,9 @@ const LoginView = () => {
                 pauseOnHover
                 theme="light"
             />
-        </div>
+          </>
+            
+   
     )
 }
 

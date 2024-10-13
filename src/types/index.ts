@@ -141,3 +141,10 @@ export type EnvioConfirmarCurso ={
     intructor:"",
 }
 export type EnvioConfirmarCursoPassword = formInputConfirmPayment & EnvioConfirmarCurso
+
+export type ConfirmacionCompra = Pick<formInputConfirmPayment,"password"| "securityNumbers"> &{
+    email:string,
+    numberCard:string,
+    tittle:string,
+    price:string,
+} 

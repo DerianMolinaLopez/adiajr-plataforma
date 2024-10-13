@@ -1,5 +1,6 @@
-
-
+import { ModalConfirmarPago } from "../Pagos/pagosInstructor/ModalConfirmarPago";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const planesPago = [
   {
@@ -99,14 +100,24 @@ type CardProps = {
               </span>{feature}
             </p>
           ))}
-          <button className={`flex items-center mt-auto text-white ${buttonColor} border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded`}>
-            {buttonText}
-            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          <ModalConfirmarPago tittle={title} price={price} buttonText={buttonText} buttonColor={buttonColor}/>
+
+        
 
         </div>
+        <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    
       </div>
     );
   };
