@@ -5,7 +5,7 @@ import noticia1 from '../../assets/img/noticia1.png';
 export const Noticias = () => {
   return (
     <>
-    <h3 className='px-20 text-5xl font-black text-center mt-20'>Ultimas noticas informate de lo nuevo que hay o que habra en AIDAjr.</h3>
+    <h3 className='px-20 text-5xl font-black text-slate-600 mt-20'>Ultimas noticas.</h3>
      <section className=" body-font">
       <div className="container px-5 py-24 mx-auto flex flex-wrap">
         <div className="lg:w-2/3 mx-auto">

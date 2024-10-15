@@ -10,7 +10,10 @@ import PagosCursosView from "@/views/Alumnos/PagosCursosView";
 import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
 import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
 import CursosView from "@/views/Alumnos/CursosView";
-
+import { ForgotPassword } from "@/views/Auth/ForgotPassword";
+import { TokenForgot } from "@/views/Auth/TokenForgot";
+// url/auth/forgot/token
+//http://localhost:5173/auth/forgot/token
 const Router = () => {
     return (
         <BrowserRouter>
@@ -18,6 +21,8 @@ const Router = () => {
                 {/* Inicio y autenticación */}
                 <Route path="/auth/login" element={<LoginView />} />
                 <Route path="/auth/register" element={<RegisterView />} />
+                <Route path="/auth/forgot" element={<ForgotPassword/>} />
+                <Route path="/auth/forgot/token" element={<TokenForgot/>} />
 
                 {/* Presentación */}
                 <Route index element={<LandingPageView />} />

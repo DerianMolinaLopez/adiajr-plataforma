@@ -132,7 +132,7 @@ const RegisterView = () => {
                                  cursor-pointer transition-colors' />
                     </div>
                     <div className='flex justify-center my-5'>
-                           <Link to="#" className='text-center w-full text-blue-700'>¿No recuerdas tu contraseña?</Link>
+                           <Link to="/auth/forgot" className='text-center w-full text-blue-700'>¿No recuerdas tu contraseña?</Link>
                     </div>
                 </form>
                 <ToastContainer

@@ -105,7 +105,7 @@ const LoginView = () => {
                     </div>
                     <div className='flex justify-center my-5'>
                         <Link to="/auth/register" className='text-center w-full jos-font-600'>¿Aun no tienes una cuenta? </Link>
-                        <Link to="#" className='text-center w-full jos-font-600'>Reestablecer contraseña</Link>
+                        <Link to="/auth/forgot" className='text-center w-full jos-font-600'>Reestablecer contraseña</Link>
                     </div>
                 </form>
             </div>

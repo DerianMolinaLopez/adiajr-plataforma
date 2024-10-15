@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import axiosCli from "../config/axiosCli";
-import { ConfirmacionCompra, UserLoginForm, UserRegisterForm } from "../types";
+import { CambioPassword, ConfirmacionCompra, UserLoginForm, UserRegisterForm } from "../types";
 export  async function registerUser (data: UserRegisterForm) {
     try{
         const res = await axiosCli.post("/auth/register",data)
@@ -54,6 +54,37 @@ export  async function loginUserPayment (data: ConfirmacionCompra) {
         }else{
             //@ts-ignore
             throw new Error(e.message)
+        }
+    }
+   
+}
+export  async function chekToken (token:string) {
+    try{
+        console.log(token)
+        const res = await axiosCli.post("/auth/check-token",{token})
+        console.log(res.data)
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+   
+}
+// /api/auth//change-password
+export  async function changePassword (obj: CambioPassword) {
+    try{
+
+        const res = await axiosCli.post("/auth/change-password",obj)
+        console.log(res.data)
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
         }
     }
    

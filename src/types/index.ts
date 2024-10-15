@@ -148,3 +148,11 @@ export type ConfirmacionCompra = Pick<formInputConfirmPayment,"password"| "secur
     tittle:string,
     price:string,
 } 
+
+export type CambioPassword = {
+    password: string;
+    passworRepeat: string;
+    token: string;
+    email: string;
+}
+
