@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ConfirmacionCompra } from '@/types/index';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import { loginUserPayment } from '@/api/athApi';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,7 +41,7 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
     onError: (e: Error) => {
       toast.error(e.message);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success("Hemos enviado un email con el recibo de tu pago");
       setTimeout(() => setIsOpen(false), 2500);
     }
@@ -80,8 +80,8 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
         {/* Full-screen container to center the panel */}
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           {/* The actual dialog panel */}
-          <DialogPanel className="max-w-lg space-y-4 bg-white p-12">
-            <DialogTitle className="font-bold text-slate-600 text-2xl">Plan {tittle}</DialogTitle>
+          <DialogPanel className="max-w-lg space-y-4 bg-white p-12 rounded-lg">
+            <DialogTitle className="font-bold text-slate-600 text-4xl">Plan {tittle}</DialogTitle>
             <Description>Precio: {price}</Description>
             <p>¿Ya cuentas con una cuenta de AIDAjr?</p>
             <article className="flex justify-around">

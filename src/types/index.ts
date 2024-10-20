@@ -11,6 +11,8 @@ export type cardPresentacion = {
     tipo: TipoCard;
 }
 
+
+
 export type CardsInvertidas = {
     title: string;
     description: string;
@@ -19,6 +21,13 @@ export type CardsInvertidas = {
     url: string;
     color:string;
 }
+export const UserInstructorSchema = z.object({
+  _id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+  type_user: z.string(),
+  plazoPago: z.string(),
+})
 
 
 export const UserRegisterSchemaForm = z.object({

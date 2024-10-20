@@ -2,7 +2,8 @@ import axiosCli from "../config/axiosCli";
 import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
          courseShortSchema,SectionCursoSchema,cursoSchemaArray,
-         EnvioConfirmarCursoPassword
+         EnvioConfirmarCursoPassword,
+         UserInstructorSchema
         } from "../types";
 import { isAxiosError } from "axios";
 
@@ -21,6 +22,23 @@ export  async function getUser () {
         }
     }
    
+}
+
+
+export async function getUserWithEmail(){
+    try{
+        const res = await axiosCli(`/instructor/instructor`)
+  
+        const rest = UserInstructorSchema.safeParse(res.data)
+    
+        return rest.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
 }
 export  async function getNewCourses () {
     try{

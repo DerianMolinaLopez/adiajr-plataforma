@@ -58,6 +58,21 @@ export  async function loginUserPayment (data: ConfirmacionCompra) {
     }
    
 }
+
+export async function requestPassword(email:string){
+    try{
+
+        const res = await axiosCli.post("/auth/forgot-password",{email})
+        console.log(res.data)
+        return res.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+}
 export  async function chekToken (token:string) {
     try{
         console.log(token)
