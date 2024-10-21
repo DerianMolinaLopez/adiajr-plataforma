@@ -21,7 +21,16 @@ export default {
         'rosa-rojiso':"#E1396C",
         'rosa-rojiso-hover':"#A1294D",
         'azul-verde-bajo':'#D6E0FE',
-        'azul-sobrio':'#001C34'
+        'azul-sobrio':'#001C34',
+        //-----------
+        'azul-celeste':'#27a9e3',
+        'azul-celeste-fuerte':'#2195c9',
+        'verde-esmeralda':'#28b779',
+        'verde-esmeralda-fuerte':'#17a668',
+        'morado':'#852b99',
+        'morado-fuerte':'#741d88',
+        'rojo':'#f5585a',
+        'rojo-fuerte' :'#e40215'
       }),
       textColor: theme => ({
         ...theme('colors'),
