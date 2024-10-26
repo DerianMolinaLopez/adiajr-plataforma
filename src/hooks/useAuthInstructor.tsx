@@ -10,9 +10,10 @@ const useAuthInstructor = () => {
         queryFn: getUserWithEmail,
         queryKey: 'instructorUser'
       })
-
+      console.log(informacionGeneral)
         return {
-        informacionGeneral
+          usuario:informacionGeneral?.usuario,
+          codigosUnion:informacionGeneral?.cursosConCodigoUnion
     }
     
 }

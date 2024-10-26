@@ -21,13 +21,31 @@ export type CardsInvertidas = {
     url: string;
     color:string;
 }
+
+
 export const UserInstructorSchema = z.object({
   _id: z.string(),
   name: z.string(),
   email: z.string().email(),
   type_user: z.string(),
+  instructorId: z.string(), // Incluido para coincidir con tu JSON
   plazoPago: z.string(),
-})
+});
+
+export const UserInstructorSchemaSpecify = z.object({
+  usuario: UserInstructorSchema,
+  cursosConCodigoUnion: z.array(z.object({
+    curso: z.object({
+      _id: z.string(),
+      name: z.string(),
+      description: z.string(),
+      tipoCurso: z.string(),
+      sections: z.array(z.any()), // Se puede ajustar según el tipo real
+    }),
+    codigo: z.string(), // Corregido de codigoUnion a codigo
+  })),
+});
+
 
 
 export const UserRegisterSchemaForm = z.object({

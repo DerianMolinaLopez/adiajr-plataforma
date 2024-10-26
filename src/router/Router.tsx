@@ -12,6 +12,8 @@ import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
 import CursosView from "@/views/Alumnos/CursosView";
 import { ForgotPassword } from "@/views/Auth/ForgotPassword";
 import { TokenForgot } from "@/views/Auth/TokenForgot";
+import { UnionCodeView } from "@/views/instructores/UnionCodeView";
+import { GruposView } from "@/views/instructores/GruposView";
 // url/auth/forgot/token
 //http://localhost:5173/auth/forgot/token
 const Router = () => {
@@ -32,6 +34,8 @@ const Router = () => {
                 <Route element={<InstructorLayout />}>
                     <Route path="/instructor/inicio" element={<InicioInstructorView />} />
                     <Route path="/instructor/planes-pago" element={<PagosEstructoresView />} />
+                    <Route path="/instructor/unioncode" element={<UnionCodeView />} />
+                    <Route path="/instructor/grupos" element={<GruposView />} />
                 </Route>
 
                 {/* Rutas del alumno */}

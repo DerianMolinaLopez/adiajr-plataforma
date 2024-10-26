@@ -1,9 +1,10 @@
 import flechaDerecha  from '@/assets/flechaDerecha.svg'
-
+import { Link } from 'react-router-dom';
 export type CardInfoGeneralProps = {
   title: string;
   index: number; // para poder enviar el color que le va a corresponder a ese card por el fondo
   icono: string
+  url:string
 };
 
 type ColorCompuesto = {
@@ -40,7 +41,7 @@ const indexColors: ColorCompuesto[] = [
   }
 ];
 
-export const CardInfoGeneral = ({ title, index, icono }: CardInfoGeneralProps) => {
+export const CardInfoGeneral = ({ title, index, icono,url }: CardInfoGeneralProps) => {
   const colorClass = indexColors[index % indexColors.length]; // Usar el índice para obtener el color
 
   return (
@@ -56,10 +57,10 @@ export const CardInfoGeneral = ({ title, index, icono }: CardInfoGeneralProps) =
         </div>
       </div>
       <article className={`${colorClass.bajo} px-10 py-1 mt-auto`}>
-        <a href="" className='flex items-center text-white font-bold gap-3'>
+        <Link to={url} className='flex items-center text-white font-bold gap-3'>
           Ver más
           <img src={flechaDerecha} alt="icono de flecha" />
-        </a>
+        </Link>
       </article>
     </article>
   );

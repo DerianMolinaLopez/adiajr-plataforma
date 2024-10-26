@@ -3,7 +3,8 @@ import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
          courseShortSchema,SectionCursoSchema,cursoSchemaArray,
          EnvioConfirmarCursoPassword,
-         UserInstructorSchema
+         UserInstructorSchema,
+         UserInstructorSchemaSpecify
         } from "../types";
 import { isAxiosError } from "axios";
 
@@ -28,8 +29,8 @@ export  async function getUser () {
 export async function getUserWithEmail(){
     try{
         const res = await axiosCli(`/instructor/instructor`)
-  
-        const rest = UserInstructorSchema.safeParse(res.data)
+    
+        const rest = UserInstructorSchemaSpecify.safeParse(res.data)
     
         return rest.data
     }catch(e){

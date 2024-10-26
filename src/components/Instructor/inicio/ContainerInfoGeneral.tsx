@@ -24,22 +24,26 @@ export const ContainerInfoGeneral = () => {
     {
       title: "Total de grupos",
       index: 0,
-      icono: icono
+      icono: icono,
+      url: '/instructor/grupos'
     },
     {
       title: "Total de alumnos",
       index: 1,
-      icono: icono4
+      icono: icono4,
+       url: ''
     },
     {
       title: "Tareas pendientes por revisar",
       index: 2,
-      icono: icono3
+      icono: icono3,
+       url: ''
     },
     {
       title: "Codigos de uniones generados",
       index: 3,
-      icono:  icono2
+      icono: icono2,
+       url: '/instructor/unioncode'
     }
   ];
 
@@ -47,8 +51,8 @@ export const ContainerInfoGeneral = () => {
     <>
       <h2 className="px-10 font-semibold text-2xl mt-10">Informe general</h2>
       <section className="grid grid-cols-2 mx-10 gap-5 mt-10">
-        {objCardGeneral.map(({ title, index, icono }) => (
-          <CardInfoGeneral key={index} index={index} title={title} icono={icono} />
+        {objCardGeneral.map(({ title, index, icono,url }) => (
+          <CardInfoGeneral key={index} index={index} title={title} url={url}  icono={icono} />
         ))}
       </section>
     </>
