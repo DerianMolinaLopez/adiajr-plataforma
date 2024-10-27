@@ -208,3 +208,6 @@ xl	1280px	@media (min-width: 1280px) { ... }
 
     background: linear-gradient(45deg, #4B61A6 0%,#1c8181 50%, #30aebe 100%);
 }
+.altura-codigos-union{
+    height: 35rem;
+}

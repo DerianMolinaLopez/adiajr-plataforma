@@ -32,6 +32,15 @@ export const UserInstructorSchema = z.object({
   plazoPago: z.string(),
 });
 
+export const cursosShortSchema = z.object({
+    valoration: z.number(),
+    _id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    tipoCurso: z.string(),
+})
+
+export type CursosShort = z.infer<typeof cursosShortSchema>
 export const UserInstructorSchemaSpecify = z.object({
   usuario: UserInstructorSchema,
   cursosConCodigoUnion: z.array(z.object({
@@ -44,6 +53,7 @@ export const UserInstructorSchemaSpecify = z.object({
     }),
     codigo: z.string(), // Corregido de codigoUnion a codigo
   })),
+  cursos: z.array(cursosShortSchema)
 });
 
 
@@ -57,13 +67,7 @@ export const UserRegisterSchemaForm = z.object({
 })
 
 
-export const cursosShortSchema = z.object({
-    valoration: z.number(),
-    _id: z.string(),
-    name: z.string(),
-    description: z.string(),
-    tipoCurso: z.string(),
-})
+
 export const cursosShortValorationSchema = cursosShortSchema.extend({
     valoration:z.number(),
     estado:z.string().optional(),

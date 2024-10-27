@@ -3,7 +3,6 @@ import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
          courseShortSchema,SectionCursoSchema,cursoSchemaArray,
          EnvioConfirmarCursoPassword,
-         UserInstructorSchema,
          UserInstructorSchemaSpecify
         } from "../types";
 import { isAxiosError } from "axios";
