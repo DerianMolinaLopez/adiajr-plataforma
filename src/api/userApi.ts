@@ -197,3 +197,21 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
     }
    
 }
+
+
+ export  async function searchWithUnionCode(unionCode:string) {
+ //http://localhost:3000/api/user/student/course/unionCode/415495
+     try{
+        const res = await axiosCli(`/user/student/course/unionCode/${unionCode}`)
+        console.log(res.data)
+        return res.data
+     }catch(e){
+         console.log(e)
+         if(isAxiosError(e)){
+            return "error"
+            
+         
+         }
+     }
+    
+ }

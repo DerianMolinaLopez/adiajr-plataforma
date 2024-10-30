@@ -1,4 +1,4 @@
-import derecha from '@/assets/derecha.svg';
+
 import Puntuaciones from '@/components/Alumno/cursos/Puntuaciones';
 import { PuntuacionesProps } from '@/components/Alumno/cursos/Puntuaciones';
 import progreso from '@/assets/progreso.svg';
@@ -6,11 +6,14 @@ import check from '@/assets/check.svg';
 import medallaOro from '@/assets/medallaOro.svg';
 import lapiz from '@/assets/lapiz.svg';
 import { useQuery } from 'react-query';
+import { searchWithUnionCode} from '@/api/userApi';
+import {toast} from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { getCourseByStudent } from '@/api/userApi';
-import CursosRecientes from '@/components/Alumno/CursosRecientes';
+
 import CursosCard from '@/components/Alumno/cursos/CursosCard';
-import { Curso } from '@/types/index';
+import { Curso, cursoBackUnionCode, CursoBackUnionCode } from '@/types/index';
+import ModalCursoEncontrado from '@/components/Alumno/cursos/ModalCursoEncontrado';
 
 const puntuaciones: PuntuacionesProps[] = [
   {
@@ -37,6 +40,8 @@ const puntuaciones: PuntuacionesProps[] = [
 
 const CursosView = () => {
   const [nombreCurso, setNombreCurso] = useState('');
+  const [unioncode,setUnionCode] = useState<string>('');
+  const [cursoEncontrado,setCursoEncontrado] = useState<CursoBackUnionCode >();
   const [cursos, setCursos] = useState<Curso[]>([]);
   const { data } = useQuery({
     queryFn: getCourseByStudent,
@@ -54,6 +59,16 @@ const CursosView = () => {
     }
   }, [nombreCurso, data]);
 
+  const handleSubmitUnionCode = async () => {
+   const data =await searchWithUnionCode(unioncode);
+   if(data=="error") toast.error("Codigo de union no valido");
+     const res = cursoBackUnionCode.safeParse(data);  
+      if(res.success){
+        setCursoEncontrado(res.data);
+      }
+
+  }
+
   return (
     <div className="pt-32">
       <div className='bg-white'>
@@ -61,7 +76,7 @@ const CursosView = () => {
           <h2 className="text-4xl text-white font-bold p-3">Cursos</h2>
         </section>
         <article className='bg-white'>
-          <div className='px-20 pt-5'>
+          <div className='px-20 pt-5 flex justify-between'>
             <input
               type="text"
               className='border-2 px-4 text-xl border-slate-300 w-64 h-12 rounded-lg'
@@ -69,6 +84,17 @@ const CursosView = () => {
               value={nombreCurso}
               onChange={e => setNombreCurso(e.target.value)}
             />
+            <div className='flex justify-between gap-7'>
+              <input type="text" placeholder='Codigo de union' 
+              value={unioncode}
+              onChange={e => setUnionCode(e.target.value)}
+              className='border-2 px-4 text-xl border-slate-300 w-64 h-12 rounded-lg' />
+              <button 
+              onClick={handleSubmitUnionCode}
+              className='bg-lima font-bold text-white px-2 rounded-md uppercase'>
+                Unirme
+              </button>
+            </div>
           </div>
         </article>
         <article className='grid grid-cols-4 bg-azul-verde-bajo px-10 mt-10'>
@@ -87,6 +113,7 @@ const CursosView = () => {
           ))}
         </section>
       </div>
+      <ModalCursoEncontrado curso={cursoEncontrado}/>
     </div>
   );
 };

@@ -22,7 +22,7 @@ export const UnionCodeView = () => {
         <section className="space-y-2 overflow-auto altura-codigos-union">
         {codigosUnion.length===0 && (
             <>
-            <h3 className="text-2xl font-bold text-center">No tienes ningun codigo de union generado, intenta creando uno y regres amas tarde</h3>
+            <h3 className="text-2xl font-bold text-center ">No tienes ningun codigo de union generado, intenta creando uno y regres amas tarde</h3>
             <div className="bg-white rounded-full mx-auto w-1/4 p-3">
                        <img src={cajaVacia} alt="Imagen de una caja vacia" className="mx-auto w-80 h-80" />
             </div>

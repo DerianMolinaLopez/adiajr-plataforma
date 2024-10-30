@@ -40,6 +40,9 @@ export const cursosShortSchema = z.object({
     tipoCurso: z.string(),
 })
 
+
+
+
 export type CursosShort = z.infer<typeof cursosShortSchema>
 export const UserInstructorSchemaSpecify = z.object({
   usuario: UserInstructorSchema,
@@ -127,6 +130,22 @@ export const cursoDetailSchema = z.object({
     __v: z.number(),
     valoration: z.number(),
 })
+
+
+export const cursoBackUnionCode = cursoDetailSchema.pick({
+    name:true,
+    description:true,
+    tipoCurso:true,
+}).extend({
+    instructor:z.object({
+        name:z.string(),
+        _id:z.string()
+    })
+})
+export type CursoBackUnionCode = z.infer<typeof cursoBackUnionCode>
+
+
+
 export type CursoShortPay ={
     _id: string;
     name: string;

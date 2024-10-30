@@ -30,7 +30,8 @@ export default {
         'morado':'#852b99',
         'morado-fuerte':'#741d88',
         'rojo':'#f5585a',
-        'rojo-fuerte' :'#e40215'
+        'rojo-fuerte' :'#e40215',
+        'lima':'#85b11c'
       }),
       textColor: theme => ({
         ...theme('colors'),
