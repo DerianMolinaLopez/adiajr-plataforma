@@ -56,7 +56,8 @@ export const UserInstructorSchemaSpecify = z.object({
     }),
     codigo: z.string(), // Corregido de codigoUnion a codigo
   })),
-  cursos: z.array(cursosShortSchema)
+  cursos: z.array(cursosShortSchema),
+ 
 });
 
 

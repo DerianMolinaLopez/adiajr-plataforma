@@ -24,13 +24,68 @@ export  async function getUser () {
    
 }
 
-
+/*
+"cursos": [
+        {
+            "_id": "67255d35be57551630769850",
+            "name": "CUrsos basic222dedaeawcdfacv adcswswswv acvcv aac2wswsw",
+            "description": "cursos de word",
+            "instructor_Id": "670421bcf168e5fda8de9251",
+            "course_students": [],
+            "tipoCurso": "word",
+            "valoration": 0,
+            "sections": [],
+            "start_date": "2024-11-01T22:59:01.938Z",
+            "end_date": "2024-11-01T22:59:01.938Z",
+            "__v": 0
+        },
+        {
+            "_id": "67255d38be57551630769856",
+            "name": "CUrsos basic222dedaeawcdfacacvcv aac2wswsw",
+            "description": "cursos de word",
+            "instructor_Id": "670421bcf168e5fda8de9251",
+            "course_students": [],
+            "tipoCurso": "word",
+            "valoration": 0,
+            "sections": [],
+            "start_date": "2024-11-01T22:59:04.296Z",
+            "end_date": "2024-11-01T22:59:04.296Z",
+            "__v": 0
+        },
+        {
+            "_id": "67255d3abe5755163076985c",
+            "name": "CUrsos basic222dedaeawcdv aac2wswsw",
+            "description": "cursos de word",
+            "instructor_Id": "670421bcf168e5fda8de9251",
+            "course_students": [],
+            "tipoCurso": "word",
+            "valoration": 0,
+            "sections": [],
+            "start_date": "2024-11-01T22:59:06.170Z",
+            "end_date": "2024-11-01T22:59:06.170Z",
+            "__v": 0
+        },
+        {
+            "_id": "67255d3bbe57551630769862",
+            "name": "CUrsos basic222dedaeawrfrfrcdv aac2wswsw",
+            "description": "cursos de word",
+            "instructor_Id": "670421bcf168e5fda8de9251",
+            "course_students": [],
+            "tipoCurso": "word",
+            "valoration": 0,
+            "sections": [],
+            "start_date": "2024-11-01T22:59:07.960Z",
+            "end_date": "2024-11-01T22:59:07.960Z",
+            "__v": 0
+        }
+    ]
+*/
 export async function getUserWithEmail(){
     try{
         const res = await axiosCli(`/instructor/instructor`)
-    
+       console.log(res.data)
         const rest = UserInstructorSchemaSpecify.safeParse(res.data)
-    
+        
         return rest.data
     }catch(e){
         console.log(e)

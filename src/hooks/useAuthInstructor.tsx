@@ -10,9 +10,12 @@ const useAuthInstructor = () => {
         queryFn: getUserWithEmail,
         queryKey: 'instructorUser'
       })
+
+      
       
         return {
           usuario:informacionGeneral?.usuario,
+          cursosInstructor:informacionGeneral?.cursos,
           codigosUnion:informacionGeneral?.cursosConCodigoUnion,
           cursos:informacionGeneral?.cursos//este es para la ventana modal para crear un codigo de union, isn embargo hay que mostrar informacion
     }

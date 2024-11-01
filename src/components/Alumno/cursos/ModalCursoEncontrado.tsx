@@ -36,6 +36,9 @@ export const ModalCursoEncontrado = ({ curso }: ModalCursoEncontradoProps) => {
              <img src={imagen} className=' ' alt="imagen de aida" />
             <Description className="text-xl">{curso?.description}</Description>
             <Description className="text-xl text-slate-800 font-semibold">Instructor:{' '}{curso?.instructor.name}</Description>
+
+            <button className='w-full bg-indigo-700 text-white font-bold py-2 rounded-lg'>Unirse</button>
+            <button className='w-full bg-red-700 text-white font-bold py-2 rounded-lg'>Cancelar</button>
             <div className="flex gap-4">
               <button onClick={() => setIsOpen(false)}>Cancel</button>
               <button onClick={() => setIsOpen(false)}>Deactivate</button>

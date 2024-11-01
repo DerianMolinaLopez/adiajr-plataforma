@@ -18,3 +18,18 @@ export async function generarCodigoUnion(id_course:string){
         }
     }
 }
+export async function getCoursesByInstructor(){
+    try{
+console.log("entrando en peticion")
+       // http://localhost:3000/api/instructor/instructorr/getCourses
+        //http://localhost:3000/api/instructor/instructors/unionCode/67041ccf5ebfd796cb6ebdc3
+        const res = await axiosCli.get(`/instructor/instructor/getCourses`)
+        console.log(res.data)
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+}
