@@ -1,7 +1,7 @@
 import axiosCli from "../config/axiosCli";
 import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
-         courseShortSchema,SectionCursoSchema,cursoSchemaArray,
+         courseShortSchema,SectionCursoSchema,cursoSchemaPick,
          EnvioConfirmarCursoPassword,
          UserInstructorSchemaSpecify
         } from "../types";
@@ -212,9 +212,8 @@ export  async function getCourseByStudent() {
     try{
       //http://localhost:3000/api/user/student/courses
        const res = await axiosCli(`/user/student/courses/detail`)
-       const rest = cursoSchemaArray.safeParse(res.data.cursos)
-       console.log(rest.data)
-       return rest.data
+    
+       return res.data
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){

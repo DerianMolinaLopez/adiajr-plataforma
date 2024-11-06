@@ -8,11 +8,11 @@ import lapiz from '@/assets/lapiz.svg';
 import { useQuery } from 'react-query';
 import { searchWithUnionCode} from '@/api/userApi';
 import {toast} from 'react-toastify';
-import { useState, useEffect } from 'react';
+import { useState,  } from 'react';
 import { getCourseByStudent } from '@/api/userApi';
 
 import CursosCard from '@/components/Alumno/cursos/CursosCard';
-import { Curso, cursoBackUnionCode, CursoBackUnionCode } from '@/types/index';
+import {  cursoBackUnionCode, CursoBackUnionCode } from '@/types/index';
 import ModalCursoEncontrado from '@/components/Alumno/cursos/ModalCursoEncontrado';
 
 const puntuaciones: PuntuacionesProps[] = [
@@ -42,22 +42,14 @@ const CursosView = () => {
   const [nombreCurso, setNombreCurso] = useState('');
   const [unioncode,setUnionCode] = useState<string>('');
   const [cursoEncontrado,setCursoEncontrado] = useState<CursoBackUnionCode >();
-  const [cursos, setCursos] = useState<Curso[]>([]);
+ // const [cursos, setCursos] = useState<Curso[]>([]);
   const { data } = useQuery({
     queryFn: getCourseByStudent,
-    queryKey: 'cursos-estudiante'
+    queryKey: 'cursos-estudiante',
+    retry:1
   });
 
-  useEffect(() => {
-    console.log("hola mundo");
-    if (data) {
-      const cursosFiltrados = data.filter((curso: Curso) =>
-        curso.name.toLowerCase().includes(nombreCurso.toLowerCase())
-      );
-      console.log(cursosFiltrados);
-      setCursos(cursosFiltrados);
-    }
-  }, [nombreCurso, data]);
+ 
 
   const handleSubmitUnionCode = async () => {
    const data =await searchWithUnionCode(unioncode);
@@ -68,8 +60,7 @@ const CursosView = () => {
       }
 
   }
-
-  return (
+if(data)return (
     <div className="pt-32">
       <div className='bg-white'>
         <section className="bg-azul-fondo px-10 rounded-t-xl">
@@ -108,7 +99,7 @@ const CursosView = () => {
           ))}
         </article>
         <section className='grid grid-cols-4 px-2 mt-5'>
-          {cursos.map(curso => (
+          {data.map(curso => (
             <CursosCard curso={curso} key={curso._id} />
           ))}
         </section>

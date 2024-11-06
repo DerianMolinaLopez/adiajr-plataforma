@@ -179,7 +179,13 @@ export const cursoSchema =z.object({
     description:z.string(),
 })
 export type Curso = z.infer<typeof cursoSchema>
-export const cursoSchemaArray = z.array(cursoSchema)
+export const cursoSchemaPick = cursoSchema.pick({
+    _id: true,
+    tipoCurso: true,
+    name: true,
+    instructor: true,
+    description: true,
+  });
 export type formInputConfirmPayment = {
     password:string,
     securityNumbers:string,

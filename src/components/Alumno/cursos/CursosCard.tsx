@@ -2,7 +2,7 @@ import { Curso } from "@/types/index"
 import { cursosTipos,tipoAida } from "@/helpers/diferenciacionTipos"
 import CrearEstrellas from "@/helpers/CrearEstrellas"
 type CursosCardProps = {
-    curso:Curso
+    curso:Pick<Curso,"_id"|"description"|"name"|"instructor">
 }
 const CursosCard = ({curso}:CursosCardProps) => {
     //@ts-ignore
@@ -15,7 +15,6 @@ const CursosCard = ({curso}:CursosCardProps) => {
     <div>
       <h3 className="text-2xl font-semibold">{curso.name}</h3>
       <h4 className="text-xl font-semibold">{curso.instructor}</h4>
-      <p className="font-black">Progreso: <span>{curso.process}%</span></p>
     </div>
     <CrearEstrellas puntuacion={5} />
     <div className="flex justify-center px-20">
