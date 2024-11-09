@@ -46,8 +46,9 @@ const CursosView = () => {
   const { data } = useQuery({
     queryFn: getCourseByStudent,
     queryKey: 'cursos-estudiante',
-    retry:1
+    
   });
+  console.log(data)
 
  
 
@@ -99,7 +100,9 @@ if(data)return (
           ))}
         </article>
         <section className='grid grid-cols-4 px-2 mt-5'>
-          {data.map(curso => (
+          {
+          //@ts-ignore
+          data.map(curso => (
             <CursosCard curso={curso} key={curso._id} />
           ))}
         </section>

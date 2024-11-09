@@ -2,13 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, Description } from '@headlessui/react';
 import { cursosTipos } from '@/helpers/diferenciacionTipos';
 import {CursoBackUnionCode} from '@/types/index';
+import { unirseCursoPorcodigoUnion} from '@/api/userApi';
+import {toast} from 'react-toastify';
+import { useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 type ModalCursoEncontradoProps = {
   curso: CursoBackUnionCode | undefined; // Ajusta el tipo según sea necesario
 };
 
 export const ModalCursoEncontrado = ({ curso }: ModalCursoEncontradoProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const queryClinet = useQueryClient()
   const [imagen,setImagen] = useState<string>('')
+  const {mutate} = useMutation({
+    mutationFn:unirseCursoPorcodigoUnion,
+    onSuccess:()=>{
+      queryClinet.invalidateQueries('cursos-estudiante')
+    //  console.log(data) //puede marcar undefined por qeu el metodo no esta regresando nada
+      toast.success("Te has unido al curso con exito")
+      setIsOpen(false)
+    },
+    onError:(error)=>{
+      
+      console.log("problemas")
+    }
+  })
   
 
 
@@ -19,6 +37,13 @@ export const ModalCursoEncontrado = ({ curso }: ModalCursoEncontradoProps) => {
       setIsOpen(true);
     }
   }, [curso]);
+  const handleUnirCurso =()=>{//* LO UNICO QUE NECESITAMOS ES EL ID DEL CURSO EL CUAL PARA CUANDO YA SALE EL MDOAL, SIGNIFICA QUE YA FUE ENCONTRADO
+    console.log("desde ele vento")
+    if(curso){ //con esto me aseguro que el curso no sea undefined
+          mutate(curso?._idCurso)
+    }
+
+  }
 
   return (
     <>
@@ -37,12 +62,11 @@ export const ModalCursoEncontrado = ({ curso }: ModalCursoEncontradoProps) => {
             <Description className="text-xl">{curso?.description}</Description>
             <Description className="text-xl text-slate-800 font-semibold">Instructor:{' '}{curso?.instructor.name}</Description>
 
-            <button className='w-full bg-indigo-700 text-white font-bold py-2 rounded-lg'>Unirse</button>
-            <button className='w-full bg-red-700 text-white font-bold py-2 rounded-lg'>Cancelar</button>
-            <div className="flex gap-4">
-              <button onClick={() => setIsOpen(false)}>Cancel</button>
-              <button onClick={() => setIsOpen(false)}>Deactivate</button>
-            </div>
+            <button className='w-full bg-indigo-700 text-white font-bold py-2 rounded-lg'
+                    onClick={handleUnirCurso}
+                    >Unirse</button>
+            <button className='w-full bg-red-700 text-white font-bold py-2 rounded-lg' onClick={()=>setIsOpen(false)}>Cancelar</button>
+           
           </DialogPanel>
         </div>
       </Dialog>

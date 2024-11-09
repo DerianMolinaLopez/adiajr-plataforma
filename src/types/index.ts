@@ -134,6 +134,7 @@ export const cursoDetailSchema = z.object({
 
 
 export const cursoBackUnionCode = cursoDetailSchema.pick({
+    
     name:true,
     description:true,
     tipoCurso:true,
@@ -141,7 +142,8 @@ export const cursoBackUnionCode = cursoDetailSchema.pick({
     instructor:z.object({
         name:z.string(),
         _id:z.string()
-    })
+    }),
+    _idCurso:z.string()
 })
 export type CursoBackUnionCode = z.infer<typeof cursoBackUnionCode>
 
