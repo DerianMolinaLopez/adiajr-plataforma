@@ -215,3 +215,20 @@ export type CambioPassword = {
     email: string;
 }
 
+ /*
+     "_id": "672ab8a6e414703f5496ef6d",
+        "name": "CUrsos basic222dedaeawrfrfrcdv aac2wswswadcadscacacacasc",
+        "descrioption": "borbon3001",
+        "valoracion": 0,
+        "tipoCurso": "word",
+        "instructor": "Angel Martin Gastellum Borbon"
+ */
+        export const SchemaCursoShortDetail = z.object({
+            name:z.string(),
+            description:z.string(),
+            valoracion:z.number(),
+            tipoCurso:z.string(),
+            instructor:z.string(),
+            _id:z.string()
+         })
+         export const SchemaCursoShortDetailArray = z.array(SchemaCursoShortDetail)

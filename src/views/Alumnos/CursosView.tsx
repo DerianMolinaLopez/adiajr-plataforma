@@ -48,7 +48,7 @@ const CursosView = () => {
     queryKey: 'cursos-estudiante',
     
   });
-  console.log(data)
+
 
  
 
@@ -61,6 +61,7 @@ const CursosView = () => {
       }
 
   }
+  
 if(data)return (
     <div className="pt-32">
       <div className='bg-white'>

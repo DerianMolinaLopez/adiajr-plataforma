@@ -3,7 +3,7 @@ import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
          courseShortSchema,SectionCursoSchema,
          EnvioConfirmarCursoPassword,
-         UserInstructorSchemaSpecify,
+         UserInstructorSchemaSpecify,SchemaCursoShortDetailArray,
          Curso
         } from "../types";
 import { isAxiosError } from "axios";
@@ -136,7 +136,7 @@ export  async function getCourseById(id:CursoDetail["_id"]) {
    
 }
 ///sections/sections/course/66f079cc58bf3753e9b84128
-export  async function getSectionsByCourse(id:CursoDetail["_id"]) {//!error
+export  async function getSectionsByCourse(id:CursoDetail["_id"]) {
     try{
 
        const res = await axiosCli(`/sections/sections/course/${id}`)
@@ -158,8 +158,13 @@ export  async function getCourseByStudent() {
     try{
       //http://localhost:3000/api/user/student/courses
        const res = await axiosCli(`/user/student/courses/detail`)
+       console.log(res.data)
+       
+       const rest = SchemaCursoShortDetailArray.safeParse(res.data)
+       console.log("errores")
+       console.log(rest.error?.issues)
     
-       return res.data
+       return rest.data
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
@@ -220,7 +225,7 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
     try{
         //* sera una peticion de tipo post
         console.log(_idCurso)
-        const res = await axiosCli.post(``,{_idCurso})
+        const res = await axiosCli.post(`/user/student/course/unionCode`,{_idCurso})
         //pendiente
         console.log(res.data)
         return res.data
@@ -233,3 +238,4 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
          }
      }
  }
+
