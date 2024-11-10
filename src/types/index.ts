@@ -232,3 +232,13 @@ export type CambioPassword = {
             _id:z.string()
          })
          export const SchemaCursoShortDetailArray = z.array(SchemaCursoShortDetail)
+
+         export type TipoCurso = {
+            name:string
+         }
+        
+export const CrearCursoSchema = z.object({
+   name:z.string(),
+    description:z.string(),
+})
+export type CrearCurso = z.infer<typeof CrearCursoSchema>

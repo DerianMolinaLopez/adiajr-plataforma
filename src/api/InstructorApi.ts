@@ -33,3 +33,16 @@ console.log("entrando en peticion")
         }
     }
 }
+//los grupos se crean como si fueran cursos
+//http://localhost:3000/api/courses/courses
+export async function createGroup(){
+    try{
+
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+}
