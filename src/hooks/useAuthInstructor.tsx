@@ -12,7 +12,7 @@ const useAuthInstructor = () => {
       })
 
       
-      
+         console.log(informacionGeneral?.cursos)
         return {
           usuario:informacionGeneral?.usuario,
           cursosInstructor:informacionGeneral?.cursos,

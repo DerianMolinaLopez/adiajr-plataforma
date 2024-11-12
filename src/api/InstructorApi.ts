@@ -35,9 +35,12 @@ console.log("entrando en peticion")
 }
 //los grupos se crean como si fueran cursos
 //http://localhost:3000/api/courses/courses
-export async function createGroup(){
+export async function createGroup({name,description,tipoCurso}:{name:string,description:string,tipoCurso:string}){
     try{
-
+        ///courses/courses
+        const res =await axiosCli.post("/courses/courses",{name,description,tipoCurso:tipoCurso.toLocaleLowerCase()})
+        console.log(res.data)
+    
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
@@ -46,3 +49,10 @@ export async function createGroup(){
         }
     }
 }
+/*
+{
+    "name":"Excel - unidades intermedias",
+    "description":"Unidades intermedias de excel para la creacion de funciones sin el requerimiento de excel",
+    "tipoCurso":"word"
+}
+*/
