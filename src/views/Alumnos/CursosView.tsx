@@ -38,6 +38,12 @@ const puntuaciones: PuntuacionesProps[] = [
   }
 ];
 
+
+/**
+ * 
+ * DEMACIADOS PROBLEMAS CON EL RETORNO DE LOS CURSOS
+ */
+
 const CursosView = () => {
   const [nombreCurso, setNombreCurso] = useState('');
   const [unioncode,setUnionCode] = useState<string>('');

@@ -4,10 +4,10 @@ import UltimosCursos from '@/components/Alumno/UltimosCursos'
 import TiposCursosSeccion from '@/components/Alumno/TiposCursosSeccion'
 import CursosNuevos from '@/components/Alumno/CursosNuevos'
 import InputBusqueda from '@/components/Alumno/InputBusqueda'
-import Footer from '@/components/Landing/Footer'
+import { Tarjetita } from '@/components/Alumno/Tarjetita'
+
 const InicioView = () => {
-    //1- Peticion para obtener los primeros 3 cursos del usuario
-    //si no tiene cursos que muestre un mensaje de que no hay 
+  
 
   return (
     <>
@@ -15,8 +15,15 @@ const InicioView = () => {
     <InputBusqueda />
     <UltimosCursos />
     <CursosNuevos />
-    <TiposCursosSeccion tipo='word' titulo='Aprende la herramienta mas comun para oficinas Word'/>
-    <TiposCursosSeccion tipo='excel' titulo='Aprende la herramienta mas comun para oficinas Word'/>
+    <Tarjetita color='bg-red-600'>
+      Cursos mas vendidos
+    </Tarjetita>
+    <TiposCursosSeccion tipo='word' titulo='Inicia tu aprendizaje con Word'/>
+    <TiposCursosSeccion tipo='excel' titulo='Automatiza algunas de tus tareas con Excel'/>
+    <Tarjetita color='bg-orange-600'>
+      Nueva integracion
+    </Tarjetita>
+    <TiposCursosSeccion tipo='power' titulo='Presentaciones lindas y bonitas'/>
   
     </>
   )

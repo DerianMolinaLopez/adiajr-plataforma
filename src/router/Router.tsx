@@ -14,6 +14,7 @@ import { ForgotPassword } from "@/views/Auth/ForgotPassword";
 import { TokenForgot } from "@/views/Auth/TokenForgot";
 import { UnionCodeView } from "@/views/instructores/UnionCodeView";
 import { GruposView } from "@/views/instructores/GruposView";
+import { CodigoUnionError } from "@/components/Alumno/cursos/CodigoUnionError";
 // url/auth/forgot/token
 //http://localhost:5173/auth/forgot/token
 const Router = () => {
@@ -22,7 +23,7 @@ const Router = () => {
             <Routes>
                 {/* Inicio y autenticación */}
                 <Route path="/auth/login" element={<LoginView />} />
-                <Route path="/auth/register" element={<RegisterView />} />
+                <Route path="/auth/register" element={<RegisterView />} />{/*NOTAS*/}
                 <Route path="/auth/forgot" element={<ForgotPassword/>} />
                 <Route path="/auth/forgot/token" element={<TokenForgot/>} />
 
@@ -32,7 +33,7 @@ const Router = () => {
 
                 {/* Rutas de instructor */}
                 <Route element={<InstructorLayout />}>
-                    <Route path="/instructor/inicio" element={<InicioInstructorView />} />
+                    <Route path="/instructor/inicio" element={<InicioInstructorView />} />{/*nOTAS */}
                     <Route path="/instructor/planes-pago" element={<PagosEstructoresView />} />
                     <Route path="/instructor/unioncode" element={<UnionCodeView />} />
                     <Route path="/instructor/grupos" element={<GruposView />} />
@@ -41,8 +42,9 @@ const Router = () => {
                 {/* Rutas del alumno */}
                 <Route element={<AlumnoLayout />}>
                     <Route path="/alumno/inicio" element={<InicioView />} />
+                    <Route path="/alumno/codigo-union-error" element={<CodigoUnionError />} />
                     <Route path="/alumno/curso" element={<PagosCursosView />} />
-                    <Route path="/alumno/cursos" element={<CursosView />} />
+                    <Route path="/alumno/cursos" element={<CursosView />} />{/*NOTAS*/}
                 </Route>
             </Routes>
         </BrowserRouter>

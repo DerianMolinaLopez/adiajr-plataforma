@@ -13,14 +13,6 @@ const url: urlTI[] = [
     url: "/alumno/inicio",
   },
   {
-    label: "Grupos",
-    url: "/alumno/grupos",
-  },
-  {
-    label: "Canjear codigo",
-    url: "/alumno/codigo",
-  },
-  {
     label: "Tareas",
     url: "/alumno/tareas",
   },
@@ -49,7 +41,7 @@ const NavegacionAlumno = () => {
             to={item.url}
             className={`hover:bg-azul-claro rounded-lg px-2 py-1 text-center
               flex justify-center items-center mt-1
-              transition-colors duration-100 ease-in-out w-32 text-center
+              transition-colors duration-100 ease-in-out w-32 font-semibold
               ${
                 item.url === location.pathname
                   ? "bg-azul-claro"

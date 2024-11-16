@@ -1,11 +1,18 @@
 import useAuthInstructor from "@/hooks/useAuthInstructor"
 
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import ModalCrearGrupo from "@/components/Instructor/GrupoasView/ModalCrearGrupo"
 import CardCurso from "./CardCursos"
 export const GruposView = () => {
     const {usuario,cursos} = useAuthInstructor()
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [cursosInstructor, setCursosInstructor] = useState<any[]>([])
+    useEffect(() => {
+      if(cursos && cursos.length > 0){
+        setCursosInstructor(cursos)
+        
+      }
+    }, [cursos])
 
 
   if(usuario)  return (

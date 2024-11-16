@@ -179,20 +179,10 @@ export  async function getCourseByStudent() {
 //en el back en realidad si lo agrega y manda una factura pero no se muestra
 //la facutra que va en el body, se envia a mailtrap
 export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
-   ///user/student/agregar-curso
-    console.log(form)
-  
     try{
-
         const res = await axiosCli.post(`/user/student/agregar-curso`,form)
-        console.log(res.data)
-        console.log("enviado")
         return res.data
-      //http://localhost:3000/api/user/student/courses
-     //  const res = await axiosCli.post(`/user/student/agregar-curso`,form)
-     //  const rest = cursoSchemaArray.safeParse(res.data.cursos)
-      // console.log(rest.data)
-      // return rest.data
+
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
@@ -205,15 +195,16 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
 
 
  export  async function searchWithUnionCode(unionCode:string) {
- //http://localhost:3000/api/user/student/course/unionCode/415495
+
      try{
         const res = await axiosCli(`/user/student/course/unionCode/${unionCode}`)
+        console.log(res.data)
     //    console.log(res.data)
         return res.data
      }catch(e){
          console.log(e)
          if(isAxiosError(e)){
-            return "error"
+            throw new Error(e.response?.data)
             
          
          }

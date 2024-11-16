@@ -10,7 +10,7 @@ type TiposCursosSeccionProps = {
 }
 
 const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
-    console.log(tipo)
+  //  console.log(tipo)
     //@ts-ignore
     const cursoTipoImagen = cursosTipos[tipo] || null ;
       //@ts-ignore
@@ -24,7 +24,7 @@ const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
 
     if(cursos)return (
         <>
-        <h2 className="text-3xl mt-20 font-bold px-24">{titulo}</h2>
+        <h2 className="text-3xl mt-10 font-bold px-24 ">{titulo}</h2>
          <section className="grid grid-cols-4 w-full mt-10 gap-2 mx-20">
            
            {cursos.map((curso:CursoDetail)=>(<CardCursoVenta

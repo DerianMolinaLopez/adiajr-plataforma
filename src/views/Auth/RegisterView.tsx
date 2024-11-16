@@ -7,11 +7,17 @@ import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify'
 import { UserRegisterForm } from '../../types'
 
-import roborRojo from "@/assets/robotRojoCompleto.svg"
-import roboramarillo from "@/assets/robotAmarilloCompleto.svg"
 import { useMutation } from 'react-query'
 import { registerUser } from '../../api/athApi'
 import 'react-toastify/dist/ReactToastify.css';
+
+
+/*
+Verificar que cuando hay un handle submit, que verifique si hay campos vacios
+y mande los mensajes de error correspondientes
+
+*/
+
 
 const RegisterView = () => {
     const navigate = useNavigate()

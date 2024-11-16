@@ -25,7 +25,10 @@ const UltimosCursos = () => {
         <div className=' text-4xl mx-20 mt-10 space-y-10'>
         <h3 className='font-black'>Hola que bueno que estas de vuelta <span className='text-azul-claro'>{data.name}</span></h3>
         <h4 className='font-bold'>¿Estas listo para continuar?</h4>
-        {cursos.map(curso=><CursosRecientes key={curso._id} curso={curso}/>)}
+         <section className='grid grid-cols-4'>
+                 {cursos.map(curso=><CursosRecientes key={curso._id} curso={curso}/>)}
+         </section>
+ 
         </div>
       ):(<>
         <h2 className='text-4xl px-20 font-bold'>Parece que aun no estas inscrito a un curso</h2>

@@ -4,6 +4,7 @@ import NavegacionAlumno from "../components/Alumno/NavegacionAlumno"
 
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+
 const AlumnoLayout = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const AlumnoLayout = () => {
     <main className="bg-gris-rebajado-variante max-w-screen-2xl mx-auto">
             <Outlet></Outlet>
     </main>
+
      <ToastContainer/>
     </>
    
