@@ -10,7 +10,7 @@ import { QueryClient } from 'react-query';
 const plans: TipoCurso[] = [
   { name: 'Word' },
   { name: 'Excel' },
-  { name: 'PowerPoint' },
+  { name: 'Power' },
 ];
 
 type ModalCrearGrupoProps = {
@@ -44,7 +44,7 @@ export const ModalCrearGrupo = ({ isOpen, setIsOpen }: ModalCrearGrupoProps) => 
     mutate({
       name:data.name,
       description:data.description,
-      tipoCurso:selected.name
+      tipoCurso:selected
     })
 
     

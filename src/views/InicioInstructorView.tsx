@@ -1,18 +1,26 @@
 
 import useAuthInstructor from "@/hooks/useAuthInstructor"
 import { ContainerInfoGeneral } from "@/components/Instructor/inicio/ContainerInfoGeneral"
+import PlazoPagos from "@/enum/PlazonEnum"
+import { ErrorPlazoPago } from "@/errors/errorInstructor/ErrorPlazoPago"
 const InicioInstructorView = () => {
-  //!CUANDO EL HOOK ES COMPLETADO, VERIFICAR QUE SI HAY VALORES 
-  //!VACIOS O NULL, QUE SI O SI RENDERICE LA APLICACIONN Y QUE 
-  //!NO DEPENDA DEL RENDER
-  const {usuario}= useAuthInstructor()
+  const { isSuccess, usuario } = useAuthInstructor();
 
-  if(usuario)return (
-    <>
-      <h1 className="text-4xl ml-10 mt-10 font-bold">Hola bienvenido {usuario?.name}</h1>
-      <ContainerInfoGeneral/>
-    </>
-  )
-}
+  if (isSuccess) {
+    if (usuario?.plazoPago !== PlazoPagos.SIN_PLAZO) {
+      return (
+        <>
+          <h1 className="text-4xl ml-10 mt-10 font-bold">Hola bienvenido {usuario?.name}</h1>
+          <ContainerInfoGeneral />
+        </>
+      );
+    } else {
+      return <ErrorPlazoPago />;
+    }
+  }
+
+  return null;
+};
+
 
 export default InicioInstructorView

@@ -18,7 +18,7 @@ export default function RadioAgrupado({selected,setSelected,plans}:RadioGroupPro
           {plans.map((plan) => (
             <Radio
               key={plan.name}
-              value={plan}
+              value={plan.name.toLocaleLowerCase()}
               className="group relative flex cursor-pointer duration-150 ease-in-out hover:scale-110 rounded-lg bg-white/5 py-4 px-5 shadow-md transition focus:outline-none data-[focus]:outline-1 "
             >
               <div className="flex w-full items-center justify-between">

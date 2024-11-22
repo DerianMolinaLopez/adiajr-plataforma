@@ -8,7 +8,7 @@ export const CardCodigoUnion = ({curso,handleSelectCurso}:CardCodigoUnionProps) 
   return (
     <div  
      onClick={()=>handleSelectCurso(curso._id)}
-     className='cursor-pointer hover:bg-gray-300 transition-colors duration-125 ease-in-out'>
+     className='cursor-pointer hover:bg-gray-300 transition-colors duration-125 ease-in-out p-5 border-b-slate-700 border-b-2'>
     <h2 className="font-bold text-2xl">{curso.name}</h2>
     <p className="text-xl">{curso.description}</p>
   </div>

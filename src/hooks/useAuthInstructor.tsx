@@ -6,14 +6,16 @@ la diea ees que aqui se vallana gregando mas funciones a como se valla necesitan
 */
 
 const useAuthInstructor = () => {
-    const {data:informacionGeneral} = useQuery({
+    const {data:informacionGeneral,isSuccess} = useQuery({
         queryFn: getUserWithEmail,
         queryKey: 'instructorUser'
       })
+    // console.log(informacionGeneral)
 
       
-         console.log(informacionGeneral?.cursos)
+    
         return {
+          isSuccess,
           usuario:informacionGeneral?.usuario,
           cursosInstructor:informacionGeneral?.cursos,
           codigosUnion:informacionGeneral?.cursosConCodigoUnion,

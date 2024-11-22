@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const planesPago = [
   {
     title: "Bimestral",
-    price: "xxX/BIM",
+    price: "xxX/Bimestre",
     features: ["2 meses de acceso","Monitoreo de grupos","asignacion de tareas","5 grupos como maximo para gestionar","30 alumnos por grupo"],
     buttonText: "Comprar",
     buttonColor: "bg-gray-400",
@@ -13,7 +13,7 @@ const planesPago = [
   },
   {
     title: "Trimestral",
-    price: "$xxx/TRI",
+    price: "$xxx/Trimestral",
     features: ["3 meses de acceso","Monitoreo de grupos","asignacion de tareas","10 grupos como maximo para gestionar","30 alumnos por grupo"],
     buttonText: "Comprar",
     buttonColor: "bg-blue-500",
@@ -22,7 +22,7 @@ const planesPago = [
   },
   {
     title: "Semestral",
-    price: "XXX/SEM",
+    price: "XXX/Semestral",
     features: ["6 meses de acceso","Monitoreo de grupos","asignacion de tareas","10 grupos como maximo para gestionar","30 alumnos por grupo","informes"],
     buttonText: "Comprar",
     buttonColor: "bg-gray-400",
@@ -30,7 +30,7 @@ const planesPago = [
   },
   {
     title: "Anualidad",
-    price: "XXX/ANU",
+    price: "XXX/Anualidad",
     features: ["12 meses de acceso","Monitoreo de grupos","asignacion de tareas","20 grupos como maximo para gestionar","50 alumnos por grupo","informes"],
     buttonText: "Comprar",
     buttonColor: "bg-gray-400",
@@ -40,13 +40,13 @@ const planesPago = [
 
 const PlanesPagoEscolares = () => {
   return (
-    <div className='gradiente-precio bg-white h-screen'>
+    <div className='gradiente-precio xl:h-screen bg-white'>
 
       <div className=" ">
         <section className="text-gray-600 body-font overflow-hidden">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
-              <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2  text-white font-black">
+              <h1 className="sm:text-4xl text-3xl  title-font mb-2  text-white font-black">
                 Planes de pago para que puedas administrar tus grupos y tus alumnos
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-100">
@@ -88,7 +88,7 @@ type CardProps = {
         <div className={`h-full p-6 rounded-lg bg-white shadow-lg border-2 ${borderColor} flex flex-col relative overflow-hidden`}>
           {popular && <span className="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">El mas comprado</span>}
           <h2 className="text-sm tracking-widest title-font mb-1 font-medium">{title}</h2>
-          <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+          <h1 className="text-3xl  text-gray-900 leading-none flex  pb-4 mb-4 border-b border-gray-200">
             <span>{price}</span>
           </h1>
           {features.map((feature, index) => (

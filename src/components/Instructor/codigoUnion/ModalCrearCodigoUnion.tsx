@@ -40,8 +40,8 @@ export default function ModalCrearCodigoUnion({cursos}:ModalCrearCodigoUnionProp
           {/* The actual dialog panel  */}
           <DialogPanel className="w-2/4 space-y-4 bg-white p-12">
             <DialogTitle className="font-bold text-2xl">Escoge el curso del cual quieres crear un codigo de union</DialogTitle>
-            <Description>En dado caso de que ya tenga un codigod e union de ese curso, al seleccionarlo aqui, se generara un nuevo codigo.</Description>
-            <div className= "overflow-auto h-96">
+            <Description>En dado caso de que ya tenga un codigo de union de ese curso, al seleccionarlo aqui, se generara un nuevo codigo.</Description>
+            <div className= "overflow-auto h-96 space-y-2 ">
             {cursos.map(curso=>(
               <CardCodigoUnion handleSelectCurso={handleSelectCurso} key={curso._id} curso={curso}/>
             ))}

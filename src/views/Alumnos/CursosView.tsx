@@ -106,7 +106,7 @@ if(data)return (
             />
           ))}
         </article>
-        <section className='grid grid-cols-4 px-2 mt-5'>
+        <section className='grid grid-cols-4 gap-4 px-2 mt-5'>
           {
           //@ts-ignore
           data.map(curso => (

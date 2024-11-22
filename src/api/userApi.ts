@@ -29,9 +29,12 @@ export  async function getUser () {
 export async function getUserWithEmail(){
     try{
         const res = await axiosCli(`/instructor/instructor`)
-       console.log(res.data)
+        console.log(res.data)
+        console.log(res.data.usuario.plazoPago)
         const rest = UserInstructorSchemaSpecify.safeParse(res.data)
-        
+        console.log(rest.error?.issues)
+        console.log("*********************")
+        console.log(rest.data)
         return rest.data
     }catch(e){
         console.log(e)

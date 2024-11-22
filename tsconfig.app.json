@@ -18,7 +18,9 @@
       "@/config/*": ["config/*"],
       "@/assets/*": ["assets/*"],
       "@/helpers/*": ["helpers/*"],
-      "@/contexts/*":["contexts/*"]
+      "@/contexts/*":["contexts/*"],
+      "@/enum/*":["enum/*"],
+      "@/errors/*":["errors/*"]
     },
 
     /* Bundler mode */

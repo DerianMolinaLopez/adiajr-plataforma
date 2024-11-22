@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ConfirmacionCompra } from '@/types/index';
 import { toast } from 'react-toastify';
+import tarjetaCredito from "@/assets/img/Magnetic_Card.png"
 import { useMutation } from 'react-query';
 import { loginUserPayment } from '@/api/athApi';
 import 'react-toastify/dist/ReactToastify.css';
@@ -81,9 +82,15 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           {/* The actual dialog panel */}
           <DialogPanel className="max-w-lg space-y-4 bg-white p-12 rounded-lg">
+            <DialogPanel className={"border-b-2 border-b-slate-400"}>
             <DialogTitle className="font-bold text-slate-600 text-4xl">Plan {tittle}</DialogTitle>
-            <Description>Precio: {price}</Description>
-            <p>¿Ya cuentas con una cuenta de AIDAjr?</p>
+            </DialogPanel>
+            
+            <Description>
+              <span className='font-bold text-slate-600 text-xl'>Precio: </span>
+              
+              {price}</Description>
+            <p className='text-center'>¿Ya cuentas con una cuenta de AIDAjr?</p>
             <article className="flex justify-around">
               <div className="flex">
                 <p>Si</p>
@@ -109,14 +116,26 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
                 <p>Ingresa tu cuenta y te enviaremos un email con el recibo de tu pago</p>
                 <form action="" className='space-y-3' onSubmit={handleSubmit(handleConfirmarCompra, handleErrores)}>
                   <input {...register('email', { required: "Es necesario que ingreses el email" })}
-                    type="email" placeholder="Correo electronico" className='bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1' />
+                    type="email" placeholder="Correo electronico" className='bg-gray-100 rounded border-slate-300 border px-5  w-full placeholder:font-bold placeholder:text-black py-1' />
                   <input {...register('password', { required: "Es necesario que ingreses tu contraseña" })}
-                    type="password" placeholder="Contraseña" className='bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1' />
-                  <input {...register('numberCard', { required: "Es necesario que ingreses tu numero de tarjeta" })}
-                    type="text" placeholder="Numero de la tarjeta" className='bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1' />
-                  <input {...register('securityNumbers', { required: "Es necesario que ingreses tus numeros de seguridad" })}
-                    type="password" placeholder="Numeros de seguridad" className='bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1' />
-                  <div className='flex justify-center'>
+                    type="password" placeholder="Contraseña" className='bg-gray-100 rounded border-slate-300 border px-5  w-full  placeholder:font-bold placeholder:text-black py-1' />
+                  
+                  <div className='flex justify-center gap-4'>
+                     <input {...register('numberCard', { required: "Es necesario que ingreses tu numero de tarjeta" })}
+                    type="text" placeholder="Numero de la tarjeta" className='bg-gray-100 border-slate-300 border px-5 rounded w-full placeholder:font-bold placeholder:text-black py-1' />
+                    <div >
+                      <p className='text-sm text-slate-700'>Numeros de seguridad</p>
+                      <div className='flex gap-2'>
+                         <img src={tarjetaCredito} alt="icono-tarjeta" className='w-10' />
+                         <input {...register('securityNumbers', { required: "Es necesario que ingreses tus numeros de seguridad" })}
+                    type="password" className='bg-gray-100 border-slate-300 border px-5   w-full placeholder:font-bold placeholder:text-black py-1' />
+            
+                      </div>
+                    
+                    </div>
+                  
+                  </div>
+                       <div className='flex justify-center'>
                     <button type='submit' className='mx-auto bg-blue-600 px-4 py-2 text-white font-semibold rounded'>Confirmar compra</button>
                   </div>
                 </form>

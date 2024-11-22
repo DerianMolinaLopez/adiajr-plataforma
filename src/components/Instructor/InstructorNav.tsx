@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import {HomeIcon,CreditCardIcon} from "@heroicons/react/20/solid"
+import {HomeIcon} from "@heroicons/react/20/solid"
 
 
 const InstructorNav = () => {
@@ -10,9 +10,7 @@ const InstructorNav = () => {
           <HomeIcon className="w-10"/>
           
         </Link>
-        <Link to={"/instructor/planes-pago"} className="">
-           <CreditCardIcon className="w-10 text-indigo-600"></CreditCardIcon>
-        </Link>
+      
     </nav>
   )
 }

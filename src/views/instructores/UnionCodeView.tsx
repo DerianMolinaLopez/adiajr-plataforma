@@ -1,6 +1,15 @@
 import useAuthInstructor from "@/hooks/useAuthInstructor";
 import ModalCrearCodigoUnion from "@/components/Instructor/codigoUnion/ModalCrearCodigoUnion";
 import cajaVacia from '@/assets/img/cajavacia.png';
+type TipoCursocolor = {
+    [key:string]:string
+}
+const tipoCurso:TipoCursocolor   = {
+    word:'text-indigo-600',
+    excel:'text-green-600',
+    power:'text-orange-600',
+}
+
 
 export const UnionCodeView = () => {
     const { usuario, codigosUnion, cursos = [] } = useAuthInstructor(); // Añadimos un valor por defecto para cursos
@@ -28,13 +37,20 @@ export const UnionCodeView = () => {
                         </div>
                     </>
                 ) : (
-                    codigosUnion.map(codigo => (
-                        <div key={codigo.codigo} className="flex gap-5 bg-white w-full justify-around flex-wrap px-5 rounded-lg py-2">
-                            <h2 className="font-bold text-3xl">{codigo.curso.name} {' '}</h2>
-                            <p className="text-2xl">Código de unión: {codigo.codigo}</p>
-                            <button className="text-white bg-emerald-600 border-b-4 border-b-emerald-800 rounded-xl p-1">Ver grupo</button>
-                        </div>
-                    ))
+                    <div className="grid grid-cols-3 gap-5">
+                        {
+                            codigosUnion.map(codigo => (
+                                <div key={codigo.codigo} className=" text-center  shadow-lg border-2 border-slate-400 flex gap-5 bg-white w-full justify-around flex-col px-5 rounded-lg py-2">
+                                    <h2 className={`font-bold text-3xl ${tipoCurso[codigo.curso.tipoCurso   ]}`}>{codigo.curso.name} {' '}</h2>
+                                    <p className="text-2xl">Código de unión: {codigo.codigo}</p>
+                                    <button className="text-white bg-slate-600 border-b-4  border-b-slate-800 rounded-xl p-1
+                                    hover:scale-105 duration-150 transition-all
+                                    ">Ver grupo</button>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    
                 )}
             </section>
         </div>

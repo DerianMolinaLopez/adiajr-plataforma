@@ -45,20 +45,21 @@ export const cursosShortSchema = z.object({
 
 export type CursosShort = z.infer<typeof cursosShortSchema>
 export const UserInstructorSchemaSpecify = z.object({
-  usuario: UserInstructorSchema,
-  cursosConCodigoUnion: z.array(z.object({
-    curso: z.object({
-      _id: z.string(),
-      name: z.string(),
-      description: z.string(),
-      tipoCurso: z.string(),
-      sections: z.array(z.any()), // Se puede ajustar según el tipo real
-    }),
-    codigo: z.string(), // Corregido de codigoUnion a codigo
-  })),
-  cursos: z.array(cursosShortSchema),
- 
-});
+    usuario: UserInstructorSchema,
+    cursosConCodigoUnion: z.array(z.object({
+      curso: z.object({
+        _id: z.string(),
+        name: z.string(),
+        description: z.string(),
+        tipoCurso: z.string(),
+        sections: z.array(z.any()), // Se puede ajustar según el tipo real
+      }),
+      codigo: z.string(), // Corregido de codigoUnion a codigo
+    })),
+    cursos: z.array(cursosShortSchema),
+    plazoPago: z.preprocess((value) => (typeof value === 'string' ? value : ''), z.string()),
+  });
+  
 
 
 

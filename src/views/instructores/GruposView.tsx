@@ -22,10 +22,13 @@ export const GruposView = () => {
     <button className=" text-white bg-emerald-600 border-b-4 border-b-emerald-800 rounded-xl p-2"
             onClick={()=>setIsOpen(true)}>Crear nuevo grupo</button>
     <input type="text" placeholder="Ingresa el nombre del grupo" className="block mt-4 p-2 w-72 rounded border-2 border-slate-400 shadow-sm" />
-     <div className="grid grid-cols-4">
-      {cursos?.map((curso) => <CardCurso name={curso.name} 
+     <div className="grid grid-cols-4 overflow-auto altura-codigos-union gap-5">
+    
+        {cursos?.map((curso) => <CardCurso name={curso.name} 
                                                instructor={usuario.name}
                                                tipoCurso={curso.tipoCurso} key={curso._id} />)}
+    
+      
      </div>
      <ModalCrearGrupo isOpen={isOpen} setIsOpen={setIsOpen} />
 </div>
