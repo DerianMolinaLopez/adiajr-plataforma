@@ -63,15 +63,25 @@ export  async function getNewCourses () {
 
 //obtener los primeros 3 cursos del usuario
 //*/api/user/student/courses
-export  async function getTopCourses () {
+export  async function getTopCourses () {//!error a la hora de parsear dice que recibe   objeto y recibe un array
     try{
-        const res = await axiosCli("/user/student/courses")
-        const rest = cursoShortArraySchema.safeParse(res.data.cursos)
+    //    console.log("***********************************DATOS DE LOS CURSOS TOP********")
+        const res = await axiosCli("user/student/courses/detail")
+   //     console.log(res.data)
+
+      //  console.log( res.data)
+        if(res.data.length==0){
+            return []
+        }
+       const rest = cursoShortArraySchema.safeParse(res.data)
+       console.log(rest.error?.issues)
+   //    console.log(rest.error?.issues)
       //  console.log(rest.data)
-      //  console.log(rest.data)
-      console.log("desde los cursos top")
-      console.log(rest.data)
-        return rest.data
+     //   console.log(rest.error?.issues)
+     //   console.log("*************************************")
+
+    
+      return rest.data
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
@@ -91,13 +101,13 @@ export  async function getTopCourses () {
 export  async function getTypeCourses (tipo:string) {
     try{
        // console.log("desde el endpoint"+tipo)
-       console.log(tipo)
+    //   console.log(tipo)
        const res = await axiosCli(`/user/student/courses/type/${tipo}`)
-        console.log(res)
+  //      console.log(res)
       const rest = cursoDetailSchemaArray.safeParse(res.data.cursos)
-      console.log(rest)
+      console.log(rest.data)
        if(rest.error?.issues!=undefined){
-        console.log(rest.error?.issues)
+        //console.log(rest.error?.issues)
         return []
        }
         return rest.data

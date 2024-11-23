@@ -33,13 +33,23 @@ export const UserInstructorSchema = z.object({
 });
 
 export const cursosShortSchema = z.object({
-    valoration: z.number(),
     _id: z.string(),
     name: z.string(),
     description: z.string(),
     tipoCurso: z.string(),
-})
 
+    instructor: z.string(),
+})
+/*
+  {
+        "_id": "67422ae01f3c861c10572c79",
+        "name": "Curso de Word Avanzado",
+        "description": "Domina el uso de referencias, macros y herramientas de automatización en Word.",
+        "valoracion": 0,
+        "tipoCurso": "word",
+        "instructor": "Angel Martin Gastellum Borbon"
+    },
+*/
 
 
 
@@ -131,6 +141,7 @@ export const cursoDetailSchema = z.object({
     end_date: z.string(),
     __v: z.number(),
     valoration: z.number(),
+    valorable:z.boolean()
 })
 
 

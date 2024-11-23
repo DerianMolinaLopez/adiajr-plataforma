@@ -4,11 +4,11 @@ import { getUser,getTopCourses } from '@/api/userApi'
 import cajaVacia from "@/assets/img/caja-vacia.png"
 const UltimosCursos = () => {
   //query para traer informacion del usuairo
-    const {data,isSuccess} = useQuery({
+    const {data} = useQuery({
         queryKey: 'user',
         queryFn: getUser
       })
-    const {data:cursos,isSuccess:cursosSuccess} = useQuery({
+    const {data:cursos} = useQuery({
         queryKey: 'cursos',
         queryFn: getTopCourses
     })
@@ -19,13 +19,15 @@ const UltimosCursos = () => {
  * 1-obtener los datos del usuario
  * 2-obtener los cursos del usuario 
   */ 
+
+console.log("ULTIMOS CURSOS AGREGADOS:"+cursos)
  if(data&&cursos) return (
     <section>
       {cursos?.length>0?(
         <div className=' text-4xl mx-20 mt-10 space-y-10'>
         <h3 className='font-black'>Hola que bueno que estas de vuelta <span className='text-azul-claro'>{data.name}</span></h3>
         <h4 className='font-bold'>¿Estas listo para continuar?</h4>
-         <section className='grid grid-cols-4'>
+         <section className='grid grid-cols-1 xl:grid-cols-4  lg:grid-cols-3 md:grid-cols-2'>
                  {cursos.map(curso=><CursosRecientes key={curso._id} curso={curso}/>)}
          </section>
  

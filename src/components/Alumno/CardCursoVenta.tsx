@@ -1,3 +1,4 @@
+import CrearEstrellas from "@/helpers/CrearEstrellas"
 import { formatearPrecios } from "@/helpers/formatearPrecios"
 import { CursoDetail } from "@/types/index"
 import { useNavigate } from "react-router-dom"
@@ -6,11 +7,13 @@ type CardCursoVentaProps = {
     curso: CursoDetail
     imagen:string
     tipoAidaImagen:string
+    valoracion:number
 }
 
 
-const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
+const CardCursoVenta = ({curso,imagen,tipoAidaImagen,valoracion}:CardCursoVentaProps) => {
   const navigate = useNavigate()  
+  console.log(valoracion)
   //@ts-ignore
   const redireccionarPagosCuros =()=> navigate('/alumno/curso?idcurso='+curso._id)
   return (
@@ -30,6 +33,7 @@ const CardCursoVenta = ({curso,imagen,tipoAidaImagen}:CardCursoVentaProps) => {
          <p className="text-xl text-slate-500 font-bold">
                 {curso.instructor_Id.user_Id.name}
          </p>
+         <CrearEstrellas puntuacion={valoracion} />
          <div className="flex justify-between items-center ">
          <p className="font-bold text-lg">{formatearPrecios(120)}MXN</p>
          {/* agregar evento de onclick */}

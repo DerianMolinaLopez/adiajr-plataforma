@@ -6,20 +6,22 @@ import { CursoDetail } from "@/types/index"
 import { tipoAida } from "@/helpers/diferenciacionTipos"
 type TiposCursosSeccionProps = {
     tipo: string
-    titulo:string
+    titulo:string,
+
 }
 
 const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
   //  console.log(tipo)
     //@ts-ignore
-    const cursoTipoImagen = cursosTipos[tipo] || null ;
+    const cursoTipoImagen = cursosTipos[tipo] ;
       //@ts-ignore
-    const tipoAidaImagen = tipoAida[tipo] || null;
+    const tipoAidaImagen = tipoAida[tipo] ;
     const { data: cursos, isLoading, error } = useQuery({
         queryFn: () => getTypeCourses(tipo),
         queryKey: ['cursos', tipo]
     })
     if(cursos) console.log(cursos)
+    
         
 
     if(cursos)return (
@@ -27,7 +29,9 @@ const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
         <h2 className="text-3xl mt-10 font-bold px-24 ">{titulo}</h2>
          <section className="grid grid-cols-4 w-full mt-10 gap-2 mx-20">
            
-           {cursos.map((curso:CursoDetail)=>(<CardCursoVenta
+           {cursos.map((curso:CursoDetail)=>(
+                     <CardCursoVenta
+                      valoracion={curso.valoration}
                       curso={curso}
                       key={curso._id}
                       tipoAidaImagen={tipoAidaImagen}

@@ -5,6 +5,7 @@ import TiposCursosSeccion from '@/components/Alumno/TiposCursosSeccion'
 import CursosNuevos from '@/components/Alumno/CursosNuevos'
 import InputBusqueda from '@/components/Alumno/InputBusqueda'
 import { Tarjetita } from '@/components/Alumno/Tarjetita'
+import Footer from '@/components/Landing/Footer'
 
 const InicioView = () => {
   
@@ -24,7 +25,7 @@ const InicioView = () => {
       Nueva integracion
     </Tarjetita>
     <TiposCursosSeccion tipo='power' titulo='Presentaciones lindas y bonitas'/>
-  
+  <Footer />
     </>
   )
 }
