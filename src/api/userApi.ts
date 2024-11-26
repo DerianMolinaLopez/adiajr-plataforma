@@ -171,12 +171,8 @@ export  async function getCourseByStudent() {
     try{
       //http://localhost:3000/api/user/student/courses
        const res = await axiosCli(`/user/student/courses/detail`)
-       console.log(res.data)
-       
        const rest = SchemaCursoShortDetailArray.safeParse(res.data)
-       console.log("errores")
-       console.log(rest.error?.issues)
-    
+       console.log(rest.data)
        return rest.data
     }catch(e){
         console.log(e)

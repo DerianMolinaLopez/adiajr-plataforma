@@ -97,20 +97,13 @@ if(data)return (
           </div>
         </article>
         <article className='grid grid-cols-4 bg-azul-verde-bajo px-10 mt-10'>
-          {puntuaciones.map((item, index) => (
-            <Puntuaciones
-              key={index}
-              puntuacion={item.puntuacion}
-              texto={item.texto}
-              icono={item.icono}
-            />
-          ))}
+          
         </article>
         <section className='grid grid-cols-4 gap-4 px-2 mt-5'>
           {
           //@ts-ignore
           data.map(curso => (
-            <CursosCard curso={curso} key={curso._id} />
+            <CursosCard valoracion={curso.valoracion} curso={curso} key={curso._id} />
           ))}
         </section>
       </div>
