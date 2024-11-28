@@ -254,3 +254,11 @@ export const CrearCursoSchema = z.object({
     description:z.string(),
 })
 export type CrearCurso = z.infer<typeof CrearCursoSchema>
+
+export const valoracionScheam = z.object({
+    cursoId:z.string(),
+    valoracion:z.number(),
+    comentario:z.string()
+
+})
+export type Valoracion = z.infer<typeof valoracionScheam>

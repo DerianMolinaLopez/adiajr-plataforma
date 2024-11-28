@@ -1,10 +1,13 @@
-import { Curso } from "@/types/index";
+import { Curso, Valoracion } from "@/types/index";
 import { cursosTipos, tipoAida } from "@/helpers/diferenciacionTipos";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
+import { enviarValoracion } from "@/api/valoracionApi";
+import {toast} from "react-toastify"
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import EstrellasCalificar from "../valoracion/EstrellasCalificar";
+import { useMutation } from "react-query";
 import Rating from "@mui/material/Rating";
 
 type CursosCardProps = {
@@ -17,6 +20,17 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
   const [isModalValorationOpen, setIsModalValorationOpen] = useState(false);
   const imagen = cursosTipos[curso.tipoCurso] || null;
   const tipoAidaImagen = tipoAida[curso.tipoCurso] || null;
+  const [valoracionCurso, setValoracionCurso] = useState<number>(0);
+  const [comentario,setCommentario] = useState<string>(""); 
+
+  const {mutate} = useMutation({
+    mutationFn:enviarValoracion,
+    onError:(error:Error)=> toast.error(error.message),
+    onSuccess:(data)=> {
+      toast.success(data.msg)
+      closeModal()
+    }
+  })
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -30,6 +44,20 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
   const closeModal = () => {
     setIsModalValorationOpen(false);
   };
+
+  const handleEnviarValoracion = async () =>{
+    const obj :Valoracion ={
+      valoracion:valoracionCurso,
+      cursoId:curso._id,
+      comentario
+    }
+    mutate(obj)
+  /* const objRespuesta= await enviarValoracion(obj)
+   if(objRespuesta&& objRespuesta.status==="ok") {
+    toast.success(objRespuesta.msg)
+     closeModal()
+   }*/ 
+  }
 
   return (
     <article className="border-2 border-slate-400 w-full shadow-xl space-y-2 relative">
@@ -82,7 +110,7 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
             <div className="mt-4">
               {/* Contenido del modal */}
               <div className="flex justify-center">
-                <EstrellasCalificar />
+                <EstrellasCalificar setValoration={setValoracionCurso}/>
               </div>
               <button
                 onClick={closeModal}
@@ -90,6 +118,23 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
               >
                 Cerrar
               </button>
+              {
+                valoracionCurso > 0 && (
+                  <div className="flex text-center flex-col mt-6">
+                <p>Agrega un comentario, para que tu experiencia sea mas especifica (este campo es opcional).</p>
+                <textarea value={comentario} onChange={e=> setCommentario(e.target.value)} name="" id="" className="border-slate-600 border p-5">
+
+              </textarea>
+              <button 
+              onClick={handleEnviarValoracion}
+              className="bg-indigo-600 font-bold text-white mt-10 py-2">
+               Enviar valoracion
+              </button>
+              </div>
+                )
+              }
+              
+              
             </div>
           </DialogPanel>
         </div>
@@ -99,13 +144,3 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
 };
 
 export default CursosCard;
-
-/*
-
-      <Rating
-            name="text-feedback"
-            value={6}
-            readOnly
-            precision={0.5}
-            emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-*/

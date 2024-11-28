@@ -8,9 +8,8 @@ import lapiz from '@/assets/lapiz.svg';
 import { useQuery } from 'react-query';
 import { searchWithUnionCode} from '@/api/userApi';
 import {toast} from 'react-toastify';
-import { useState,  } from 'react';
+import { useEffect, useState,  } from 'react';
 import { getCourseByStudent } from '@/api/userApi';
-
 import CursosCard from '@/components/Alumno/cursos/CursosCard';
 import {  cursoBackUnionCode, CursoBackUnionCode } from '@/types/index';
 import ModalCursoEncontrado from '@/components/Alumno/cursos/ModalCursoEncontrado';
@@ -54,6 +53,7 @@ const CursosView = () => {
     queryKey: 'cursos-estudiante',
     
   });
+
 
 
  
