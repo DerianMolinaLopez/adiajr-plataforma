@@ -5,6 +5,7 @@ import icono from "@/assets/grupos.svg";
 import icono2 from "@/assets/codigo.svg";
 import icono3 from "@/assets/hombreMujer.svg";
 import icono4 from "@/assets/tarea.svg";
+import useAuthInstructor from "@/hooks/useAuthInstructor";
 
 /*
 1-para enviar una cantidad numerica debe de vernir desde el servidor
@@ -20,12 +21,14 @@ donde puedas ver el informe en formato de lista de una fomra mas detallada
 */
 
 export const ContainerInfoGeneral = () => {
+  const { cursos } = useAuthInstructor();
   const objCardGeneral: CardInfoGeneralProps[] = [
     {
       title: "Total de grupos",
       index: 0,
       icono: icono,
-      url: '/instructor/grupos'
+      url: '/instructor/grupos',
+      cantidad: cursos?.length
     },
     {
       title: "Total de alumnos",
@@ -51,8 +54,8 @@ export const ContainerInfoGeneral = () => {
     <>
       <h2 className="px-10 font-semibold text-2xl mt-10">Informe general</h2>
       <section className="grid grid-cols-2 mx-10 gap-5 mt-10">
-        {objCardGeneral.map(({ title, index, icono,url }) => (
-          <CardInfoGeneral key={index} index={index} title={title} url={url}  icono={icono} />
+        {objCardGeneral.map(({ title, index, icono,url,cantidad }) => (
+          <CardInfoGeneral cantidad={cantidad} key={index} index={index} title={title} url={url}  icono={icono} />
         ))}
       </section>
     </>

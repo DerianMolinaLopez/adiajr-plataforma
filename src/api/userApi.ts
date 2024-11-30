@@ -31,7 +31,8 @@ export async function getUserWithEmail(){
         const res = await axiosCli(`/instructor/instructor`)
         console.log(res)
         const rest = UserInstructorSchemaSpecify.safeParse(res.data)
-        console.log(rest.error?.issues  )
+        console.log(rest.data)
+    //    console.log(rest.error?.issues  )
         return rest.data
     }catch(e){
         console.log(e)

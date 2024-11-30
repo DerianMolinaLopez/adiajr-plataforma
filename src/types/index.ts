@@ -61,11 +61,15 @@ export const UserInstructorSchemaSpecify = z.object({
         plazoPago:z.string()
     }),
     codigos:z.array(z.object({
-        codigo:z.string(),
-        curso:z.object({
-            name:z.string(),
-            tipoCurso:z.string()
-        }).optional()
+         _id:z.string(),
+         code:z.string(),
+         group:z.object(
+            {
+                _id:z.string(),
+                name:z.string(),
+
+            }
+         )
     })),
     cursos:z.array(z.object(
         {

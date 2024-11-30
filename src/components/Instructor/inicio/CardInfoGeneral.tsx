@@ -4,7 +4,8 @@ export type CardInfoGeneralProps = {
   title: string;
   index: number; // para poder enviar el color que le va a corresponder a ese card por el fondo
   icono: string
-  url:string
+  url:string,
+  cantidad?: number;
 };
 
 type ColorCompuesto = {
@@ -41,9 +42,9 @@ const indexColors: ColorCompuesto[] = [
   }
 ];
 
-export const CardInfoGeneral = ({ title, index, icono,url }: CardInfoGeneralProps) => {
+export const CardInfoGeneral = ({ title, index, icono,url,cantidad }: CardInfoGeneralProps) => {
   const colorClass = indexColors[index % indexColors.length]; // Usar el índice para obtener el color
-
+  console.log(cantidad)
   return (
     <article className={` ${colorClass.fuerte} w-10/12 rounded-lg flex flex-col justify-between`}>
       <div className='flex'>
@@ -52,7 +53,8 @@ export const CardInfoGeneral = ({ title, index, icono,url }: CardInfoGeneralProp
             <img src={icono} alt="icono de la tarjeta" />
           </picture>
         </div>
-        <div className='flex items-center'>
+        <div className='flex  py-3 flex-col'>
+          <h2 className='text-5xl text-white font-bold'>{cantidad}</h2>
           <h2 className='text-white font-bold text-2xl'>{title}</h2>
         </div>
       </div>

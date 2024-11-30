@@ -39,9 +39,10 @@ export const UnionCodeView = () => {
                     <div className="grid grid-cols-3 gap-5">
                         {
                             codigos.map(codigo => (
-                                <div key={codigo.codigo} className=" text-center  shadow-lg border-2 border-slate-400 flex gap-5 bg-white w-full justify-around flex-col px-5 rounded-lg py-2">
+                                <div key={codigo._id} className=" text-center  shadow-lg border-2 border-slate-400 flex gap-5 bg-white w-full justify-around flex-col px-5 rounded-lg py-2">
                                    
-                                    <p className="text-2xl">Código de unión: {codigo.codigo}</p>
+                                    <p className="text-2xl">Código de unión: {codigo.code}</p>
+                                    <p className="text-2xl"> {codigo.group.name}</p>
                                     <button className="text-white bg-slate-600 border-b-4  border-b-slate-800 rounded-xl p-1
                                     hover:scale-105 duration-150 transition-all
                                     ">Ver grupo</button>
