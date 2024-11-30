@@ -13,13 +13,12 @@ const useAuthInstructor = () => {
     // console.log(informacionGeneral)
 
       
-    
         return {
           isSuccess,
-          usuario:informacionGeneral?.usuario,
-          cursosInstructor:informacionGeneral?.cursos,
-          codigosUnion:informacionGeneral?.cursosConCodigoUnion,
-          cursos:informacionGeneral?.cursos//este es para la ventana modal para crear un codigo de union, isn embargo hay que mostrar informacion
+          instructor:informacionGeneral?.instructor,
+          codigos:informacionGeneral?.codigos,
+          cursos:informacionGeneral?.cursos
+
     }
     
 }
