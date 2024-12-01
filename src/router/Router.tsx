@@ -5,9 +5,11 @@ import InstructorLayout from "../Layouts/InstructorLayout";
 import LoginView from "../views/Auth/LoginView";
 import RegisterView from "../views/Auth/RegisterView";
 import InicioView from "../views/Alumnos/InicioView";
+import { CrearTareasView } from "@/views/instructores/CrearTareasView";
 import AlumnoLayout from "../Layouts/AlumnoLayout";
 import PagosCursosView from "@/views/Alumnos/PagosCursosView";
 import PagosEstructoresView from "@/views/Pagos/PagosEstructoresView";
+import { TareasView } from "@/views/instructores/TareasView";
 import PlanesPagoEscolares from "@/components/Landing/PlanesPagoEscolares";
 import CursosView from "@/views/Alumnos/CursosView";
 import { ForgotPassword } from "@/views/Auth/ForgotPassword";
@@ -37,6 +39,8 @@ const Router = () => {
                     <Route path="/instructor/planes-pago" element={<PagosEstructoresView />} />
                     <Route path="/instructor/unioncode" element={<UnionCodeView />} />
                     <Route path="/instructor/grupos" element={<GruposView />} />
+                    <Route path="/instructor/tareas" element={<TareasView />} />
+                    <Route path="/instructor/crear-tareas" element={<CrearTareasView />} />
                 </Route>
 
                 {/* Rutas del alumno */}

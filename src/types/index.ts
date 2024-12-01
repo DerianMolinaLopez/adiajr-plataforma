@@ -68,7 +68,7 @@ export const UserInstructorSchemaSpecify = z.object({
                 _id:z.string(),
                 name:z.string(),
 
-            }
+            } 
          )
     })),
     cursos:z.array(z.object(

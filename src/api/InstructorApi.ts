@@ -49,10 +49,18 @@ export async function createGroup({name,description,tipoCurso}:{name:string,desc
         }
     }
 }
-/*
-{
-    "name":"Excel - unidades intermedias",
-    "description":"Unidades intermedias de excel para la creacion de funciones sin el requerimiento de excel",
-    "tipoCurso":"word"
+
+export async function getSectionsByCourse(courseId:string){
+    try{
+        ///courses/courses
+        const res =await axiosCli.post(`/sections/sections/course/${courseId}`)
+        console.log(res.data)
+    
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
 }
-*/

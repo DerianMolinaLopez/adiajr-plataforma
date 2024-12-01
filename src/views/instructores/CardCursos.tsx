@@ -1,5 +1,5 @@
 
-import { cursosTipos,tipoAida } from "@/helpers/diferenciacionTipos"
+import { cursosTipos} from "@/helpers/diferenciacionTipos"
 import CrearEstrellas from "@/helpers/CrearEstrellas"
 
 type CursosCardProps = {

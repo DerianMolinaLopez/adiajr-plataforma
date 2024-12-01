@@ -151,7 +151,8 @@ export  async function getSectionsByCourse(id:CursoDetail["_id"]) {
 
        const res = await axiosCli(`/sections/sections/course/${id}`)
        const rest = SectionCursoSchema.safeParse(res.data)
-       console.log(rest)
+      // console.log("desde la peticion de la seccion de los cursos")
+       //console.log(rest)
        return rest.data
 
     }catch(e){

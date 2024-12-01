@@ -40,7 +40,7 @@ export const ContainerInfoGeneral = () => {
       title: "Tareas pendientes por revisar",
       index: 2,
       icono: icono3,
-       url: ''
+       url: '/instructor/tareas'
     },
     {
       title: "Codigos de uniones generados",
