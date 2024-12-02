@@ -274,3 +274,25 @@ export const valoracionScheam = z.object({
 
 })
 export type Valoracion = z.infer<typeof valoracionScheam>
+
+/*tareas */
+/*
+{
+    "title":"asdasd",
+    "description":"asdasdas",
+    "course":"67423c9be87ba0c3ce9e0e26",
+    "endDate":"2024-12-01T10:15:30Z",
+    "Section":"674cad596632b752b9b58ce0"
+
+}
+*/
+export const TareaSchema = z.object({
+    _id:z.string(),
+    title:z.string(),
+    description:z.string(),
+    course:z.string(),
+    endDate:z.string(),
+    Section:z.string()
+})
+export type Tarea = z.infer<typeof TareaSchema>
+export type TareaCreacion = Pick<Tarea,"title"|"description"|"course"|"endDate"|"Section">

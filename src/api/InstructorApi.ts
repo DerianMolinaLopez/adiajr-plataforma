@@ -1,5 +1,6 @@
 import axiosCli from "../config/axiosCli";
 import { isAxiosError } from "axios";
+import { TareaCreacion } from "../types";
 
 //funcion para generar el codigo de union
 //se requiere el id del curso
@@ -55,6 +56,23 @@ export async function getSectionsByCourse(courseId:string){
         ///courses/courses
         const res =await axiosCli.post(`/sections/sections/course/${courseId}`)
         console.log(res.data)
+    
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+
+            throw new Error(e.response?.data.message )
+        }
+    }
+}
+export async function creaetHomework(obj:TareaCreacion){
+
+   try{
+    //http://localhost:3000/api/homework/createHomework
+        ///courses/courses
+        const res =await axiosCli.post(`/homework/createHomework`,obj)
+        console.log(res.data)
+     
     
     }catch(e){
         console.log(e)

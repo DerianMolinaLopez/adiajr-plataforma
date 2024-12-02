@@ -1,15 +1,13 @@
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 import React, { Dispatch, useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { getSectionsByCourse } from "@/api/userApi";
-import { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { DialogContent } from "@mui/material";
-import dayjs from 'dayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-
+import { TareaCreacion } from "@/types/index";
+import { useMutation } from "react-query";
+import {creaetHomework} from "@/api/InstructorApi"
+import {toast} from "react-toastify";
 type ModalCrearTareaSeccionProps = {
   tittle: string;
   description: string;
@@ -19,24 +17,75 @@ type ModalCrearTareaSeccionProps = {
 };
 
 export const ModalCrearTareaSeccion = ({ tittle, description, setIsOpen, isOpen, courseId }: ModalCrearTareaSeccionProps) => {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
+  const [selectedDateISO, setSelectedDateISO] = useState<string>('');
+  const [selectedDateDisplay, setSelectedDateDisplay] = useState<string>('');
   const [seleccionado, setSeleccionado] = useState<string>(''); // curso seleccionado
-
+  const [descriptionTarea, setDescriptionTarea] = useState<string>('');
   const { data, error, isLoading } = useQuery({
     queryKey: ['sections', courseId],
     queryFn: () => getSectionsByCourse(courseId),
     enabled: !!courseId, // Asegúrate de que la query solo se ejecute si courseId tiene un valor
   });
+  const {mutate} = useMutation({
+    mutationFn:creaetHomework,
+    onError:()=>{
+      toast.error("Error al crear la tarea")  
+    },
+    onSuccess:()=>{
+      //reiniciamos todos los estados
+   
+      toast.success("Tarea creada con exito")
+      setTimeout(()=>{ // mas adeelante aqui necesitare una revalidacion de query
+        setSeleccionado('')
+        setDescriptionTarea('')
+        setSelectedDateDisplay('')
+        setSelectedDateISO('')
+        setIsOpen(false)
+      },5000)
+      
+    }
+  })
 
   useEffect(() => {
-    if (value) {
-      console.log(value);
+    if (selectedDateISO) {
+      console.log(selectedDateISO);
     }
-  }, [value]);
+  }, [selectedDateISO]);
 
+  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const dateISO = dayjs(event.target.value).format('YYYY-MM-DDTHH:mm:ssZ');
+    const dateDisplay = dayjs(event.target.value).format('DD/MM/YY');
+    setSelectedDateISO(dateISO);
+    setSelectedDateDisplay(dateDisplay);
+  };
+  const handleSubmit = () =>{
 
+    //hacemos las validaciones correctas
+    if(description === '' || seleccionado === '' || selectedDateISO === '' || descriptionTarea === ''){
+      toast.error("Debes de llenar todos los campos")
+      return 
+    }
+    const obj:TareaCreacion = {
+      title:tittle,
+      description:descriptionTarea,
+      course:courseId,
+      endDate:selectedDateISO,
+      Section:seleccionado
+    }
 
+    mutate(obj)
+    /*
+    {
+    "title":"asdasd",
+    "description":"asdasdas",
+    "course":"67423c9be87ba0c3ce9e0e26",
+    "endDate":"2024-12-01T10:15:30Z",
+    "Section":"674cad596632b752b9b58ce0"
 
+}
+    */
+   
+  }
 
   return (
     <>
@@ -78,10 +127,13 @@ export const ModalCrearTareaSeccion = ({ tittle, description, setIsOpen, isOpen,
               </section>
             </DialogContent>
             {seleccionado !== '' && (
-              <div className="flex flex-row-reverse">
-                <div className="flex flex-col">
+              <>
+              <div className="flex flex-row">
+                <div className="flex flex-col w-3/4">
                   <label htmlFor="" className="text-2xl font-bold">Ingresa las indicaciones de la tarea</label>
                   <textarea
+                  value={descriptionTarea}
+                  onChange={(e)=>setDescriptionTarea(e.target.value)}
                     className="border-2 border-slate-400 rounded-2xl p-2 w-full h-32"
                     cols={30}
                     rows={10}
@@ -90,20 +142,27 @@ export const ModalCrearTareaSeccion = ({ tittle, description, setIsOpen, isOpen,
                   ></textarea>
                 </div>
 
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                <DemoItem label="Uncontrolled calendar">
-                  <DateCalendar defaultValue={dayjs('2022-04-17')} />
-                </DemoItem>
-                <DemoItem label="Controlled calendar">
-                  <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
-                </DemoItem>
-              </DemoContainer>
-    </LocalizationProvider>
+                <div className="flex flex-col px-10">
+                  <label htmlFor="dueDate" className="text-2xl font-bold">Fecha de entrega</label>
+                  <input
+                    type="date"
+                    id="dueDate"
+                    name="dueDate"
+                    value={selectedDateISO.split('T')[0]} // Mostrar solo la parte de la fecha
+                    onChange={handleDateChange}
+                    className="border-2 border-slate-400 rounded-2xl p-2 w-full"
+                  />
+                  {selectedDateDisplay && <p className="text-red-600 font-bold ">La fecha seleccionada: {selectedDateDisplay} <br /> asegurate que es la que deseas</p>}
+                </div>
+              
               </div>
+              <button onClick={handleSubmit} className="bg-azul-rebajado-fondo text-amber-300 rounded shadow-sm py-2 w-full font-bold">Asignar tarea</button>
+              </>
+              
             )}
           </DialogPanel>
         </div>
+        
       </Dialog>
     </>
   );
