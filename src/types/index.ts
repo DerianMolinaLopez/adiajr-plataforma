@@ -54,34 +54,6 @@ export const cursosShortSchema = z.object({
 
 
 export type CursosShort = z.infer<typeof cursosShortSchema>
-export const UserInstructorSchemaSpecify = z.object({
-    instructor:z.object({
-        name:z.string(),
-        _id:z.string(),
-        plazoPago:z.string()
-    }),
-    codigos:z.array(z.object({
-         _id:z.string(),
-         code:z.string(),
-         group:z.object(
-            {
-                _id:z.string(),
-                name:z.string(),
-
-            } 
-         )
-    })),
-    cursos:z.array(z.object(
-        {
-            _id:z.string(),
-            name:z.string(),
-            description:z.string(),
-            tipoCurso:z.string(),
-        
-        }
-    ))
-})
-  
 
 
 
@@ -296,3 +268,64 @@ export const TareaSchema = z.object({
 })
 export type Tarea = z.infer<typeof TareaSchema>
 export type TareaCreacion = Pick<Tarea,"title"|"description"|"course"|"endDate"|"Section">
+export const TareaSchemaWithCourseDetail = z.object({
+    _id:z.string(),
+    title:z.string(),
+    description:z.string(),
+    course:z.object({
+        _id: z.string(),
+        name: z.string(),
+        tipoCurso: z.string()
+    }),
+    endDate:z.string(),
+    Section:z.string()
+})
+export const UserInstructorSchemaSpecify = z.object({
+    instructor:z.object({
+        name:z.string(),
+        _id:z.string(),
+        plazoPago:z.string()
+    }),
+    codigos:z.array(z.object({
+         _id:z.string(),
+         code:z.string(),
+         group:z.object(
+            {
+                _id:z.string(),
+                name:z.string(),
+
+            } 
+         )
+    })),
+    cursos:z.array(z.object(
+        {
+            _id:z.string(),
+            name:z.string(),
+            description:z.string(),
+            tipoCurso:z.string(),   
+        }
+    ))
+    ,
+    tareas : z.array(TareaSchemaWithCourseDetail )
+})
+  
+/*
+"tareas": [
+        {
+            "_id": "674d05f5141b9a269b01bf87",
+            "title": "asdasd",
+            "description": "asdasdas",
+            "course": {
+                "_id": "67423c9be87ba0c3ce9e0e26",
+                "name": "Curso de Word Básico",
+                "tipoCurso": "word"
+            },
+            "endDate": "2024-12-01T10:15:30.000Z",
+            "Section": "674cad596632b752b9b58ce0",
+            "revisado": false,
+            "Instructor": "67423cfce87ba0c3ce9e0e34",
+            "beginDate": "2024-12-02T00:57:25.595Z",
+            "__v": 0
+        }
+    ]
+*/

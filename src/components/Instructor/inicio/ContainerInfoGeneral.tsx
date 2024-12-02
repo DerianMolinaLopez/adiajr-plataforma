@@ -21,7 +21,7 @@ donde puedas ver el informe en formato de lista de una fomra mas detallada
 */
 
 export const ContainerInfoGeneral = () => {
-  const { cursos } = useAuthInstructor();
+  const { cursos,tareas } = useAuthInstructor();
   const objCardGeneral: CardInfoGeneralProps[] = [
     {
       title: "Total de grupos",
@@ -34,13 +34,14 @@ export const ContainerInfoGeneral = () => {
       title: "Total de alumnos",
       index: 1,
       icono: icono4,
-       url: ''
+       url: ""
     },
     {
       title: "Tareas pendientes por revisar",
       index: 2,
       icono: icono3,
-       url: '/instructor/tareas'
+      url: '/instructor/tareas',
+      cantidad: tareas?.length
     },
     {
       title: "Codigos de uniones generados",

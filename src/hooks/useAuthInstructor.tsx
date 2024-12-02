@@ -17,7 +17,8 @@ const useAuthInstructor = () => {
           isSuccess,
           instructor:informacionGeneral?.instructor,
           codigos:informacionGeneral?.codigos,
-          cursos:informacionGeneral?.cursos
+          cursos:informacionGeneral?.cursos,
+          tareas:informacionGeneral?.tareas
 
     }
     
