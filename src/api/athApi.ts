@@ -44,7 +44,7 @@ export  async function loginUser (data: UserLoginForm) {
 export  async function loginUserPayment (data: ConfirmacionCompra) {
     try{
         console.log(data)
-        const res = await axiosCli.post("/auth/login-payment",data)
+        const res = await axiosCli.post("/periodos/pagar-periodo",data)
         return res.data
     }catch(e){
         console.log(e)

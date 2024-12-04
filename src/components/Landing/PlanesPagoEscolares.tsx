@@ -1,7 +1,12 @@
 import { ModalConfirmarPago } from "../Pagos/pagosInstructor/ModalConfirmarPago";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { useQuery } from "react-query";
+import { getPeriodos } from "@/api/userApi";
+import type {Periodo} from "@/types/index"
 
+//!registrar el pago de un periodo
 const planesPago = [
   {
     title: "Bimestral",
@@ -39,7 +44,13 @@ const planesPago = [
 ];
 
 const PlanesPagoEscolares = () => {
-  return (
+  const{data:periodos} = useQuery({
+    queryKey: "periodos",
+    queryFn: getPeriodos
+  })
+ 
+  
+   if(periodos) return (
     <div className='gradiente-precio xl:h-screen bg-white'>
 
       <div className=" ">
@@ -56,9 +67,7 @@ const PlanesPagoEscolares = () => {
               
             </div>
             <div className="flex flex-wrap -m-4">
-              {planesPago.map((plan, index) => (
-                <Card key={index} {...plan} />
-              ))}
+              {periodos.map(periodo=><Card key={periodo._id} Periodo={periodo}></Card>)}
             </div>
           </div>
         </section>
@@ -73,37 +82,50 @@ export default PlanesPagoEscolares;
 
 
 type CardProps = {
-    title: string;
-    price: string;
-    features: string[];
-    buttonText: string;
-    buttonColor: string;
-    borderColor: string;
-    popular?: boolean;
+    Periodo:Periodo;
   };
   
-  const Card = ({ title, price, features, buttonText, buttonColor, borderColor, popular }:CardProps) => {
+  const Card = ({Periodo}:CardProps) => {
+    console.log(Periodo)
     return (
       <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
-        <div className={`h-full p-6 rounded-lg bg-white shadow-lg border-2 ${borderColor} flex flex-col relative overflow-hidden`}>
-          {popular && <span className="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">El mas comprado</span>}
-          <h2 className="text-sm tracking-widest title-font mb-1 font-medium">{title}</h2>
+        <div className={`h-full p-6 rounded-lg bg-white shadow-lg border-2 flex flex-col relative overflow-hidden`}>
+          <h2 className="tracking-widest title-font mb-1 font-medium text-2xl">{Periodo.name} / periodo</h2>
           <h1 className="text-3xl  text-gray-900 leading-none flex  pb-4 mb-4 border-b border-gray-200">
-            <span>{price}</span>
+            <span>{Periodo.price}$</span>
           </h1>
-          {features.map((feature, index) => (
-            <p key={index} className="flex items-center text-gray-600 mb-2">
-              <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" className="w-3 h-3" viewBox="0 0 24 24">
-                  <path d="M20 6L9 17l-5-5"></path>
-                </svg>
-              </span>{feature}
-            </p>
-          ))}
-          <ModalConfirmarPago tittle={title} price={price} buttonText={buttonText} buttonColor={buttonColor}/>
-
-        
-
+          <ul className="list-none space-y-5 border-b border-b-gray-200 pb-5 mb-5">
+            <div className="flex ">
+              <CheckCircleIcon width={20} className="text-green-500"></CheckCircleIcon><li className="text-slate-600">{Periodo.description1}</li>
+            </div>
+            <div className="flex">
+            <CheckCircleIcon width={20} className="text-green-500"></CheckCircleIcon>
+              <li className="text-slate-600">{Periodo.description2}</li>
+            </div>
+            <div className="flex">
+            <CheckCircleIcon width={20} className="text-green-500"></CheckCircleIcon>
+            <li className="text-slate-600">{Periodo.gruposMaximos} numero maximo de grupos</li>
+            </div>
+            <div className="flex">
+            <CheckCircleIcon width={20} className="text-green-500"></CheckCircleIcon>
+            <li className="text-slate-600">{Periodo.maximoAlumnos} numero maximo de grupos</li>
+            </div>
+            
+            
+          </ul>
+          <ModalConfirmarPago periodo={Periodo._id} tittle={Periodo.name} price={String( Periodo.price)} />
+         {/**<ModalConfirmarPago tittle={Periodo.name} price={String( Periodo.price)} /> 
+          * 
+          *   tittle: string;
+  price: string;
+  buttonColor: string;
+  buttonText: string;
+};
+          * 
+         */}
+        </div>
+        <div>
+          
         </div>
         <ToastContainer
         position="top-right"
@@ -122,14 +144,3 @@ type CardProps = {
     );
   };
   
-  
-/*
-    
-    <main className="pt-28">
-        <h2 className="text-center text-3xl font-semibold mb-32 bg-azul-claro p-3 text-yellow-400">Se un instuctor con nuestras opciones</h2>
-        <div className="flex justify-around gap-24 mx-20">
-                {pagos.map((pagos,index)=><CardPlanes key={index} pagos={pagos}/>)}
-        </div>
-       
-    </main>
-*/

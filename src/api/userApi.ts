@@ -4,7 +4,7 @@ import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          courseShortSchema,SectionCursoSchema,
          EnvioConfirmarCursoPassword,
          UserInstructorSchemaSpecify,SchemaCursoShortDetailArray,
-         Curso
+         Curso,PeriodosScheama,
         } from "../types";
 import { isAxiosError } from "axios";
 
@@ -237,4 +237,17 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
      }
  }
 
+ export  async function getPeriodos() {
+    try{
+        const res = await axiosCli("/periodos/periodos")
+        const rest = PeriodosScheama.safeParse(res.data)
+        return rest.data
+    }catch(e){
+        console.log(e)
+        if(isAxiosError(e)){
+            throw new Error(e.response?.data.message )
+        }
+    }
+ }
+   
  

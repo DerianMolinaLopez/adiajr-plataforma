@@ -200,9 +200,16 @@ export type EnvioConfirmarCursoPassword = formInputConfirmPayment & EnvioConfirm
 export type ConfirmacionCompra = Pick<formInputConfirmPayment,"password"| "securityNumbers"> &{
     email:string,
     numberCard:string,
-    tittle:string,
-    price:string,
+    periodo:string
 } 
+/*
+    "email":"pruebaspurebas@gmail.com",
+    "password":"12345678",
+    "numberCard":"1231231",
+    "periodo":"674f99efe1d6476ad85497e7",
+    "securityNumbers":"qdeqdewdasda"
+}
+*/
 
 export type CambioPassword = {
     password: string;
@@ -309,6 +316,33 @@ export const UserInstructorSchemaSpecify = z.object({
     tareas : z.array(TareaSchemaWithCourseDetail )
 })
   
+
+/*
+ {
+        "_id": "674f99ffe1d6476ad85497ed",
+        "name": "anual",
+        "price": 400,
+        "mesesAcceso": 3,
+        "gruposMaximos": 5,
+        "maximoAlumnos": 10,
+        "description1": "Monitoreo de grupos",
+        "description2": "asignacion de tareas",
+        "__v": 0
+    }
+*/
+export const PeriodoScheam = z.object({
+    _id:z.string(),
+    name:z.string(),
+    price:z.number(),
+    mesesAcceso:z.number(),
+    gruposMaximos:z.number(),
+    maximoAlumnos:z.number(),
+    description1:z.string(),
+    description2:z.string(),
+})
+export const PeriodosScheama = z.array(PeriodoScheam)
+export type Periodo = z.infer<typeof PeriodoScheam>
+export type Periodos = z.infer<typeof PeriodosScheama>  
 /*
 "tareas": [
         {

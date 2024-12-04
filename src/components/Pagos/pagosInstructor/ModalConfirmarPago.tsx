@@ -10,13 +10,13 @@ import { loginUserPayment } from '@/api/athApi';
 import 'react-toastify/dist/ReactToastify.css';
 
 type ModalConfirmarPagoProps = {
+  periodo:string;
   tittle: string;
   price: string;
-  buttonColor: string;
-  buttonText: string;
+
 };
 
-export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: ModalConfirmarPagoProps) => {
+export const ModalConfirmarPago = ({ tittle, price,periodo }: ModalConfirmarPagoProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectOption, setSelctOption] = useState(false);
   const navigate = useNavigate();
@@ -26,8 +26,7 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
     securityNumbers: "",
     numberCard: "",
     email: "",
-    tittle: "",
-    price: ""
+    periodo:"",
   };
 
   const { register, handleSubmit} = useForm<ConfirmacionCompra>({ defaultValues: initialValues });
@@ -49,9 +48,7 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
   });
 
   const handleConfirmarCompra = (data: ConfirmacionCompra) => {
-    data.tittle = tittle
-    data.price = price.replace("$", "").split("/")[0]
-    console.log(data.price)
+    data.periodo = periodo
     console.log(data)
     mutate(data);
   };
@@ -67,9 +64,9 @@ export const ModalConfirmarPago = ({ tittle, price, buttonColor, buttonText }: M
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className={`flex items-center mt-auto text-white ${buttonColor} border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded`}
+        className={`flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none bg-azul-claro hover:bg-gray-500 rounded`}
       >
-        {buttonText}
+        {"Confirmar compra"}
         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
