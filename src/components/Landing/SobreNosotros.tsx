@@ -6,19 +6,19 @@ import maestro from "../../assets/maestros.svg"
 const noticias= [
   {
     title: "¿Por que trabajar con nosotros?",
-    description: "Aprende con nosotros y se parte de la comunidad de AIDAjr",
+    description: "La filosofia de AIDAjr es que el conocimiento llegue a todos, todo aquel que tenga un dispositivo inteligente, puede aprender herramienats que ayudaran a su futuro, solo con un par de clicks podras ver el material que nosotros ofrecemos, AIDAjr esta centralizado para que puedas escoger tus horarios y tus tiempo",
     img: aidaLogo,
     tipo: TipoCard.SOBRE_NOSOTROS
   },
   {
     title: "Pllanes de pago accesibles",
-    description: "",
+    description: "Los planes de pago procuramos que sea accesibles tanto para los instructores como a los alumnos, para mantener nuestras operaciones mantenemos un precio para que puedas seguir usando nuestro servicio, si quieres convertirte en patrocinador, estamos con las manos abiertas y si eres cliente, te damos la bienvenida.",
     img: pagos,
     tipo: TipoCard.SOBRE_NOSOTROS
   },
   {
     title: "Si no eres maestro de escuela, adelante, gestiona tus propios cursos particulares",
-    description: "",
+    description: "dascacda",
     img: maestro,
     tipo: TipoCard.SOBRE_NOSOTROS
   }
@@ -27,7 +27,7 @@ const SobreNosotros = () => {
   return (
     <section className="px-20">
         <h3 className="lg:text-5xl md:text-4xl text-2xl font-bold mt-20 text-center text-slate-800 mb-10">Sobre Nosotros</h3>
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
+        <div className="flex flex-col space-y-40">
               {noticias.map(noticia=><ArticulosSobreNosotros obj={noticia}/>)}
 
         </div>

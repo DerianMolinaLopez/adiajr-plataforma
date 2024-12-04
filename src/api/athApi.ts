@@ -53,7 +53,8 @@ export  async function loginUserPayment (data: ConfirmacionCompra) {
             throw new Error(e.response?.data.message )
         }else{
             //@ts-ignore
-            throw new Error(e.message)
+            console.log(e.message)
+            throw new Error(e.data.message)
         }
     }
    

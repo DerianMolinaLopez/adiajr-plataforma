@@ -6,42 +6,6 @@ import { useQuery } from "react-query";
 import { getPeriodos } from "@/api/userApi";
 import type {Periodo} from "@/types/index"
 
-//!registrar el pago de un periodo
-const planesPago = [
-  {
-    title: "Bimestral",
-    price: "xxX/Bimestre",
-    features: ["2 meses de acceso","Monitoreo de grupos","asignacion de tareas","5 grupos como maximo para gestionar","30 alumnos por grupo"],
-    buttonText: "Comprar",
-    buttonColor: "bg-gray-400",
-    borderColor: "border-gray-300"
-  },
-  {
-    title: "Trimestral",
-    price: "$xxx/Trimestral",
-    features: ["3 meses de acceso","Monitoreo de grupos","asignacion de tareas","10 grupos como maximo para gestionar","30 alumnos por grupo"],
-    buttonText: "Comprar",
-    buttonColor: "bg-blue-500",
-    borderColor: "border-blue-500",
-    popular: true
-  },
-  {
-    title: "Semestral",
-    price: "XXX/Semestral",
-    features: ["6 meses de acceso","Monitoreo de grupos","asignacion de tareas","10 grupos como maximo para gestionar","30 alumnos por grupo","informes"],
-    buttonText: "Comprar",
-    buttonColor: "bg-gray-400",
-    borderColor: "border-gray-300"
-  },
-  {
-    title: "Anualidad",
-    price: "XXX/Anualidad",
-    features: ["12 meses de acceso","Monitoreo de grupos","asignacion de tareas","20 grupos como maximo para gestionar","50 alumnos por grupo","informes"],
-    buttonText: "Comprar",
-    buttonColor: "bg-gray-400",
-    borderColor: "border-gray-300"
-  }
-];
 
 const PlanesPagoEscolares = () => {
   const{data:periodos} = useQuery({
@@ -90,7 +54,7 @@ type CardProps = {
     return (
       <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
         <div className={`h-full p-6 rounded-lg bg-white shadow-lg border-2 flex flex-col relative overflow-hidden`}>
-          <h2 className="tracking-widest title-font mb-1 font-medium text-2xl">{Periodo.name} / periodo</h2>
+          <h2 className="tracking-widest title-font mb-1 font-medium text-3xl uppercase">  {Periodo.name} </h2>
           <h1 className="text-3xl  text-gray-900 leading-none flex  pb-4 mb-4 border-b border-gray-200">
             <span>{Periodo.price}$</span>
           </h1>
