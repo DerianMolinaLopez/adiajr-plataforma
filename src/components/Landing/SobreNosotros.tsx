@@ -26,7 +26,7 @@ const noticias= [
 const SobreNosotros = () => {
   return (
     <section className="px-20">
-        <h3 className="lg:text-5xl md:text-4xl text-2xl font-bold mt-20 text-center text-slate-800 mb-10">Sobre Nosotros</h3>
+        <h3 className="lg:text-5xl md:text-4xl text-2xl font-bold mt-20 text-centermb-10  bg-blue-950  rounded-lg text-center text-white py-10 mb-5">Sobre Nosotros</h3>
         <div className="flex flex-col space-y-40">
               {noticias.map(noticia=><ArticulosSobreNosotros obj={noticia}/>)}
 

@@ -1,10 +1,11 @@
+import { ArrowSmallRightIcon } from "@heroicons/react/20/solid";
 import axiosCli from "../config/axiosCli";
 import { UserSchema,CourseViewSchema,cursoShortArraySchema,
          cursoDetailSchemaArray,CursoDetail,
          courseShortSchema,SectionCursoSchema,
          EnvioConfirmarCursoPassword,
          UserInstructorSchemaSpecify,SchemaCursoShortDetailArray,
-         Curso,PeriodosScheama,
+         Curso,PeriodosScheama,tareaArray
         } from "../types";
 import { isAxiosError } from "axios";
 
@@ -250,4 +251,22 @@ export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
     }
  }
    
- 
+ export async function getTareas(arrayCourses: string[]) {
+    try {
+      console.log(arrayCourses);
+      const res = await axiosCli.post("/homework/getHomeworkByStudent", { cursos: arrayCourses });
+      console.log(res.data);
+      const rest = tareaArray.safeParse(res.data.tareas);
+      if (!rest.success) {
+        console.log(rest.error?.issues);
+        return [];
+      }
+      return rest.data;
+    } catch (e) {
+      console.log(e);
+      if (isAxiosError(e)) {
+        throw new Error(e.response?.data.message);
+      }
+      throw new Error('Error desconocido');
+    }
+  }

@@ -343,23 +343,66 @@ export const PeriodoScheam = z.object({
 export const PeriodosScheama = z.array(PeriodoScheam)
 export type Periodo = z.infer<typeof PeriodoScheam>
 export type Periodos = z.infer<typeof PeriodosScheama>  
+
+export const Tarea = z.object({
+    _id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    course: z.string(),
+    endDate: z.string(),
+    Section: z.string(),
+    revisado: z.boolean(),
+    Instructor: z.string(),
+    beginDate: z.string(), // Agregar el campo beginDate
+    __v: z.number(), // Agregar el campo __v
+  });
+  
+  export const tareaArray = z.array(Tarea);
+  
+  export type TareaTi = z.infer<typeof Tarea>;
+  export type TareaArray = z.infer<typeof tareaArray>;
+
 /*
-"tareas": [
+{
+    "tareas": [
         {
             "_id": "674d05f5141b9a269b01bf87",
             "title": "asdasd",
             "description": "asdasdas",
-            "course": {
-                "_id": "67423c9be87ba0c3ce9e0e26",
-                "name": "Curso de Word Básico",
-                "tipoCurso": "word"
-            },
+            "course": "67423c9be87ba0c3ce9e0e26",
             "endDate": "2024-12-01T10:15:30.000Z",
             "Section": "674cad596632b752b9b58ce0",
             "revisado": false,
             "Instructor": "67423cfce87ba0c3ce9e0e34",
             "beginDate": "2024-12-02T00:57:25.595Z",
             "__v": 0
+        },
+        {
+            "_id": "674e0415bbc180e973d08615",
+            "title": "Curso de Word Básico",
+            "description": "Pruebas de comportamiento",
+            "course": "67423c9be87ba0c3ce9e0e26",
+            "endDate": "2024-12-26T07:00:00.000Z",
+            "Section": "674cad596632b752b9b58ce5",
+            "revisado": false,
+            "Instructor": "67423cfce87ba0c3ce9e0e34",
+            "beginDate": "2024-12-02T19:01:41.056Z",
+            "__v": 0
         }
     ]
+}
+*/
+/*
+ {
+            "_id": "674e0415bbc180e973d08615",
+            "title": "Curso de Word Básico",
+            "description": "Pruebas de comportamiento",
+            "course": "67423c9be87ba0c3ce9e0e26",
+            "endDate": "2024-12-26T07:00:00.000Z",
+            "Section": "674cad596632b752b9b58ce5",
+            "revisado": false,
+            "Instructor": "67423cfce87ba0c3ce9e0e34",
+            "beginDate": "2024-12-02T19:01:41.056Z",
+            "__v": 0
+        }
 */

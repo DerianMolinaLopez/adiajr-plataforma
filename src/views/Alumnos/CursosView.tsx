@@ -75,14 +75,8 @@ if(data)return (
           <h2 className="text-4xl text-white font-bold p-3">Cursos</h2>
         </section>
         <article className='bg-white'>
-          <div className='px-20 pt-5 flex justify-between'>
-            <input
-              type="text"
-              className='border-2 px-4 text-xl border-slate-300 w-64 h-12 rounded-lg'
-              placeholder='Buscar curso'
-              value={nombreCurso}
-              onChange={e => setNombreCurso(e.target.value)}
-            />
+          <div className='px-20 pt-5 flex justify-end'>
+          
             <div className='flex justify-between gap-7'>
               <input type="text" placeholder='Codigo de union' 
               value={unioncode}

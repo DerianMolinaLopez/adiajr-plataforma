@@ -86,7 +86,9 @@ export const ModalConfirmarPago = ({ tittle, price,periodo }: ModalConfirmarPago
             <Description>
               <span className='font-bold text-slate-600 text-xl'>Precio: </span>
               
-              {price}</Description>
+              <span className='text-2xl'>
+                {price}$
+                </span> </Description>
             <p className='text-center'>¿Ya cuentas con una cuenta de AIDAjr?</p>
             <article className="flex justify-around">
               <div className="flex">
@@ -110,7 +112,7 @@ export const ModalConfirmarPago = ({ tittle, price,periodo }: ModalConfirmarPago
             </article>
             {selectOption ? (
               <>
-                <p>Ingresa tu cuenta y te enviaremos un email con el recibo de tu pago</p>
+                <p>Ingresa tu cuenta y te enviaremos un email con el recibo de tu pago.</p>
                 <form action="" className='space-y-3' onSubmit={handleSubmit(handleConfirmarCompra, handleErrores)}>
                   <input {...register('email', { required: "Es necesario que ingreses el email" })}
                     type="email" placeholder="Correo electronico" className='bg-gray-100 rounded border-slate-300 border px-5  w-full placeholder:font-bold placeholder:text-black py-1' />

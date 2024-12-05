@@ -6,7 +6,7 @@ export const CrearTareasView = () => {
     if(cursos)return (
     <div className="px-20">
         <h2 className="my-10 text-4xl font-bold">Selecciona el curso al cual quieres asignarle una tarea.</h2>
-        <section className="grid grid-cols-3 overflow-auto altura-grupos-tareas gap-5">
+        <section className="grid grid-cols-3 overflow-auto bg-white p-2 rounded-lg altura-grupos-tareas gap-5">
           
             {
                 cursos?.map(curso => <CardCursoCreacionTarea courseId={curso._id} key={curso._id} tipoCurso={curso.tipoCurso} name={curso.name} description={curso.description} />)

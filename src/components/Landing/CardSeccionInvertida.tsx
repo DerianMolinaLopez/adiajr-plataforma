@@ -8,7 +8,7 @@ type CardSeccionInvertidaProps = {
 const CardSeccionInvertida = ({card}:CardSeccionInvertidaProps) => {
     const {title,description,img,invertido,color} = card
   return (
-    <article className={`${color} p-5 space-y-5 rounded-sm shadow-lg`}>
+    <article className={`${color} p-5 space-y-5 rounded-sm shadow-lg w-1/2`}>
       <h3 className='text-center text-white text-md md:text-xl lg:text-3xl font-black mt-10 '>{title}</h3>
       <picture className='flex justify-center items-center w-full'>
         <img className=' w-24 sm:w-1/2 md:w-1/3 lg:w-1/4' src={img} alt="Imagenes de el negocio" />
