@@ -165,6 +165,7 @@ export const SectionCursoSchema = z.object({
     sections:z.array(SectionSchema)
 })
 export type Section = z.infer<typeof SectionSchema>
+export type Sections = Section[]
 
 export const cursoDetailSchemaArray = z.array(cursoDetailSchema)
 export type CursoDetail = z.infer<typeof cursoDetailSchema>

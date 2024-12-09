@@ -32,7 +32,7 @@ const PagosCursosView = () => {
 
   if(cursosDatos && seccionesCurso)return (
     <div className="pt-20">
-      <DetalleCursoPagos curso={cursosDatos } idCurso={id} idInstructor={idInstructor} />
+      <DetalleCursoPagos curso={cursosDatos } idCurso={id} SeccioensCurso={seccionesCurso.sections} idInstructor={idInstructor} />
       <h3 className="my-5 text-3xl font-semibold px-20">Secciones que incluye el curso</h3>
       <div className="grid grid-cols-1 lg:grid-cols-2 ">
           <SeccionesCurso secciones={seccionesCurso.sections} />

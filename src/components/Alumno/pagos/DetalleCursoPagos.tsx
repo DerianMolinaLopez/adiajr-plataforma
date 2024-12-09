@@ -4,14 +4,16 @@ import { formatearPrecios } from "@/helpers/formatearPrecios";
 import ConfirmarCompraCurso from "./ConfirmarCompraCurso";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
+import {Section} from "@/types/index"
 
 type DetalleCursoPagoProps = {
   curso: CursoShortPay;
   idCurso:string
   idInstructor:string
+  SeccioensCurso:Section[]
 };
 
-const DetalleCursoPagos = ({ curso,idCurso,idInstructor }: DetalleCursoPagoProps) => {
+const DetalleCursoPagos = ({ curso,idCurso,idInstructor,SeccioensCurso }: DetalleCursoPagoProps) => {
 
   const navigate = useNavigate();
   const cursoImagen = cursosTipos[curso.tipoCurso];
@@ -37,11 +39,9 @@ const DetalleCursoPagos = ({ curso,idCurso,idInstructor }: DetalleCursoPagoProps
             </p>
             <div>
               <p className="text-slate-600 font-bold text-2xl">
-                Numero de secciones:xxxx
+                Numero de secciones:{SeccioensCurso.length}
               </p>
-              <p className="text-slate-600 font-bold text-2xl">
-                Numero de horas de estudio estimadas:xxxx
-              </p>
+            
             </div>
           </article>
         </section>

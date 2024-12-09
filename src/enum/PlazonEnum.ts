@@ -4,6 +4,6 @@ enum PlazoPagos {
     SEMESTRAL = "semestral",
     ANUAL = "anual",
     BIMESTRAL = "bimestral",
-    SIN_PLAZO = "sin plazo"
+    SIN_PLAZO = ""
   }
   export default PlazoPagos
