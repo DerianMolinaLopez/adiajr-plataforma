@@ -1,6 +1,6 @@
 import useAuthInstructor from "@/hooks/useAuthInstructor";
 import ModalCrearCodigoUnion from "@/components/Instructor/codigoUnion/ModalCrearCodigoUnion";
-import cajaVacia from '@/assets/img/cajavacia.png';
+import cajaVacia from '@/assets/img/4826310.png';
 type TipoCursocolor = {
     [key:string]:string
 }
@@ -31,7 +31,7 @@ export const UnionCodeView = () => {
                         <h3 className="text-2xl font-bold text-center">
                             No tienes ningún código de unión generado. Intenta creando uno y regresa más tarde.
                         </h3>
-                        <div className="bg-white rounded-full mx-auto w-1/4 p-3">
+                        <div className="rounded-full mx-auto w-1/4 p-3">
                             <img src={cajaVacia} alt="Imagen de una caja vacía" className="mx-auto w-80 h-80" />
                         </div>
                     </>

@@ -90,10 +90,8 @@ if(data)return (
             </div>
           </div>
         </article>
-        <article className='grid grid-cols-4 bg-azul-verde-bajo px-10 mt-10'>
-          
-        </article>
-        <section className='grid grid-cols-4 gap-4 px-2 mt-5'>
+        
+        <section className='grid lg:grid-cols-4 sm:grid-cols-3 md:grid:grid-cols-2 gap-4 px-2 mt-5'>
           {
           //@ts-ignore
           data.map(curso => (

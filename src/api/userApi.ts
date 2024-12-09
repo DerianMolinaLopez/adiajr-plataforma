@@ -33,7 +33,7 @@ export async function getUserWithEmail(){
         console.log(res)
         const rest = UserInstructorSchemaSpecify.safeParse(res.data)
         console.log(rest.data)
-    //    console.log(rest.error?.issues  )
+        console.log(rest.error?.issues  )
         return rest.data
     }catch(e){
         console.log(e)
@@ -122,6 +122,7 @@ export  async function getCourseById(id:CursoDetail["_id"]) {
     try{
 
        const res = await axiosCli(`/courses/course/${id}`)
+       console.log(res.data)
 
          const instructorName:string = res.data.instructor_Id.user_Id.name
          //console.log(res.data)
@@ -132,6 +133,7 @@ export  async function getCourseById(id:CursoDetail["_id"]) {
             description:res.data.description,
             instructorName,
             tipoCurso:res.data.tipoCurso,
+            costo:res.data.costo,
           
          }
          const rest = courseShortSchema.safeParse(dataCourse)

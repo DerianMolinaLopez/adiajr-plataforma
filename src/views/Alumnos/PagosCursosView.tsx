@@ -20,11 +20,14 @@ const PagosCursosView = () => {
     queryKey: ['secciones', id],
     enabled: !!id,
   })
+
  
 
   if (isLoading) return <div>Loading...</div>;
 
   if (isSuccess) console.log("bien");
+
+
 
   if(cursosDatos && seccionesCurso)return (
     <div className="pt-20">

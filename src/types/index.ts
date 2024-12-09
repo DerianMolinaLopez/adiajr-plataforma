@@ -108,6 +108,7 @@ export const courseShortSchema = z.object({
     description: z.string(),
     instructorName: z.string(),
     tipoCurso: z.string(),
+    costo:z.number()
 })
 export const cursoDetailSchema = z.object({
     _id: z.string(),
@@ -125,7 +126,8 @@ export const cursoDetailSchema = z.object({
     end_date: z.string(),
     __v: z.number(),
     valoration: z.number(),
-    valorable:z.boolean()
+    valorable:z.boolean(),
+    costo:z.number()
 })
 
 
@@ -151,6 +153,7 @@ export type CursoShortPay ={
     description: string;
     tipoCurso: string;
     instructorName: string;
+    costo:number
 }
 export const SectionSchema = z.object({
     _id:z.string(),
@@ -303,7 +306,7 @@ export const UserInstructorSchemaSpecify = z.object({
 
             } 
          )
-    })),
+    })).optional(),
     cursos:z.array(z.object(
         {
             _id:z.string(),

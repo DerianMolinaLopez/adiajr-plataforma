@@ -1,36 +1,23 @@
-import { useState, useEffect } from "react";
 import { CursoShortPay } from "@/types/index";
 import { cursosTipos } from "@/helpers/diferenciacionTipos";
 import { formatearPrecios } from "@/helpers/formatearPrecios";
 import ConfirmarCompraCurso from "./ConfirmarCompraCurso";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
-import useStateUser from "@/contexts/usuarioStore";
+
 type DetalleCursoPagoProps = {
   curso: CursoShortPay;
 };
 
 const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
-  const [cursoImagen, setCursoImagen] = useState<string | null>(null);
-  const [cursoAida, setCursoAida] = useState<string | null>(null);
-
-  const {setCurso,setInstructor,setCosto} = useStateUser ()
-  const navigate = useNavigate(); 
-  useEffect(() => {
-    if (curso) {
-      //@ts-ignore
-      setCursoImagen(cursosTipos[curso.tipoCurso] || null);
-      if(curso){
-        setCurso(curso.name)
-        setInstructor(curso.instructorName)
-        setCosto("120")
-      }
-    }
-  }, [curso]);
+  console.log(curso);
+  const navigate = useNavigate();
+  const cursoImagen = cursosTipos[curso.tipoCurso];
+  console.log("pagando el curso" + curso);
 
   return (
     <div>
-      <div className="flex justify-around">
+      <div className="lg:flex  lg:justify-around   md:space-y-10">
         <section className="w-1/2 bg-white shadow-xl rounded-lg p-3 flex flex-col space-y-5">
           <article className="flex justify-center">
             {cursoImagen && (
@@ -63,26 +50,17 @@ const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
           <h4 className="font-semibold text-2xl">Detalle</h4>
           <div className="flex justify-between px-2 mt-3">
             <p>Costo del curso:</p>
-            <p>{formatearPrecios(120)}MXN</p>
-          </div>
-          <div className="flex justify-between px-2 border-b-2 mt-3">
-            <p>IVA</p>
-            <p>{formatearPrecios(22)}MXN</p>
-          </div>
-          <div className="flex justify-between px-2 mt-3">
-            <p>Total a pagar</p>
-            <p>{formatearPrecios(22)}MXN</p>
+            <p>{formatearPrecios(curso.costo)} MXN</p>
           </div>
           <div className="flex justify-center flex-col mt-5">
             <ConfirmarCompraCurso />
-          
-          <button 
-          onClick={()=>navigate(-1) /*regresamos a la url anterior */}
-          className="bg-red-600 mt-5 hover:bg-red-700 font-semibold text-white text-xl p-2 rounded-lg">
-            Cancelar compra
-          </button>
+            <button
+              onClick={() => navigate(-1) /*regresamos a la url anterior */}
+              className="bg-red-600 mt-5 hover:bg-red-700 font-semibold text-white text-xl p-2 rounded-lg"
+            >
+              Cancelar compra
+            </button>
           </div>
-         
         </section>
       </div>
       <Footer />

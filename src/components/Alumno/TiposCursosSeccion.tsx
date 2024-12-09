@@ -25,9 +25,9 @@ const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
         
 
     if(cursos)return (
-        <>
-        <h2 className="text-3xl mt-10 font-bold px-24 ">{titulo}</h2>
-         <section className="grid grid-cols-4 w-full mt-10 gap-2 mx-20">
+        <div className="sm:px-20">
+        <h2 className="text-3xl mt-10 font-bold px-2 lg:mx-auto ">{titulo}</h2>
+         <section className="grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mt-10 gap-2 mx-20">
            
            {cursos.map((curso:CursoDetail)=>(
                      <CardCursoVenta
@@ -38,7 +38,7 @@ const TiposCursosSeccion = ({ tipo,titulo }: TiposCursosSeccionProps) => {
                       imagen={cursoTipoImagen}
            />))}
         </section>
-        </>
+        </div>
        
     )
 }

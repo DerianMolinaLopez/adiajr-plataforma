@@ -12,7 +12,7 @@ const useAuthInstructor = () => {
       })
     // console.log(informacionGeneral)
 
-      
+      console.log("desde el hook"+informacionGeneral)
         return {
           isSuccess,
           instructor:informacionGeneral?.instructor,

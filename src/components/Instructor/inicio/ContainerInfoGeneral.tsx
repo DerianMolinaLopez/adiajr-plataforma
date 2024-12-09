@@ -31,12 +31,6 @@ export const ContainerInfoGeneral = () => {
       cantidad: cursos?.length
     },
     {
-      title: "Total de alumnos",
-      index: 1,
-      icono: icono4,
-       url: ""
-    },
-    {
       title: "Tareas pendientes por revisar",
       index: 2,
       icono: icono3,

@@ -40,7 +40,7 @@ export async function createGroup({name,description,tipoCurso}:{name:string,desc
     try{
         ///courses/courses
         const res =await axiosCli.post("/courses/courses",{name,description,tipoCurso:tipoCurso.toLocaleLowerCase()})
-        console.log(res.data)
+        console.log(res.data.message)
     
     }catch(e){
         console.log(e)

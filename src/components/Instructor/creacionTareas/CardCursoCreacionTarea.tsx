@@ -12,20 +12,21 @@ export const CardCursoCreacionTarea = ({name,description,tipoCurso,courseId}:Car
     const [isOpen, setIsOpen] = useState(false);
     console.log(imagen)
   return (
-    <>
+    <div className=" "
+    >
     <article className="border-2 bg-white border-slate-400 w-full shadow-xl space-y-2 rounded ">
               <img src={imagen} className="w-full" alt="Imagend el curso" />
               <div className="px-2">
               <h3 className="text-2xl font-semibold">{name}</h3>
               <h4 className="text-xl font-semibold">{description}</h4>
     </div>
-    <div className="p-2">
+    <div className="p-2 bg-white">
             <ModalCrearTareaSeccion courseId={courseId} tittle={name} description={description} isOpen={isOpen} setIsOpen={setIsOpen} ></ModalCrearTareaSeccion>
     </div>
 
    </article>
    {/*renderizacion de un modal */}
-    </>
+    </div>
 
   )
 }

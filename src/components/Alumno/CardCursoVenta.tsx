@@ -13,7 +13,7 @@ type CardCursoVentaProps = {
 
 const CardCursoVenta = ({curso,imagen,tipoAidaImagen,valoracion}:CardCursoVentaProps) => {
   const navigate = useNavigate()  
-  console.log(valoracion)
+//  console.log(valoracion)
   //@ts-ignore
   const redireccionarPagosCuros =()=> navigate('/alumno/curso?idcurso='+curso._id)
   return (
@@ -35,7 +35,7 @@ const CardCursoVenta = ({curso,imagen,tipoAidaImagen,valoracion}:CardCursoVentaP
          </p>
          <CrearEstrellas puntuacion={valoracion} />
          <div className="flex justify-between items-center ">
-         <p className="font-bold text-lg">{formatearPrecios(120)}MXN</p>
+         <p className="font-bold text-lg">{formatearPrecios(curso.costo)}MXN</p>
          {/* agregar evento de onclick */}
         <button 
         onClick={redireccionarPagosCuros}

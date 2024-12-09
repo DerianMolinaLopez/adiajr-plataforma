@@ -17,7 +17,6 @@ import { TokenForgot } from "@/views/Auth/TokenForgot";
 import { UnionCodeView } from "@/views/instructores/UnionCodeView";
 import { GruposView } from "@/views/instructores/GruposView";
 import { CodigoUnionError } from "@/components/Alumno/cursos/CodigoUnionError";
-import { Tarea } from "../types";
 import { Tareas } from "@/views/Alumnos/Tareas";
 // url/auth/forgot/token
 //http://localhost:5173/auth/forgot/token
