@@ -1,17 +1,20 @@
-import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
+import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { FieldErrors, useForm } from 'react-hook-form';
-import { formInputConfirmPayment, EnvioConfirmarCurso, EnvioConfirmarCursoPassword } from '@/types/index';
+import { formInputConfirmPayment,  EnvioConfirmarCursoPassword } from '@/types/index';
 import ojoTarjeta from "@/assets/tarjeta-ojo.svg";
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { addUserCourse } from '@/api/userApi';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import useStateUser from '@/contexts/usuarioStore';
 
-const ConfirmarCompraCurso = () => {
-    const { getCosto, getInstructor, getCurso } = useStateUser();
+
+type ConfirmarCompraCursoProps = {
+    costo :number
+    idCurso:string
+    idINstrcutor:string
+}
+const ConfirmarCompraCurso = ({costo,idCurso,idINstrcutor}:ConfirmarCompraCursoProps) => {
     const location = useLocation();
     const queryParam = new URLSearchParams(location.search);
     const id = queryParam.get("idcurso")!;
@@ -45,10 +48,10 @@ const ConfirmarCompraCurso = () => {
         const objEnvio: EnvioConfirmarCursoPassword  = {
             id_course: id,
             //@ts-ignore
-            curso: getCurso(),
+            curso: id,
             //@ts-ignore
-            costo: getCosto(),
-            instructor:getInstructor(),
+            costo: costo,
+            instructor:idINstrcutor,
             password: data.password,
             securityNumbers: data.securityNumbers
 

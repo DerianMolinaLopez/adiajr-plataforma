@@ -13,7 +13,7 @@ const CardCurso = ({name,instructor,tipoCurso,description}:CursosCardProps) => {
    
     const imagen:string = cursosTipos[tipoCurso]  ;
   return (
-   <article className="border-2 bg-white max-h-72 border-slate-400 w-full shadow-xl space-y-2">
+   <article className="border-2 bg-white max-h-96  border-slate-400 w-full shadow-xl space-y-2">
     <img src={imagen} className="w-full" alt="Imagend el curso" />
     <div className="px-2">
       <h3 className="text-2xl font-semibold">{name}</h3>
@@ -23,7 +23,7 @@ const CardCurso = ({name,instructor,tipoCurso,description}:CursosCardProps) => {
 
     <div className="flex justify-center px-20">
     <button className="font-bold text-white bg-rosa-rojiso hover:bg-rose-800 
-                       transition-colors rounded-md text-xl w-full mb-2"> Entrar al curso</button>
+                       transition-colors rounded-md  w-full mb-2  mx-auto md:w-1/2"> Entrar al curso</button>
     </div>
     
    </article>

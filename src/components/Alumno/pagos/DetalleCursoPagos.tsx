@@ -7,13 +7,15 @@ import Footer from "../Footer";
 
 type DetalleCursoPagoProps = {
   curso: CursoShortPay;
+  idCurso:string
+  idInstructor:string
 };
 
-const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
-  console.log(curso);
+const DetalleCursoPagos = ({ curso,idCurso,idInstructor }: DetalleCursoPagoProps) => {
+
   const navigate = useNavigate();
   const cursoImagen = cursosTipos[curso.tipoCurso];
-  console.log("pagando el curso" + curso);
+
 
   return (
     <div>
@@ -53,7 +55,7 @@ const DetalleCursoPagos = ({ curso }: DetalleCursoPagoProps) => {
             <p>{formatearPrecios(curso.costo)} MXN</p>
           </div>
           <div className="flex justify-center flex-col mt-5">
-            <ConfirmarCompraCurso />
+            <ConfirmarCompraCurso costo={curso.costo} idCurso={idCurso} idINstrcutor={idInstructor}  />
             <button
               onClick={() => navigate(-1) /*regresamos a la url anterior */}
               className="bg-red-600 mt-5 hover:bg-red-700 font-semibold text-white text-xl p-2 rounded-lg"

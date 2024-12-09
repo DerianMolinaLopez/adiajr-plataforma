@@ -19,11 +19,7 @@ export const UnionCodeView = () => {
             <h2 className="text-4xl mt-10 font-bold">Hola, bienvenido - {instructor?.name}</h2>
             <h3 className="text-2xl font-normal">Estos son tus códigos de unión generados</h3>
             <ModalCrearCodigoUnion cursos={cursos} />
-            <input 
-                type="text" 
-                placeholder="Ingresa el nombre del grupo" 
-                className="block mt-4 p-2 w-72 rounded border-2 border-slate-400 shadow-sm" 
-            />
+       
 
             <section className="space-y-2 overflow-auto altura-codigos-union">
                 {(!codigos || codigos.length === 0) ? (
@@ -36,7 +32,7 @@ export const UnionCodeView = () => {
                         </div>
                     </>
                 ) : (
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                         {
                             codigos.map(codigo => (
                                 <div key={codigo._id} className=" text-center  shadow-lg border-2 border-slate-400 flex gap-5 bg-white w-full justify-around flex-col px-5 rounded-lg py-2">

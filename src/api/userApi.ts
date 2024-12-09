@@ -190,13 +190,14 @@ export  async function getCourseByStudent() {
 //la facutra que va en el body, se envia a mailtrap
 export  async function addUserCourse(form:EnvioConfirmarCursoPassword  ) {
     try{
+        console.log(form)
         const res = await axiosCli.post(`/user/student/agregar-curso`,form)
         return res.data
 
     }catch(e){
         console.log(e)
         if(isAxiosError(e)){
-
+            console.log(e)
             throw new Error(e.response?.data.message )
         }
     }

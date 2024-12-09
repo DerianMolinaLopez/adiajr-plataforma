@@ -8,6 +8,7 @@ const PagosCursosView = () => {
   const location = useLocation();
   const queryParam = new URLSearchParams(location.search);
   const id = queryParam.get("idcurso")!;
+  const idInstructor = queryParam.get("instructorID")!;
 
   const { data: cursosDatos, isLoading, isSuccess } = useQuery({
     queryFn: () => getCourseById(id),
@@ -31,7 +32,7 @@ const PagosCursosView = () => {
 
   if(cursosDatos && seccionesCurso)return (
     <div className="pt-20">
-      <DetalleCursoPagos curso={cursosDatos } />
+      <DetalleCursoPagos curso={cursosDatos } idCurso={id} idInstructor={idInstructor} />
       <h3 className="my-5 text-3xl font-semibold px-20">Secciones que incluye el curso</h3>
       <div className="grid grid-cols-1 lg:grid-cols-2 ">
           <SeccionesCurso secciones={seccionesCurso.sections} />
