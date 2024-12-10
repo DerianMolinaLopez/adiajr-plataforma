@@ -365,6 +365,17 @@ export const Tarea = z.object({
   
   export type TareaTi = z.infer<typeof Tarea>;
   export type TareaArray = z.infer<typeof tareaArray>;
+/*
+"_id": "67572100425caece19ef63be",
+            "name": "Derian Molina Lopez",
+            "email": "derian@gmail.com"
+*/
+  export const IntegranteSchema = z.object({
+        _id:z.string(),
+        name:z.string(),
+        email:z.string()
+  })
+  export const Integrantes = z.array(IntegranteSchema)
 
 /*
 {

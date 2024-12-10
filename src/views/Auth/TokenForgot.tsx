@@ -103,19 +103,19 @@ const SecondForm = ({ email, token, onSubmit } :SecondFormProps) => {
 
   return (
     <form className="bg-white w-1/5 rounded-sm px-2 py-4 mt-4" onSubmit={handleSubmit(handleSubmitPassword)}>
-      <h2 className="text-2xl font-bold text-slate-700">Segundo Formulario</h2>
-      <div className="px-2 space-y-3 mt-5 flex justify-center">
-        <div className="flex flex-col">
+      <h2 className="text-2xl font-bold text-slate-700">Ingresa la nueva contraseña.</h2>
+      <div className="px-1 space-y-3 mt-5 flex justify-center">
+        <div className="flex flex-col space-y-3">
           <input
             type="password"
             placeholder="Nueva contraseña"
-            className="bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1"
+            className="bg-gray-100 w-full placeholder:font-bold placeholder:text-semibold py-1"
             {...register("password")}
           />
           <input
             type="password"
             placeholder="Repite la contraseña"
-            className="bg-gray-100 w-full placeholder:font-bold placeholder:text-black py-1"
+            className="bg-gray-100 w-full placeholder:font-bold placeholder:text-semibold py-1"
             {...register("passworRepeat")}
           />
           <button type="submit" className="mx-auto bg-blue-600 px-4 py-2 text-white font-semibold rounded">Enviar</button>

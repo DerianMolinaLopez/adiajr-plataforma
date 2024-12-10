@@ -25,6 +25,7 @@ export const GruposView = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 overflow-auto altura-codigos-union gap-5">
           {cursosInstructor.map((curso) => (
             <CardCurso
+              grupoId={curso._id}
               key={curso._id}
               name={curso.name}
               instructor={instructor.name}

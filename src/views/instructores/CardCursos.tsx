@@ -1,6 +1,6 @@
 
 import { cursosTipos} from "@/helpers/diferenciacionTipos"
-import CrearEstrellas from "@/helpers/CrearEstrellas"
+import { useNavigate } from "react-router";
 
 type CursosCardProps = {
 
@@ -8,9 +8,13 @@ type CursosCardProps = {
     instructor:string
     tipoCurso:string
     description:string
+     grupoId:string
 }
-const CardCurso = ({name,instructor,tipoCurso,description}:CursosCardProps) => {
-   
+const CardCurso = ({name,instructor,tipoCurso,description,grupoId}:CursosCardProps) => {
+   const navigation = useNavigate()
+   const navegacion = ()=>{
+    navigation(`/instructor/grupos/integrantes/${grupoId}`)
+   }
     const imagen:string = cursosTipos[tipoCurso]  ;
   return (
    <article className="border-2 bg-white max-h-96  border-slate-400 w-full shadow-xl space-y-2">
@@ -21,7 +25,12 @@ const CardCurso = ({name,instructor,tipoCurso,description}:CursosCardProps) => {
       <p>{description}</p>
     </div>
 
-    <div className="flex justify-center px-20">
+    <div className="flex justify-around px-10 gap-5">
+      <button className="font-bold text-white bg-indigo-700 hover:bg-indigo-800 
+                       transition-colors rounded-md  w-full mb-2  mx-auto md:w-1/2"
+                       onClick={navegacion}>{/*agregamos el id del grupo para hacer una busqueda cuando la pagina cargue */}
+        Ver particicpantes
+      </button>
     <button className="font-bold text-white bg-rosa-rojiso hover:bg-rose-800 
                        transition-colors rounded-md  w-full mb-2  mx-auto md:w-1/2"> Entrar al curso</button>
     </div>

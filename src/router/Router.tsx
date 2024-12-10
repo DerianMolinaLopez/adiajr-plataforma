@@ -18,6 +18,8 @@ import { UnionCodeView } from "@/views/instructores/UnionCodeView";
 import { GruposView } from "@/views/instructores/GruposView";
 import { CodigoUnionError } from "@/components/Alumno/cursos/CodigoUnionError";
 import { Tareas } from "@/views/Alumnos/Tareas";
+import { IntegrantesGrupo } from "@/views/instructores/IntegrantesGrupo";
+import { CursoVistaDetalle } from "@/components/Alumno/cursos/CursoVista/CursoVistaDetalle";
 // url/auth/forgot/token
 //http://localhost:5173/auth/forgot/token
 const Router = () => {
@@ -40,6 +42,7 @@ const Router = () => {
                     <Route path="/instructor/planes-pago" element={<PagosEstructoresView />} />
                     <Route path="/instructor/unioncode" element={<UnionCodeView />} />
                     <Route path="/instructor/grupos" element={<GruposView />} />
+                    <Route path="/instructor/grupos/integrantes/:idGrupo" element={<IntegrantesGrupo />} />
                     <Route path="/instructor/tareas" element={<TareasView />} />
                     <Route path="/instructor/crear-tareas" element={<CrearTareasView />} />
                 </Route>
@@ -49,6 +52,7 @@ const Router = () => {
                     <Route path="/alumno/inicio" element={<InicioView />} />
                     <Route path="/alumno/codigo-union-error" element={<CodigoUnionError />} />
                     <Route path="/alumno/curso" element={<PagosCursosView />} />
+                    <Route path="/alumno/curso/:idCurso" element={<CursoVistaDetalle />} />
                     <Route path="/alumno/cursos" element={<CursosView />} />{/*NOTAS*/}
                     <Route path="/alumno/tareas" element={<Tareas/>} />{/*NOTAS*/}
                 </Route>

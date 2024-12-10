@@ -7,6 +7,7 @@ import { enviarValoracion } from "@/api/valoracionApi";
 import {toast} from "react-toastify"
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import EstrellasCalificar from "../valoracion/EstrellasCalificar";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import Rating from "@mui/material/Rating";
 
@@ -16,6 +17,7 @@ type CursosCardProps = {
 };
 
 const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalValorationOpen, setIsModalValorationOpen] = useState(false);
   const imagen = cursosTipos[curso.tipoCurso] || null;
@@ -52,11 +54,7 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
       comentario
     }
     mutate(obj)
-  /* const objRespuesta= await enviarValoracion(obj)
-   if(objRespuesta&& objRespuesta.status==="ok") {
-    toast.success(objRespuesta.msg)
-     closeModal()
-   }*/ 
+ 
   }
 
   return (
@@ -94,8 +92,10 @@ const CursosCard = ({ curso,valoracion }: CursosCardProps) => {
           </ul>
         </div>
       )}
-      <div className="flex justify-center px-20">
-        <button className="font-bold text-white bg-rosa-rojiso hover:bg-rose-800 transition-colors rounded-md text-xl w-full mb-2">
+      <div className="flex justify-center px-20">{/*!aqui esta */}
+        <button 
+        onClick={()=>navigate(`/alumno/curso/${curso._id}`)}
+        className="font-bold text-white bg-rosa-rojiso hover:bg-rose-800 transition-colors rounded-md text-xl w-full mb-2">
           Entrar al curso
         </button>
       </div>

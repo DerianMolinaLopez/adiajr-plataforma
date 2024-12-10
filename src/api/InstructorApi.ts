@@ -1,6 +1,6 @@
 import axiosCli from "../config/axiosCli";
 import { isAxiosError } from "axios";
-import { TareaCreacion } from "../types";
+import { TareaCreacion,Integrantes } from "../types";
 
 //funcion para generar el codigo de union
 //se requiere el id del curso
@@ -82,3 +82,24 @@ export async function creaetHomework(obj:TareaCreacion){
         }
     }
 }
+export async function getIntegrantes(idCurso:string){
+
+    try{
+        console.log(idCurso)
+     //http://localhost:3000/api/homework/createHomework
+         ///courses/courses
+         const res =await axiosCli(`instructor/instructor/getIntegrantes/${idCurso}`,)
+         const rest = Integrantes.safeParse(res.data.integrantes)
+         console.log(rest)
+         return rest.data
+      
+     
+     }catch(e){
+         console.log(e)
+         if(isAxiosError(e)){
+ 
+             throw new Error(e.response?.data.message )
+         }
+     }
+ }
+ 

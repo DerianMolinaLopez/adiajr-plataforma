@@ -21,7 +21,7 @@ export const ModalCrearTareaSeccion = ({ tittle, description, setIsOpen, isOpen,
   const [selectedDateDisplay, setSelectedDateDisplay] = useState<string>('');
   const [seleccionado, setSeleccionado] = useState<string>(''); // curso seleccionado
   const [descriptionTarea, setDescriptionTarea] = useState<string>('');
-  const { data, error, isLoading } = useQuery({
+  const { data, } = useQuery({
     queryKey: ['sections', courseId],
     queryFn: () => getSectionsByCourse(courseId),
     enabled: !!courseId, // Asegúrate de que la query solo se ejecute si courseId tiene un valor
@@ -113,7 +113,7 @@ export const ModalCrearTareaSeccion = ({ tittle, description, setIsOpen, isOpen,
             </Description>
             <DialogContent>
               <h2 className="text-2xl font-bold">Selecciona la sección a la que quieres asignar la tarea</h2>
-              <section className="overflow-auto h-40">
+              <section className="overflow-auto ">
                 {data?.sections.map((section) => (
                   <div
                     key={section._id}

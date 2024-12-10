@@ -24,7 +24,7 @@ export const ForgotPassword = () => {
   return (
     <div className="bg-azul-sobrio h-screen flex flex-col items-center">
       <img src={logo} className="w-60" alt="Logo de aidajr" />
-      <form onSubmit={handleSubmit} className="bg-white w-1/5 rounded-sm px-2 py-4">
+      <form onSubmit={handleSubmit} className="bg-white rounded-sm w-1/5  px-2 py-4">
         <h2 className="text-2xl font-bold text-slate-700">Ingresa tu correo electrónico.</h2>
         <div className="px-2 space-y-3 mt-5">
           <input
@@ -32,13 +32,13 @@ export const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder={`Ejemplo: aida@gmail.com`}
-            className="block w-3/4 placeholder:text-slate-400 placeholder:font-bold placeholder:px-2
+            className="block  placeholder:text-slate-400 placeholder:font-bold w-full placeholder:px-2
                        border border-slate-400 rounded-lg p-2"
           />
           <input
             type="submit"
             value="Solicitar código"
-            className="bg-azul-rebajado-fondo p-2 text-white font-semibold
+            className="bg-azul-rebajado-fondo p-2 text-white font-semibold w-full
                        cursor-pointer hover:bg-azul-rebajado-hover transition-colors duration-150"
           />
         </div>

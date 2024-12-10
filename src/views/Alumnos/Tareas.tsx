@@ -1,5 +1,6 @@
 import { getCourseByStudent, getTareas } from "@/api/userApi";
 import { useEffect, useState } from "react";
+import cajaVacia from "@/assets/img/4826310.png"
 import { useQuery } from "react-query";
 import { TareasCard } from "@/components/Alumno/Tareas/TareasCard";
 
@@ -30,9 +31,13 @@ export const Tareas = () => {
     <>
     
       <div className="pt-20"></div>
-      <h2 className="text-4xl font-bold mb-5">Tareas Asignadas recientemente</h2>
+      <h2 className="text-4xl font-bold mb-5">Tareas</h2>
       {tareas?.length === 0 ? (
-        <h1>No hay tareas</h1>
+        <div className="flex flex-col items-center space-y-10 ">
+         <h1 className="text-4xl">No hay tareas asignadas, regresa mas tarde.</h1>
+          <img src={cajaVacia} alt="imagen caja vacias" />
+        </div>
+       
       ) : (
         <section className="grid grid-cols-3 gap-3 px-20">
          {tareas?.map((tarea) => <TareasCard tarea={tarea} />)}
